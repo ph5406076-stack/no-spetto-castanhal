@@ -1,0 +1,1447 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>No Spetto Espetaria | O Verdadeiro Sabor da Brasa em Castanhal</title>
+  <meta name="description" content="A autêntica espetaria de Castanhal - PA. Carnes nobres na brasa, açaí do Pará com charque, salão climatizado, varanda e espaço kids para toda a família.">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              red: '#b91c1c',       /* Vermelho Brasa Oficial */
+              redHover: '#991b1b',
+              redLight: '#fef2f2',
+              redBorder: '#fecaca',
+              dark: '#1c1917',      /* Carvão Nobre */
+              cream: '#faf7f2',     /* Fundo Claro Acolhedor */
+              creamDarker: '#f3ece1',
+              cardLight: '#ffffff',
+              cardDark: '#181412',
+              gold: '#c5a880'
+            }
+          },
+          fontFamily: {
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+            serif: ['Playfair Display', 'serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    .font-serif-title { font-family: 'Playfair Display', serif; }
+    
+    /* Reveal Motion Leve 60fps */
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    html, body {
+      overflow-x: hidden;
+      width: 100%;
+      -webkit-tap-highlight-color: transparent;
+    }
+  </style>
+</head>
+
+<body class="bg-[#faf7f2] dark:bg-[#0c0a09] text-stone-800 dark:text-[#faf7f2] font-sans antialiased transition-colors duration-300 selection:bg-[#b91c1c] selection:text-white">
+
+  <!-- TOPO DE INFORMAÇÕES & STATUS REAL -->
+  <div class="bg-[#1c1917] text-stone-300 text-xs py-2 px-4 border-b border-stone-800">
+    <div class="max-w-6xl mx-auto flex flex-wrap justify-between items-center gap-2">
+      
+      <!-- Status Aberto/Fechado em Tempo Real -->
+      <div class="flex items-center gap-2">
+        <span class="relative flex h-2 w-2">
+          <span id="status-ping" class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+          <span id="status-dot" class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+        </span>
+        <span id="status-text" class="font-medium text-white text-[11px] sm:text-xs">Carregando status...</span>
+        <span class="text-stone-500 hidden sm:inline">• Castanhal - PA</span>
+      </div>
+
+      <!-- Contato e Redes -->
+      <div class="flex items-center gap-5 text-stone-300 text-[11px] sm:text-xs">
+        <a href="tel:91992910573" class="hover:text-red-400 transition flex items-center gap-1 font-medium">
+          <i data-lucide="phone" class="w-3 h-3 text-[#b91c1c]"></i> (91) 99291-0573
+        </a>
+        <a href="https://www.instagram.com/nospetto.castanhal/" target="_blank" rel="noopener noreferrer" class="hover:text-red-400 transition flex items-center gap-1 font-medium">
+          <i data-lucide="instagram" class="w-3 h-3 text-[#b91c1c]"></i> @nospetto.castanhal
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- NAVBAR COM TROCA DE LOGO CLARA/ESCURA & BOTÃO DE TEMA -->
+  <header class="sticky top-0 z-40 bg-white/95 dark:bg-[#0c0a09]/95 backdrop-blur-md border-b border-stone-200 dark:border-white/[0.08] transition-colors duration-300 shadow-sm">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-20 sm:h-24 flex items-center justify-between">
+      
+      <!-- LOGO OFICIAL (TROCA AUTOMÁTICA CLARO / ESCURO) -->
+      <a href="#" class="flex items-center gap-3 group py-2">
+        <img id="site-logo" src="images/logo-black.png" alt="No Spetto Espetaria" class="h-12 sm:h-16 w-auto object-contain transition-transform group-hover:scale-105">
+      </a>
+
+      <!-- MENU DESKTOP -->
+      <nav class="hidden md:flex items-center gap-7 text-xs uppercase tracking-wider font-semibold text-stone-700 dark:text-stone-300">
+        <a href="#destaques-3d" class="hover:text-[#b91c1c] dark:hover:text-red-400 transition py-1">Experiência na Brasa</a>
+        <a href="#cardapio" class="hover:text-[#b91c1c] dark:hover:text-red-400 transition py-1">Cardápio Completo</a>
+        <a href="#almoco-domingo" class="text-[#b91c1c] dark:text-red-400 hover:opacity-80 transition py-1 font-bold">Almoço de Domingo</a>
+        <a href="#reserva-section" class="hover:text-[#b91c1c] dark:hover:text-red-400 transition py-1">Monte seu Prato / Reserva</a>
+        <a href="#espaco" class="hover:text-[#b91c1c] dark:hover:text-red-400 transition py-1">O Espaço</a>
+        <a href="#horarios-section" class="hover:text-[#b91c1c] dark:hover:text-red-400 transition py-1">Horários</a>
+      </nav>
+
+      <!-- BOTÃO TEMA + CTA -->
+      <div class="flex items-center gap-3">
+        
+        <!-- BOTÃO DE MODO ESCURO / CLARO -->
+        <button id="theme-toggle-btn" onclick="toggleTheme()" 
+                class="p-2.5 rounded-full bg-stone-100 dark:bg-white/[0.07] border border-stone-300 dark:border-white/[0.1] text-stone-700 dark:text-amber-400 hover:scale-110 transition shadow-sm" 
+                title="Alternar entre modo Claro e Escuro"
+                aria-label="Alternar modo de cor">
+          <i id="theme-icon" data-lucide="moon" class="w-4 h-4"></i>
+        </button>
+
+        <!-- CTA Principal -->
+        <a href="#reserva-section" 
+           class="hidden sm:inline-flex items-center gap-2 bg-[#b91c1c] hover:bg-[#991b1b] text-white font-bold text-xs uppercase tracking-wider px-5 py-3 rounded-xl shadow-md shadow-red-950/20 transition-all transform hover:-translate-y-0.5 active:scale-95">
+          <i data-lucide="calendar" class="w-3.5 h-3.5"></i>
+          <span>Reservar / Pedir</span>
+        </a>
+
+        <!-- Botão Mobile -->
+        <button id="mobile-menu-btn" class="md:hidden p-2.5 text-stone-700 dark:text-stone-200 hover:text-black dark:hover:text-white rounded-xl bg-stone-100 dark:bg-white/[0.05] border border-stone-200 dark:border-white/[0.1]" aria-label="Abrir Menu">
+          <i data-lucide="menu" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- MENU MOBILE RETRÁTIL -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-[#110e0d] border-t border-stone-200 dark:border-white/[0.08] px-5 py-4 space-y-3 shadow-xl">
+      <a href="#destaques-3d" onclick="closeMobileMenu()" class="block text-stone-700 dark:text-stone-200 text-xs uppercase tracking-wider font-semibold py-1.5 border-b border-stone-100 dark:border-white/[0.05]">🔥 Experiência na Brasa</a>
+      <a href="#cardapio" onclick="closeMobileMenu()" class="block text-stone-700 dark:text-stone-200 text-xs uppercase tracking-wider font-semibold py-1.5 border-b border-stone-100 dark:border-white/[0.05]">📋 Cardápio Completo</a>
+      <a href="#almoco-domingo" onclick="closeMobileMenu()" class="block text-[#b91c1c] dark:text-red-400 text-xs uppercase tracking-wider font-bold py-1.5 border-b border-stone-100 dark:border-white/[0.05]">🥩 Almoço de Domingo</a>
+      <a href="#reserva-section" onclick="closeMobileMenu()" class="block text-stone-700 dark:text-stone-200 text-xs uppercase tracking-wider font-semibold py-1.5 border-b border-stone-100 dark:border-white/[0.05]">🍽️ Monte seu Prato & Reserva</a>
+      <a href="#espaco" onclick="closeMobileMenu()" class="block text-stone-700 dark:text-stone-200 text-xs uppercase tracking-wider font-semibold py-1.5 border-b border-stone-100 dark:border-white/[0.05]">❄️ Climatizado & Espaço Kids</a>
+      <a href="#horarios-section" onclick="closeMobileMenu()" class="block text-stone-700 dark:text-stone-200 text-xs uppercase tracking-wider font-semibold py-1.5">🕒 Horários de Atendimento</a>
+      
+      <a href="#reserva-section" onclick="closeMobileMenu()"
+         class="flex items-center justify-center gap-2 bg-[#b91c1c] hover:bg-[#991b1b] text-white font-bold text-xs uppercase tracking-wider py-3.5 rounded-xl w-full shadow mt-2">
+        <i data-lucide="message-circle" class="w-4 h-4"></i> Fazer Pedido / Reserva no WhatsApp
+      </a>
+    </div>
+  </header>
+
+  <!-- HERO SECTION ACOLHEDOR COM TOQUE VERMELHO & ESTRUTURA CLARA -->
+  <section class="relative bg-gradient-to-b from-[#faf7f2] via-[#faf7f2] to-[#f4ede2] dark:from-[#0c0a09] dark:via-[#110e0c] dark:to-[#0c0a09] overflow-hidden py-12 sm:py-20 border-b border-stone-200 dark:border-white/[0.08] transition-colors duration-300">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+        
+        <!-- Textos Principais -->
+        <div class="lg:col-span-7 text-center lg:text-left reveal">
+          
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-red-50 dark:bg-red-950/40 border border-red-200 dark:border-red-800/40 text-[#b91c1c] dark:text-red-300 text-xs font-bold uppercase tracking-wider mb-4 sm:mb-6">
+            <i data-lucide="flame" class="w-4 h-4 text-[#b91c1c]"></i>
+            A Autêntica Espetaria de Castanhal
+          </div>
+
+          <h1 class="text-3xl sm:text-5xl lg:text-6xl font-bold font-serif-title tracking-tight text-stone-900 dark:text-white leading-[1.15] mb-5">
+            O verdadeiro sabor da brasa com a tradição que você ama.
+          </h1>
+
+          <p class="text-stone-600 dark:text-stone-300 text-sm sm:text-base md:text-lg mb-8 leading-relaxed max-w-xl mx-auto lg:mx-0 font-normal">
+            Carnes nobres suculentas, acompanhamentos fartos da casa, o autêntico <strong>Açaí do Pará com charque</strong>, chopp trincando, salão climatizado e <strong>espaço kids</strong> para toda a família.
+          </p>
+
+          <!-- Botões -->
+          <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3.5 mb-8">
+            <a href="#reserva-section" 
+               class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#b91c1c] hover:bg-[#991b1b] text-white font-bold text-xs sm:text-sm uppercase tracking-wider px-7 py-4 rounded-xl shadow-lg shadow-red-950/20 transition-all transform hover:-translate-y-0.5 active:scale-95">
+              <i data-lucide="calendar" class="w-4 h-4"></i>
+              <span>Montar Prato / Reserva</span>
+            </a>
+
+            <a href="#cardapio" 
+               class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white dark:bg-white/[0.05] hover:bg-stone-100 dark:hover:bg-white/[0.1] text-stone-800 dark:text-stone-200 border border-stone-300 dark:border-white/[0.15] font-semibold text-xs sm:text-sm uppercase tracking-wider px-7 py-4 rounded-xl transition shadow-sm">
+              <i data-lucide="utensils" class="w-4 h-4 text-[#b91c1c]"></i>
+              <span>Ver Cardápio</span>
+            </a>
+          </div>
+
+          <!-- Mini Destaques -->
+          <div class="grid grid-cols-3 gap-2 sm:flex sm:flex-wrap items-center justify-center lg:justify-start sm:gap-6 text-xs text-stone-500 dark:text-stone-400 pt-5 border-t border-stone-300/80 dark:border-white/[0.08]">
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2 text-center sm:text-left">
+              <i data-lucide="star" class="w-4 h-4 text-amber-500 fill-amber-500"></i>
+              <span class="text-stone-700 dark:text-stone-300">Nota <strong>4.3★</strong> Google</span>
+            </div>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2 text-center sm:text-left">
+              <i data-lucide="snowflake" class="w-4 h-4 text-cyan-600 dark:text-cyan-400"></i>
+              <span class="text-stone-700 dark:text-stone-300">Climatizado</span>
+            </div>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2 text-center sm:text-left">
+              <i data-lucide="smile" class="w-4 h-4 text-emerald-600 dark:text-emerald-400"></i>
+              <span class="text-stone-700 dark:text-stone-300">Espaço Kids</span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Foto Gastronômica Destaque -->
+        <div class="lg:col-span-5 relative mt-4 lg:mt-0 reveal">
+          <div class="relative mx-auto max-w-sm sm:max-w-md rounded-3xl overflow-hidden shadow-2xl border-4 border-white dark:border-stone-800">
+            <img src="images/espetos-prato.png" alt="Churrasco No Spetto" class="w-full h-72 sm:h-96 object-cover">
+            <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/95 via-black/60 to-transparent p-5 sm:p-6 text-white">
+              <span class="text-xs font-bold uppercase tracking-wider text-red-400">Espetos Completos</span>
+              <p class="text-xs sm:text-sm font-medium text-stone-200 mt-1 leading-snug">Com Baião de Dois, Farofa da Casa, Vinagrete e Fritas ou Macaxeira na Manteiga.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= QUADRO EXPLÍCITO DE HORÁRIOS DE ATENDIMENTO ================= -->
+  <section id="horarios-section" class="bg-white dark:bg-[#14110f] border-b border-stone-200 dark:border-white/[0.08] py-8 sm:py-10 transition-colors duration-300">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      
+      <div class="bg-stone-50 dark:bg-[#181412] border border-stone-300/80 dark:border-white/[0.08] rounded-2xl p-6 sm:p-8 shadow-sm">
+        
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
+          
+          <div class="flex items-start gap-4">
+            <div class="p-3 bg-red-100 dark:bg-red-950/60 text-[#b91c1c] dark:text-red-400 rounded-2xl shrink-0">
+              <i data-lucide="clock" class="w-6 h-6"></i>
+            </div>
+            <div>
+              <span class="text-xs uppercase font-bold tracking-wider text-[#b91c1c] dark:text-red-400">Horários de Atendimento</span>
+              <h3 class="text-lg sm:text-xl font-bold font-serif-title text-stone-900 dark:text-white mt-0.5">
+                Quando estamos de portas abertas na brasa:
+              </h3>
+            </div>
+          </div>
+
+          <!-- Cards dos Turnos -->
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 flex-1 max-w-2xl text-xs">
+            
+            <!-- Terça a Sexta -->
+            <div class="bg-white dark:bg-[#100d0b] p-3.5 rounded-xl border border-stone-200 dark:border-white/[0.06]">
+              <span class="font-bold text-stone-900 dark:text-white block mb-1">Terça a Sexta:</span>
+              <p class="text-stone-600 dark:text-stone-300 font-medium">11:00 às 15:00 <span class="text-stone-400">(Almoço)</span></p>
+              <p class="text-stone-600 dark:text-stone-300 font-medium">18:00 às 22:00 <span class="text-stone-400">(Jantar)</span></p>
+            </div>
+
+            <!-- Sábado e Domingo -->
+            <div class="bg-red-50 dark:bg-red-950/30 p-3.5 rounded-xl border border-red-200 dark:border-red-900/40">
+              <span class="font-bold text-[#b91c1c] dark:text-red-400 block mb-1">Sábado e Domingo:</span>
+              <p class="text-[#b91c1c] dark:text-red-300 font-bold">11:00 às 15:00</p>
+              <span class="text-[10px] text-stone-500 dark:text-stone-400">Almoço especial em família</span>
+            </div>
+
+            <!-- Segunda -->
+            <div class="bg-white dark:bg-[#100d0b] p-3.5 rounded-xl border border-stone-200 dark:border-white/[0.06]">
+              <span class="font-bold text-stone-500 block mb-1">Segunda-feira:</span>
+              <p class="text-stone-400 font-medium">Fechado</p>
+              <span class="text-[10px] text-stone-400">Descanso da equipe</span>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= CARROSSEL 3D COVERFLOW SENSORIAL ================= -->
+  <section id="destaques-3d" class="relative w-full min-h-[580px] sm:min-h-[700px] flex items-center justify-center overflow-hidden py-14 select-none bg-[#120f0e] text-white border-b border-stone-800">
+    
+    <!-- Background Ambiente Dinâmico -->
+    <div class="absolute inset-0 overflow-hidden pointer-events-none z-0">
+      <img id="bg-ambience-img" src="images/espetos-prato.png" alt="Ambience background"
+           class="w-full h-full object-cover filter brightness-[0.15] blur-[32px] sm:blur-[44px] scale-110 transition-all duration-1000">
+      <div class="absolute inset-0 bg-radial-gradient from-black/40 via-[#120f0e]/85 to-[#120f0e]"></div>
+    </div>
+
+    <div class="relative w-full max-w-5xl mx-auto px-4 z-10 flex flex-col items-center reveal">
+      
+      <!-- Cabeçalho Suave -->
+      <div class="text-center mb-8 px-4">
+        <div class="flex items-center justify-center gap-3 mb-2">
+          <span class="w-8 h-[1px] bg-gradient-to-r from-transparent to-[#b91c1c]"></span>
+          <span class="text-[10px] sm:text-xs font-bold tracking-[0.25em] uppercase text-red-400">
+            • NA BRASA VIVA •
+          </span>
+          <span class="w-8 h-[1px] bg-gradient-to-l from-transparent to-[#b91c1c]"></span>
+        </div>
+        <h2 class="text-2xl sm:text-4xl font-serif-title font-bold text-white">
+          Feito no Ponto para Dar Água na Boca
+        </h2>
+        <p class="text-stone-400 text-xs sm:text-sm mt-1 max-w-md mx-auto">
+          Arraste com o dedo ou use as setas para sentir o clima da nossa grelha.
+        </p>
+      </div>
+
+      <!-- Palco 3D do Coverflow Responsivo -->
+      <div class="relative w-full h-[390px] sm:h-[480px] flex justify-center items-center mb-6" style="perspective: 1200px;" id="coverflow-stage">
+        
+        <!-- SLIDE 0: Picanha na Brasa -->
+        <div class="coverflow-slide" data-index="0" onclick="handleSlideClick(0)"
+             style="position: absolute; width: 260px; height: 380px; border-radius: 20px; overflow: hidden; background-color: #171311; border: 1px solid rgba(255,255,255,0.15); cursor: pointer; transition: all 700ms cubic-bezier(0.25, 1, 0.5, 1);">
+          <img src="images/espetos-prato.png" alt="Picanha na Brasa" class="absolute inset-0 w-full h-full object-cover">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/30 to-transparent z-10 pointer-events-none"></div>
+          <div class="coverflow-content relative w-full h-full p-5 flex flex-col justify-end text-center z-20 transition-all duration-400">
+            <p class="text-xs sm:text-sm text-stone-100 font-serif-title italic leading-relaxed drop-shadow-md">
+              "O ponto perfeito da carne, selada na brasa para preservar cada gota de suculência."
+            </p>
+          </div>
+        </div>
+
+        <!-- SLIDE 1: Linguiça Artesanal Fatiada -->
+        <div class="coverflow-slide" data-index="1" onclick="handleSlideClick(1)"
+             style="position: absolute; width: 260px; height: 380px; border-radius: 20px; overflow: hidden; background-color: #171311; border: 1px solid rgba(255,255,255,0.15); cursor: pointer; transition: all 700ms cubic-bezier(0.25, 1, 0.5, 1);">
+          <img src="images/linguica-corte.png" alt="Linguiça com Queijo Coalho" class="absolute inset-0 w-full h-full object-cover">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/30 to-transparent z-10 pointer-events-none"></div>
+          <div class="coverflow-content relative w-full h-full p-5 flex flex-col justify-end text-center z-20 transition-all duration-400">
+            <p class="text-xs sm:text-sm text-stone-100 font-serif-title italic leading-relaxed drop-shadow-md">
+              "Linguiça artesanal de contrafilé recheada com queijo coalho derretendo."
+            </p>
+          </div>
+        </div>
+
+        <!-- SLIDE 2: Pão de Alho Dourado na Grelha -->
+        <div class="coverflow-slide" data-index="2" onclick="handleSlideClick(2)"
+             style="position: absolute; width: 260px; height: 380px; border-radius: 20px; overflow: hidden; background-color: #171311; border: 1px solid rgba(255,255,255,0.15); cursor: pointer; transition: all 700ms cubic-bezier(0.25, 1, 0.5, 1);">
+          <img src="images/grelha-pao-alho.jpg" alt="Pão de Alho na Brasa" class="absolute inset-0 w-full h-full object-cover">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/30 to-transparent z-10 pointer-events-none"></div>
+          <div class="coverflow-content relative w-full h-full p-5 flex flex-col justify-end text-center z-20 transition-all duration-400">
+            <p class="text-xs sm:text-sm text-stone-100 font-serif-title italic leading-relaxed drop-shadow-md">
+              "Pão de alho cremoso, dourado e crocante no calor da brasa viva."
+            </p>
+          </div>
+        </div>
+
+        <!-- SLIDE 3: Espetos de Frango e Coração -->
+        <div class="coverflow-slide" data-index="3" onclick="handleSlideClick(3)"
+             style="position: absolute; width: 260px; height: 380px; border-radius: 20px; overflow: hidden; background-color: #171311; border: 1px solid rgba(255,255,255,0.15); cursor: pointer; transition: all 700ms cubic-bezier(0.25, 1, 0.5, 1);">
+          <img src="images/espetos-brasa.jpg" alt="Churrasco de Frango" class="absolute inset-0 w-full h-full object-cover">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/30 to-transparent z-10 pointer-events-none"></div>
+          <div class="coverflow-content relative w-full h-full p-5 flex flex-col justify-end text-center z-20 transition-all duration-400">
+            <p class="text-xs sm:text-sm text-stone-100 font-serif-title italic leading-relaxed drop-shadow-md">
+              "Aroma inconfundível de churrasco nobre preparado na hora para você."
+            </p>
+          </div>
+        </div>
+
+        <!-- SLIDE 4: Fachada Noturna -->
+        <div class="coverflow-slide" data-index="4" onclick="handleSlideClick(4)"
+             style="position: absolute; width: 260px; height: 380px; border-radius: 20px; overflow: hidden; background-color: #171311; border: 1px solid rgba(255,255,255,0.15); cursor: pointer; transition: all 700ms cubic-bezier(0.25, 1, 0.5, 1);">
+          <img src="images/fachada.png" alt="Fachada No Spetto" class="absolute inset-0 w-full h-full object-cover">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/30 to-transparent z-10 pointer-events-none"></div>
+          <div class="coverflow-content relative w-full h-full p-5 flex flex-col justify-end text-center z-20 transition-all duration-400">
+            <p class="text-xs sm:text-sm text-stone-100 font-serif-title italic leading-relaxed drop-shadow-md">
+              "O lugar perfeito em Castanhal para reunir quem você gosta e esquecer da hora."
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Botões de Navegação -->
+      <button onclick="prevCoverflowSlide()" aria-label="Anterior"
+              class="absolute left-2 sm:left-6 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-black/60 hover:bg-black/90 border border-white/20 text-white flex items-center justify-center backdrop-blur cursor-pointer shadow-lg z-40 transition active:scale-95">
+        <i data-lucide="chevron-left" class="w-5 h-5 sm:w-6 sm:h-6"></i>
+      </button>
+
+      <button onclick="nextCoverflowSlide()" aria-label="Próximo"
+              class="absolute right-2 sm:right-6 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-black/60 hover:bg-black/90 border border-white/20 text-white flex items-center justify-center backdrop-blur cursor-pointer shadow-lg z-40 transition active:scale-95">
+        <i data-lucide="chevron-right" class="w-5 h-5 sm:w-6 sm:h-6"></i>
+      </button>
+
+      <!-- Paginação em Vermelho -->
+      <div class="flex items-center justify-center gap-2 z-30" id="coverflow-dots">
+        <button onclick="goToCoverflowSlide(0)" class="h-1.5 rounded-full transition-all duration-300 w-8 bg-[#b91c1c]"></button>
+        <button onclick="goToCoverflowSlide(1)" class="h-1.5 rounded-full transition-all duration-300 w-2 bg-white/30"></button>
+        <button onclick="goToCoverflowSlide(2)" class="h-1.5 rounded-full transition-all duration-300 w-2 bg-white/30"></button>
+        <button onclick="goToCoverflowSlide(3)" class="h-1.5 rounded-full transition-all duration-300 w-2 bg-white/30"></button>
+        <button onclick="goToCoverflowSlide(4)" class="h-1.5 rounded-full transition-all duration-300 w-2 bg-white/30"></button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- BANNER: ALMOÇO DE DOMINGO EM FAMÍLIA -->
+  <section id="almoco-domingo" class="bg-[#f4ede2] dark:bg-[#14110f] border-b border-stone-200 dark:border-white/[0.08] py-12 transition-colors duration-300">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="bg-white dark:bg-[#181412] rounded-3xl p-6 sm:p-10 border border-stone-300/80 dark:border-white/[0.08] shadow-sm flex flex-col lg:flex-row items-center justify-between gap-8 reveal">
+        
+        <div class="max-w-2xl text-center lg:text-left">
+          <span class="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#b91c1c] dark:text-red-400 bg-red-50 dark:bg-red-950/40 px-3 py-1 rounded-full border border-red-200 dark:border-red-800/40 mb-3">
+            <i data-lucide="calendar" class="w-3.5 h-3.5"></i> Tradição de Fim de Semana
+          </span>
+          <h2 class="text-2xl sm:text-3xl lg:text-4xl font-serif-title font-bold text-stone-900 dark:text-white mb-3">
+            Domingo é dia de reunir a família no No Spetto! 🥩
+          </h2>
+          <p class="text-stone-600 dark:text-stone-300 text-xs sm:text-base leading-relaxed">
+            Abrimos especialmente para o <strong>almoço de domingo (das 11h às 15h)</strong> para você aproveitar um ambiente agradável, espetos suculentos, chopp gelado e aquele sabor que faz toda a diferença.
+          </p>
+        </div>
+
+        <div class="shrink-0 w-full sm:w-auto">
+          <a href="#reserva-section" 
+             class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#b91c1c] hover:bg-[#991b1b] text-white font-bold text-xs sm:text-sm uppercase tracking-wider px-6 py-4 rounded-xl shadow-md transition active:scale-95">
+            <i data-lucide="calendar-check" class="w-4 h-4"></i>
+            <span>Reservar Mesa p/ Domingo</span>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CARDÁPIO OFICIAL COM CARDS CLAROS E ACENTOS EM VERMELHO -->
+  <section id="cardapio" class="py-16 sm:py-24 bg-[#faf7f2] dark:bg-[#0c0a09] transition-colors duration-300">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      
+      <!-- Cabeçalho -->
+      <div class="text-center max-w-2xl mx-auto mb-10 reveal">
+        <span class="text-xs uppercase font-bold tracking-wider text-[#b91c1c] dark:text-red-400 bg-red-100/60 dark:bg-red-950/40 px-3.5 py-1 rounded-full border border-red-200 dark:border-red-800/40 mb-3 inline-block">
+          Nosso Menu Completo
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-serif-title font-bold text-stone-900 dark:text-white mb-3">
+          Pratos Preparados na Brasa
+        </h2>
+        <p class="text-stone-600 dark:text-stone-400 text-xs sm:text-sm">
+          Escolha entre a versão <strong>Simples</strong> (só o espeto) ou <strong>Completa</strong> (com Baião da Casa, Farofa da Casa, Vinagrete e Fritas ou Macaxeira na Manteiga).
+        </p>
+      </div>
+
+      <!-- Barra de Pesquisa -->
+      <div class="max-w-md mx-auto mb-8 relative reveal">
+        <i data-lucide="search" class="w-4 h-4 text-stone-400 absolute left-4 top-1/2 -translate-y-1/2"></i>
+        <input type="text" id="menu-search" oninput="searchMenu()" placeholder="Buscar prato (ex: picanha, açaí, charque, chopp...)" 
+               class="w-full bg-white dark:bg-[#181412] border border-stone-300 dark:border-white/[0.1] text-stone-900 dark:text-white rounded-xl pl-11 pr-4 py-3 text-xs sm:text-sm focus:outline-none focus:border-[#b91c1c] shadow-sm transition">
+      </div>
+
+      <!-- Filtros de Categorias com Vermelho -->
+      <div class="flex flex-wrap justify-center gap-2 mb-10" id="category-buttons">
+        <button onclick="filterCategory('todos')" class="cat-btn active px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-[#b91c1c] text-white transition shadow-sm">Todos</button>
+        <button onclick="filterCategory('carnes')" class="cat-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-white dark:bg-[#181412] text-stone-700 dark:text-stone-300 border border-stone-300 dark:border-white/[0.1] hover:border-[#b91c1c] transition">🥩 Carnes na Brasa</button>
+        <button onclick="filterCategory('frango')" class="cat-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-white dark:bg-[#181412] text-stone-700 dark:text-stone-300 border border-stone-300 dark:border-white/[0.1] hover:border-[#b91c1c] transition">🍗 Frango & Coração</button>
+        <button onclick="filterCategory('entradas')" class="cat-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-white dark:bg-[#181412] text-stone-700 dark:text-stone-300 border border-stone-300 dark:border-white/[0.1] hover:border-[#b91c1c] transition">🍟 Petiscos & Entradas</button>
+        <button onclick="filterCategory('acai')" class="cat-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-white dark:bg-[#181412] text-stone-700 dark:text-stone-300 border border-stone-300 dark:border-white/[0.1] hover:border-[#b91c1c] transition">🥣 Açaí do Pará</button>
+        <button onclick="filterCategory('acompanhamentos')" class="cat-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-white dark:bg-[#181412] text-stone-700 dark:text-stone-300 border border-stone-300 dark:border-white/[0.1] hover:border-[#b91c1c] transition">🍚 Guarnições</button>
+        <button onclick="filterCategory('bebidas')" class="cat-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-white dark:bg-[#181412] text-stone-700 dark:text-stone-300 border border-stone-300 dark:border-white/[0.1] hover:border-[#b91c1c] transition">🍺 Chopp & Bebidas</button>
+      </div>
+
+      <!-- Grid do Cardápio -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5" id="menu-items-container">
+
+        <!-- PICANHA -->
+        <div class="menu-card carnes bg-white dark:bg-[#181412] border border-stone-200 dark:border-white/[0.08] hover:border-[#b91c1c] dark:hover:border-red-500 rounded-2xl p-5 flex flex-col justify-between shadow-sm hover:shadow-md transition">
+          <div>
+            <div class="flex justify-between items-start mb-2">
+              <span class="text-[11px] font-bold text-[#b91c1c] bg-red-50 dark:bg-red-950/40 px-2 py-0.5 rounded border border-red-200 dark:border-red-800/40">Corte Nobre</span>
+              <span class="text-xs text-stone-500">Na Brasa</span>
+            </div>
+            <h3 class="text-lg font-bold text-stone-900 dark:text-white mb-1">Picanha na Brasa</h3>
+            <p class="text-stone-600 dark:text-stone-400 text-xs sm:text-sm mb-4 leading-relaxed">Picanha suculenta, macia e preparada no ponto da brasa.</p>
+            <div class="bg-stone-50 dark:bg-[#100d0b] rounded-xl p-3 text-xs space-y-1 mb-4 border border-stone-200 dark:border-white/[0.04]">
+              <div class="flex justify-between font-medium text-stone-700 dark:text-stone-300"><span>Simples:</span> <strong>R$ 39,00</strong></div>
+              <div class="flex justify-between font-bold text-[#b91c1c] dark:text-red-400"><span>Completo:</span> <strong>R$ 45,00</strong></div>
+            </div>
+          </div>
+          <a href="https://wa.me/5591992910573?text=Ol%C3%A1!%20Gostaria%20de%20pedir%20o%20Espeto%20de%20Picanha." target="_blank" rel="noopener noreferrer"
+             class="w-full flex items-center justify-center gap-2 bg-[#b91c1c] hover:bg-[#991b1b] text-white font-semibold py-2.5 rounded-xl transition text-xs sm:text-sm active:scale-95 shadow-sm">
+            <i data-lucide="shopping-bag" class="w-4 h-4"></i> Pedir Picanha
+          </a>
+        </div>
+
+        <!-- CONTRA FILÉ -->
+        <div class="menu-card carnes bg-white dark:bg-[#181412] border border-stone-200 dark:border-white/[0.08] hover:border-[#b91c1c] dark:hover:border-red-500 rounded-2xl p-5 flex flex-col justify-between shadow-sm hover:shadow-md transition">
+          <div>
+            <div class="flex justify-between items-start mb-2">
+              <span class="text-[11px] font-bold text-amber-800 bg-amber-50 dark:bg-amber-950/40 px-2 py-0.5 rounded border border-amber-200 dark:border-amber-800/40">Mais Pedido</span>
+            </div>
+            <h3 class="text-lg font-bold text-stone-900 dark:text-white mb-1">Contra Filé na Brasa</h3>
+            <p class="text-stone-600 dark:text-stone-400 text-xs sm:text-sm mb-4 leading-relaxed">Contra filé macio preparado na brasa com sabor autêntico.</p>
+            <div class="bg-stone-50 dark:bg-[#100d0b] rounded-xl p-3 text-xs space-y-1 mb-4 border border-stone-200 dark:border-white/[0.04]">
+              <div class="flex justify-between font-medium text-stone-700 dark:text-stone-300"><span>Simples:</span> <strong>R$ 32,00</strong></div>
+              <div class="flex justify-between font-bold text-[#b91c1c] dark:text-red-400"><span>Completo:</span> <strong>R$ 37,00</strong></div>
+            </div>
+          </div>
+          <a href="https://wa.me/5591992910573?text=Ol%C3%A1!%20Gostaria%20de%20pedir%20o%20Contra%20Fil%C3%A9." target="_blank" rel="noopener noreferrer"
+             class="w-full flex items-center justify-center gap-2 bg-[#b91c1c] hover:bg-[#991b1b] text-white font-semibold py-2.5 rounded-xl transition text-xs sm:text-sm active:scale-95 shadow-sm">
+            <i data-lucide="shopping-bag" class="w-4 h-4"></i> Pedir Contra Filé
+          </a>
+        </div>
+
+        <!-- PICANHA STEAK (CORTE ESPECIAL) -->
+        <div class="menu-card carnes bg-[#fffdfa] dark:bg-[#1d1815] border-2 border-red-300 dark:border-red-800/60 rounded-2xl p-5 flex flex-col justify-between shadow-sm hover:shadow-md transition relative">
+          <div class="absolute -top-3 right-4 bg-[#b91c1c] text-white text-[10px] font-bold uppercase px-2.5 py-0.5 rounded-full shadow">
+            Especial da Casa
+          </div>
+          <div>
+            <span class="text-[11px] font-bold text-red-700 dark:text-red-400">Corte Especial</span>
+            <h3 class="text-lg font-bold text-stone-900 dark:text-white mb-1 mt-1">Picanha Steak</h3>
+            <p class="text-stone-600 dark:text-stone-400 text-xs sm:text-sm mb-4 leading-relaxed">Corte nobre e espesso de picanha com suculência inigualável.</p>
+            <div class="bg-red-50 dark:bg-[#100d0b] rounded-xl p-3 text-center mb-4 border border-red-200 dark:border-white/[0.04]">
+              <span class="text-xs text-stone-500">Preço Especial:</span>
+              <p class="text-xl font-bold text-[#b91c1c] dark:text-red-400">R$ 70,00</p>
+            </div>
+          </div>
+          <a href="https://wa.me/5591992910573?text=Ol%C3%A1!%20Gostaria%20de%20pedir%20a%20Picanha%20Steak." target="_blank" rel="noopener noreferrer"
+             class="w-full flex items-center justify-center gap-2 bg-[#b91c1c] hover:bg-[#991b1b] text-white font-semibold py-2.5 rounded-xl transition text-xs sm:text-sm active:scale-95 shadow-sm">
+            <i data-lucide="shopping-bag" class="w-4 h-4"></i> Pedir Picanha Steak
+          </a>
+        </div>
+
+        <!-- CARNE TRADICIONAL -->
+        <div class="menu-card carnes bg-white dark:bg-[#181412] border border-stone-200 dark:border-white/[0.08] hover:border-[#b91c1c] rounded-2xl p-5 flex flex-col justify-between shadow-sm hover:shadow-md transition">
+          <div>
+            <h3 class="text-lg font-bold text-stone-900 dark:text-white mb-1">Carne Tradicional</h3>
+            <p class="text-stone-600 dark:text-stone-400 text-xs sm:text-sm mb-4 leading-relaxed">Espeto clássico de carne com tempero suave da casa.</p>
+            <div class="bg-stone-50 dark:bg-[#100d0b] rounded-xl p-3 text-xs space-y-1 mb-4 border border-stone-200 dark:border-white/[0.04]">
+              <div class="flex justify-between font-medium text-stone-700 dark:text-stone-300"><span>Simples:</span> <strong>R$ 18,00</strong></div>
+              <div class="flex justify-between font-bold text-[#b91c1c] dark:text-red-400"><span>Completo:</span> <strong>R$ 30,00</strong></div>
+            </div>
+          </div>
+          <a href="https://wa.me/5591992910573?text=Ol%C3%A1!%20Gostaria%20de%20pedir%20a%20Carne%20Tradicional." target="_blank" rel="noopener noreferrer"
+             class="w-full flex items-center justify-center gap-2 bg-stone-800 hover:bg-[#b91c1c] text-white font-semibold py-2.5 rounded-xl transition text-xs sm:text-sm active:scale-95">
+            <i data-lucide="shopping-bag" class="w-4 h-4"></i> Pedir Tradicional
+          </a>
+        </div>
+
+        <!-- CARNE DE SOL -->
+        <div class="menu-card carnes bg-white dark:bg-[#181412] border border-stone-200 dark:border-white/[0.08] hover:border-[#b91c1c] rounded-2xl p-5 flex flex-col justify-between shadow-sm hover:shadow-md transition">
+          <div>
+            <span class="text-[11px] font-bold text-stone-600 dark:text-stone-400">Tradição Regional</span>
+            <h3 class="text-lg font-bold text-stone-900 dark:text-white mb-1">Carne de Sol na Brasa</h3>
+            <p class="text-stone-600 dark:text-stone-400 text-xs sm:text-sm mb-4 leading-relaxed">Carne de sol grelhada com sabor marcante e autêntico.</p>
+            <div class="bg-stone-50 dark:bg-[#100d0b] rounded-xl p-3 text-xs space-y-1 mb-4 border border-stone-200 dark:border-white/[0.04]">
+              <div class="flex justify-between font-medium text-stone-700 dark:text-stone-300"><span>Simples:</span> <strong>R$ 34,00</strong></div>
+              <div class="flex justify-between font-bold text-[#b91c1c] dark:text-red-400"><span>Completo:</span> <strong>R$ 39,00</strong></div>
+            </div>
+          </div>
+          <a href="https://wa.me/5591992910573?text=Ol%C3%A1!%20Gostaria%20de%20pedir%20a%20Carne%20de%20Sol." target="_blank" rel="noopener noreferrer"
+             class="w-full flex items-center justify-center gap-2 bg-[#b91c1c] hover:bg-[#991b1b] text-white font-semibold py-2.5 rounded-xl transition text-xs sm:text-sm active:scale-95 shadow-sm">
+            <i data-lucide="shopping-bag" class="w-4 h-4"></i> Pedir Carne de Sol
+          </a>
+        </div>
+
+        <!-- FILÉ COM BACON -->
+        <div class="menu-card carnes bg-white dark:bg-[#181412] border border-stone-200 dark:border-white/[0.08] hover:border-[#b91c1c] rounded-2xl p-5 flex flex-col justify-between shadow-sm hover:shadow-md transition">
+          <div>
+            <h3 class="text-lg font-bold text-stone-900 dark:text-white mb-1">Filé com Bacon</h3>
+            <p class="text-stone-600 dark:text-stone-400 text-xs sm:text-sm mb-4 leading-relaxed">Filé macio envolvido no bacon crocante e assado no ponto.</p>
+            <div class="bg-stone-50 dark:bg-[#100d0b] rounded-xl p-3 text-xs space-y-1 mb-4 border border-stone-200 dark:border-white/[0.04]">
+              <div class="flex justify-between font-medium text-stone-700 dark:text-stone-300"><span>Simples:</span> <strong>R$ 37,00</strong></div>
+              <div class="flex justify-between font-bold text-[#b91c1c] dark:text-red-400"><span>Completo:</span> <strong>R$ 42,00</strong></div>
+            </div>
+          </div>
+          <a href="https://wa.me/5591992910573?text=Ol%C3%A1!%20Gostaria%20de%20pedir%20o%20Fil%C3%A9%20com%20Bacon." target="_blank" rel="noopener noreferrer"
+             class="w-full flex items-center justify-center gap-2 bg-[#b91c1c] hover:bg-[#991b1b] text-white font-semibold py-2.5 rounded-xl transition text-xs sm:text-sm active:scale-95 shadow-sm">
+            <i data-lucide="shopping-bag" class="w-4 h-4"></i> Pedir Filé c/ Bacon
+          </a>
+        </div>
+
+        <!-- CORAÇÃO DE FRANGO -->
+        <div class="menu-card frango bg-white dark:bg-[#181412] border border-stone-200 dark:border-white/[0.08] hover:border-[#b91c1c] rounded-2xl p-5 flex flex-col justify-between shadow-sm hover:shadow-md transition">
+          <div>
+            <h3 class="text-lg font-bold text-stone-900 dark:text-white mb-1">Coração de Frango</h3>
+            <p class="text-stone-600 dark:text-stone-400 text-xs sm:text-sm mb-4 leading-relaxed">Coração temperado e preparado no ponto perfeito da brasa.</p>
+            <div class="bg-stone-50 dark:bg-[#100d0b] rounded-xl p-3 text-xs space-y-1 mb-4 border border-stone-200 dark:border-white/[0.04]">
+              <div class="flex justify-between font-medium text-stone-700 dark:text-stone-300"><span>Simples:</span> <strong>R$ 15,00</strong></div>
+              <div class="flex justify-between font-bold text-[#b91c1c] dark:text-red-400"><span>Completo:</span> <strong>R$ 20,00</strong></div>
+            </div>
+          </div>
+          <a href="https://wa.me/5591992910573?text=Ol%C3%A1!%20Gostaria%20de%20pedir%20o%20Cora%C3%A7%C3%A3o%20de%20Frango." target="_blank" rel="noopener noreferrer"
+             class="w-full flex items-center justify-center gap-2 bg-stone-800 hover:bg-[#b91c1c] text-white font-semibold py-2.5 rounded-xl transition text-xs sm:text-sm active:scale-95">
+            <i data-lucide="shopping-bag" class="w-4 h-4"></i> Pedir Coração
+          </a>
+        </div>
+
+        <!-- FILÉ C/ FRITAS DA CASA -->
+        <div class="menu-card entradas bg-white dark:bg-[#181412] border border-stone-200 dark:border-white/[0.08] hover:border-[#b91c1c] rounded-2xl p-5 flex flex-col justify-between shadow-sm hover:shadow-md transition">
+          <div>
+            <span class="text-[11px] font-bold text-amber-800 bg-amber-50 dark:bg-amber-950/40 px-2 py-0.5 rounded border border-amber-200 dark:border-amber-800/40">Petisco Campeão</span>
+            <h3 class="text-lg font-bold text-stone-900 dark:text-white mb-1 mt-1">Filé c/ Fritas da Casa</h3>
+            <p class="text-stone-600 dark:text-stone-400 text-xs sm:text-sm mb-4 leading-relaxed">Filé suculento servido com batatas fritas crocantes.</p>
+            <div class="bg-stone-50 dark:bg-[#100d0b] rounded-xl p-3 flex justify-between items-center mb-4 border border-stone-200 dark:border-white/[0.04]">
+              <span class="text-xs text-stone-500">Porção generosa:</span>
+              <strong class="text-[#b91c1c] dark:text-red-400 text-base">R$ 35,00</strong>
+            </div>
+          </div>
+          <a href="https://wa.me/5591992910573?text=Ol%C3%A1!%20Gostaria%20de%20pedir%20o%20Fil%C3%A9%20c/%20Fritas." target="_blank" rel="noopener noreferrer"
+             class="w-full flex items-center justify-center gap-2 bg-[#b91c1c] hover:bg-[#991b1b] text-white font-semibold py-2.5 rounded-xl transition text-xs sm:text-sm active:scale-95 shadow-sm">
+            <i data-lucide="shopping-bag" class="w-4 h-4"></i> Pedir Filé c/ Fritas
+          </a>
+        </div>
+
+        <!-- PIPOCA DE QUEIJO COALHO -->
+        <div class="menu-card entradas bg-white dark:bg-[#181412] border border-stone-200 dark:border-white/[0.08] hover:border-[#b91c1c] rounded-2xl p-5 flex flex-col justify-between shadow-sm hover:shadow-md transition">
+          <div>
+            <span class="text-[11px] font-bold text-[#b91c1c] bg-red-50 dark:bg-red-950/40 px-2 py-0.5 rounded border border-red-200 dark:border-red-800/40">Favorito 🧀</span>
+            <h3 class="text-lg font-bold text-stone-900 dark:text-white mb-1 mt-1">Pipoca de Queijo Coalho</h3>
+            <p class="text-stone-600 dark:text-stone-400 text-xs sm:text-sm mb-4 leading-relaxed">Pedaços crocantes de queijo coalho dourados na hora.</p>
+            <div class="bg-stone-50 dark:bg-[#100d0b] rounded-xl p-3 flex justify-between items-center mb-4 border border-stone-200 dark:border-white/[0.04]">
+              <span class="text-xs text-stone-500">Porção:</span>
+              <strong class="text-[#b91c1c] dark:text-red-400 text-base">R$ 27,00</strong>
+            </div>
+          </div>
+          <a href="https://wa.me/5591992910573?text=Ol%C3%A1!%20Gostaria%20de%20pedir%20a%20Pipoca%20de%20Queijo%20Coalho." target="_blank" rel="noopener noreferrer"
+             class="w-full flex items-center justify-center gap-2 bg-[#b91c1c] hover:bg-[#991b1b] text-white font-semibold py-2.5 rounded-xl transition text-xs sm:text-sm active:scale-95 shadow-sm">
+            <i data-lucide="shopping-bag" class="w-4 h-4"></i> Pedir Pipoca de Coalho
+          </a>
+        </div>
+
+        <!-- AÇAÍ C/ CHARQUE -->
+        <div class="menu-card acai bg-white dark:bg-[#181412] border border-purple-200 dark:border-purple-900/40 rounded-2xl p-5 flex flex-col justify-between shadow-sm hover:shadow-md transition">
+          <div>
+            <span class="text-[11px] font-bold text-amber-800 bg-amber-50 dark:bg-amber-950/40 px-2 py-0.5 rounded border border-amber-200 dark:border-amber-800/40">Tradição Paraense</span>
+            <h3 class="text-lg font-bold text-stone-900 dark:text-white mb-1 mt-1">Açaí c/ Tiras de Charque</h3>
+            <p class="text-stone-600 dark:text-stone-400 text-xs sm:text-sm mb-4 leading-relaxed">Açaí cremoso servido com porção de charque frito crocante.</p>
+            <div class="bg-purple-50/50 dark:bg-[#100d0b] rounded-xl p-3 flex justify-between items-center mb-4 border border-purple-100 dark:border-white/[0.04]">
+              <span class="text-xs text-purple-900 dark:text-purple-300">Porção Completa:</span>
+              <strong class="text-purple-950 dark:text-purple-400 text-base">R$ 40,00</strong>
+            </div>
+          </div>
+          <a href="https://wa.me/5591992910573?text=Ol%C3%A1!%20Gostaria%20de%20pedir%20o%20A%C3%A7a%C3%AD%20com%20Charque." target="_blank" rel="noopener noreferrer"
+             class="w-full flex items-center justify-center gap-2 bg-purple-900 hover:bg-purple-950 text-white font-semibold py-2.5 rounded-xl transition text-xs sm:text-sm active:scale-95 shadow-sm">
+            <i data-lucide="shopping-bag" class="w-4 h-4"></i> Pedir Açaí c/ Charque
+          </a>
+        </div>
+
+        <!-- CHOPP CABÔCA -->
+        <div class="menu-card bebidas bg-white dark:bg-[#181412] border border-amber-300 dark:border-amber-900/40 rounded-2xl p-5 flex flex-col justify-between shadow-sm hover:shadow-md transition">
+          <div>
+            <span class="text-[11px] font-bold text-amber-800 bg-amber-50 dark:bg-amber-950/40 px-2 py-0.5 rounded border border-amber-200 dark:border-amber-800/40">Chopp Regional 🍺</span>
+            <h3 class="text-lg font-bold text-stone-900 dark:text-white mb-1 mt-1">Chopp Cabôca (300ml)</h3>
+            <p class="text-stone-600 dark:text-stone-400 text-xs sm:text-sm mb-4 leading-relaxed">Chopp artesanal do Pará, gelado e cremoso na medida certa.</p>
+            <div class="bg-amber-50 dark:bg-[#100d0b] rounded-xl p-3 flex justify-between items-center mb-4 border border-amber-200 dark:border-white/[0.04]">
+              <span class="text-xs text-amber-900 dark:text-amber-300">300ml trincando:</span>
+              <strong class="text-amber-800 dark:text-amber-400 text-base">R$ 10,00</strong>
+            </div>
+          </div>
+          <a href="https://wa.me/5591992910573?text=Ol%C3%A1!%20Gostaria%20de%20pedir%20Chopp%20Cab%C3%B4ca." target="_blank" rel="noopener noreferrer"
+             class="w-full flex items-center justify-center gap-2 bg-amber-600 hover:bg-amber-700 text-white font-semibold py-2.5 rounded-xl transition text-xs sm:text-sm active:scale-95 shadow-sm">
+            <i data-lucide="beer" class="w-4 h-4"></i> Pedir Chopp Cabôca
+          </a>
+        </div>
+
+        <!-- PUDIM -->
+        <div class="menu-card sobremesas bg-white dark:bg-[#181412] border border-stone-200 dark:border-white/[0.08] hover:border-[#b91c1c] rounded-2xl p-5 flex flex-col justify-between shadow-sm hover:shadow-md transition">
+          <div>
+            <span class="text-[11px] font-bold text-amber-800 bg-amber-50 dark:bg-amber-950/40 px-2 py-0.5 rounded border border-amber-200 dark:border-amber-800/40">Sobremesa da Casa</span>
+            <h3 class="text-lg font-bold text-stone-900 dark:text-white mb-1 mt-1">Pudim de Leite Condensado</h3>
+            <p class="text-stone-600 dark:text-stone-400 text-xs sm:text-sm mb-4 leading-relaxed">Pudim cremoso com calda de caramelo caseira.</p>
+            <div class="bg-stone-50 dark:bg-[#100d0b] rounded-xl p-3 flex justify-between items-center mb-4 border border-stone-200 dark:border-white/[0.04]">
+              <span class="text-xs text-stone-500">Fatia generosa:</span>
+              <strong class="text-[#b91c1c] dark:text-red-400 text-base">R$ 10,00</strong>
+            </div>
+          </div>
+          <a href="https://wa.me/5591992910573?text=Ol%C3%A1!%20Gostaria%20de%20pedir%20o%20Pudim." target="_blank" rel="noopener noreferrer"
+             class="w-full flex items-center justify-center gap-2 bg-stone-800 hover:bg-[#b91c1c] text-white font-semibold py-2.5 rounded-xl transition text-xs sm:text-sm active:scale-95">
+            <i data-lucide="shopping-bag" class="w-4 h-4"></i> Pedir Pudim
+          </a>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= CENTRAL COMPLETA: MONTE SEU PRATO & RESERVA DE MESA ================= -->
+  <section id="reserva-section" class="py-16 sm:py-24 bg-[#f4ede2] dark:bg-[#110e0c] border-t border-stone-200 dark:border-white/[0.08] transition-colors duration-300">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+      
+      <div class="bg-white dark:bg-[#181412] border border-stone-300/90 dark:border-white/[0.1] rounded-3xl p-6 sm:p-12 shadow-md relative reveal">
+        
+        <!-- Cabeçalho do Formulário -->
+        <div class="text-center mb-10">
+          <div class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#b91c1c] dark:text-red-400 bg-red-50 dark:bg-red-950/40 px-3.5 py-1 rounded-full border border-red-200 dark:border-red-800/40 mb-2">
+            <i data-lucide="calendar" class="w-3.5 h-3.5"></i> ATENDIMENTO VIP & PEDIDOS
+          </div>
+          <h2 class="text-2xl sm:text-4xl font-serif-title font-bold text-stone-900 dark:text-white">
+            Monte seu Prato ou Reserve sua Mesa
+          </h2>
+          <p class="text-stone-600 dark:text-stone-400 text-xs sm:text-sm mt-2 max-w-xl mx-auto leading-relaxed">
+            Selecione suas opções abaixo com <strong>preços e acompanhamentos detalhados</strong>. Nós geramos a mensagem 100% pronta para enviar ao WhatsApp oficial do No Spetto!
+          </p>
+        </div>
+
+        <form id="concierge-form" class="space-y-7" onsubmit="sendConciergeReservation(event)">
+          
+          <!-- TÓPICO 1: Tipo de Atendimento -->
+          <div class="bg-stone-50 dark:bg-[#100d0b] p-4 sm:p-5 rounded-2xl border border-stone-200 dark:border-white/[0.06]">
+            <label class="block text-xs font-bold uppercase tracking-wider text-[#b91c1c] dark:text-red-400 mb-3">
+              1. O que você deseja fazer?
+            </label>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+              <label class="cursor-pointer border-2 border-[#b91c1c] bg-red-50/60 dark:bg-red-950/30 p-3.5 rounded-xl flex items-center gap-2.5 transition">
+                <input type="radio" name="tipo_atendimento" value="Reservar Mesa no Restaurante" checked class="accent-[#b91c1c]">
+                <div>
+                  <p class="text-xs font-bold text-stone-900 dark:text-white">🍽️ Reservar Mesa</p>
+                  <p class="text-[10px] text-stone-500">Garantir mesa com antecedência</p>
+                </div>
+              </label>
+
+              <label class="cursor-pointer border border-stone-300 dark:border-white/[0.08] bg-white dark:bg-[#14100e] p-3.5 rounded-xl flex items-center gap-2.5 transition hover:border-[#b91c1c]">
+                <input type="radio" name="tipo_atendimento" value="Fazer Pedido / Delivery" class="accent-[#b91c1c]">
+                <div>
+                  <p class="text-xs font-bold text-stone-700 dark:text-stone-300">🛵 Pedido / Delivery</p>
+                  <p class="text-[10px] text-stone-400">Entrega rápida ou retirada</p>
+                </div>
+              </label>
+
+              <label class="cursor-pointer border border-stone-300 dark:border-white/[0.08] bg-white dark:bg-[#14100e] p-3.5 rounded-xl flex items-center gap-2.5 transition hover:border-[#b91c1c]">
+                <input type="radio" name="tipo_atendimento" value="Reservar Mesa & Já Adiantar os Pratos" class="accent-[#b91c1c]">
+                <div>
+                  <p class="text-xs font-bold text-stone-700 dark:text-stone-300">🥩 Mesa + Pratos Prontos</p>
+                  <p class="text-[10px] text-stone-400">Chegar e já encontrar na brasa</p>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <!-- TÓPICO 2: Dados do Cliente & Horários -->
+          <div class="bg-stone-50 dark:bg-[#100d0b] p-4 sm:p-5 rounded-2xl border border-stone-200 dark:border-white/[0.06] space-y-4">
+            <label class="block text-xs font-bold uppercase tracking-wider text-[#b91c1c] dark:text-red-400">
+              2. Seus Dados & Horário Desejado
+            </label>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs font-semibold text-stone-700 dark:text-stone-300 mb-1">Seu Nome Completo:</label>
+                <input type="text" id="res-nome" required placeholder="Ex: Carlos Silva" 
+                       class="w-full bg-white dark:bg-[#181412] border border-stone-300 dark:border-white/[0.1] text-stone-900 dark:text-white rounded-xl px-3.5 py-2.5 text-xs sm:text-sm focus:outline-none focus:border-[#b91c1c]">
+              </div>
+
+              <div>
+                <label class="block text-xs font-semibold text-stone-700 dark:text-stone-300 mb-1">Quantas Pessoas virão?</label>
+                <select id="res-pessoas" class="w-full bg-white dark:bg-[#181412] border border-stone-300 dark:border-white/[0.1] text-stone-900 dark:text-white rounded-xl px-3.5 py-2.5 text-xs sm:text-sm focus:outline-none focus:border-[#b91c1c]">
+                  <option value="Casal (2 pessoas)">Casal (2 pessoas)</option>
+                  <option value="Família (3 a 5 pessoas)">Família (3 a 5 pessoas)</option>
+                  <option value="Grupo / Amigos (6 a 10 pessoas)">Grupo / Amigos (6 a 10 pessoas)</option>
+                  <option value="Comemoração / Grande Grupo (10+ pessoas)">Comemoração / Grande Grupo (10+ pessoas)</option>
+                  <option value="Individual (1 pessoa)">Individual (1 pessoa)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs font-semibold text-stone-700 dark:text-stone-300 mb-1">Data & Horário Desejado:</label>
+                <input type="text" id="res-horario" required placeholder="Ex: Domingo às 12:30 ou Hoje às 20h" 
+                       class="w-full bg-white dark:bg-[#181412] border border-stone-300 dark:border-white/[0.1] text-stone-900 dark:text-white rounded-xl px-3.5 py-2.5 text-xs sm:text-sm focus:outline-none focus:border-[#b91c1c]">
+                <span class="text-[10px] text-stone-500 mt-1 block">Atendimento: Ter-Sex (11h-15h e 18h-22h) | Sáb-Dom (11h-15h)</span>
+              </div>
+
+              <div>
+                <label class="block text-xs font-semibold text-stone-700 dark:text-stone-300 mb-1">Ambiente de Preferência:</label>
+                <select id="res-ambiente" class="w-full bg-white dark:bg-[#181412] border border-stone-300 dark:border-white/[0.1] text-stone-900 dark:text-white rounded-xl px-3.5 py-2.5 text-xs sm:text-sm focus:outline-none focus:border-[#b91c1c]">
+                  <option value="Salão Interno Climatizado (com Ar-Condicionado)">❄️ Salão Interno Climatizado</option>
+                  <option value="Varanda Externa ao Ar Livre">🌿 Varanda Externa ao Ar Livre</option>
+                  <option value="Mesa Próxima ao Espaço Kids (Família com Crianças)">🧸 Mesa Próxima ao Espaço Kids</option>
+                  <option value="Sem preferência / Onde tiver vaga">Qualquer ambiente disponível</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- TÓPICO 3: Escolha dos Cortes na Brasa & Preços Detalhados -->
+          <div class="bg-stone-50 dark:bg-[#100d0b] p-4 sm:p-5 rounded-2xl border border-stone-200 dark:border-white/[0.06] space-y-4">
+            <label class="block text-xs font-bold uppercase tracking-wider text-[#b91c1c] dark:text-red-400">
+              3. Escolha o seu Espeto / Carne Principal (Opcional ou p/ Pedido)
+            </label>
+
+            <div>
+              <select id="carne-select" class="w-full bg-white dark:bg-[#181412] border border-stone-300 dark:border-white/[0.1] text-stone-900 dark:text-white rounded-xl p-3 text-xs sm:text-sm focus:outline-none focus:border-[#b91c1c]">
+                <option value="Nenhum (vou escolher no restaurante)">Nenhum (vou escolher no restaurante)</option>
+                <option value="Picanha na Brasa">Picanha na Brasa (Simples R$39 | Completo R$45)</option>
+                <option value="Contra Filé na Brasa">Contra Filé na Brasa (Simples R$32 | Completo R$37)</option>
+                <option value="Picanha Steak Especial">Picanha Steak Especial (R$ 70,00)</option>
+                <option value="Carne de Sol Artesanal">Carne de Sol Artesanal (Simples R$34 | Completo R$39)</option>
+                <option value="Filé com Bacon">Filé com Bacon (Simples R$37 | Completo R$42)</option>
+                <option value="Filé Mignon ao Alho">Filé Mignon ao Alho (Simples R$34 | Completo R$39)</option>
+                <option value="Carne Tradicional">Carne Tradicional (Simples R$18 | Completo R$30)</option>
+                <option value="Panceta Suína Crocante">Panceta Suína Crocante (Simples R$18 | Completo R$30)</option>
+                <option value="Coração de Frango">Coração de Frango (Simples R$15 | Completo R$20)</option>
+                <option value="Filé de Frango na Brasa">Filé de Frango na Brasa (Simples R$18 | Completo R$30)</option>
+                <option value="Tulipa Crocante">Tulipa Crocante (Simples R$28 | Completo R$33)</option>
+                <option value="Frango com Bacon">Frango com Bacon (Simples R$32 | Completo R$37)</option>
+              </select>
+            </div>
+
+            <!-- Tipo: Completo vs Simples -->
+            <div>
+              <label class="block text-xs font-semibold text-stone-700 dark:text-stone-300 mb-2">Deseja Completo ou Simples?</label>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <label class="cursor-pointer border-2 border-[#b91c1c] bg-red-50/60 dark:bg-red-950/30 p-3 rounded-xl flex items-center justify-between transition">
+                  <div class="flex items-center gap-2.5">
+                    <input type="radio" name="tipo_prato" value="Completo" checked class="accent-[#b91c1c]" onchange="toggleGuarnicoes(true)">
+                    <div>
+                      <p class="text-xs font-bold text-stone-900 dark:text-white">Espeto Completo</p>
+                      <p class="text-[10px] text-stone-500">Com arroz, farofa, vinagrete e batata/macaxeira</p>
+                    </div>
+                  </div>
+                  <span class="text-[#b91c1c] dark:text-red-400 font-bold text-xs">Mais Farto</span>
+                </label>
+
+                <label class="cursor-pointer border border-stone-300 dark:border-white/[0.08] bg-white dark:bg-[#14100e] p-3 rounded-xl flex items-center justify-between transition">
+                  <div class="flex items-center gap-2.5">
+                    <input type="radio" name="tipo_prato" value="Simples" class="accent-[#b91c1c]" onchange="toggleGuarnicoes(false)">
+                    <div>
+                      <p class="text-xs font-bold text-stone-700 dark:text-stone-300">Espeto Simples</p>
+                      <p class="text-[10px] text-stone-500">Apenas a carne grelhada</p>
+                    </div>
+                  </div>
+                  <span class="text-stone-400 font-medium text-xs">Individual</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Acompanhamentos do Completo -->
+            <div id="box-acompanhamentos-simulador" class="space-y-3 bg-white dark:bg-[#181412] p-3.5 rounded-xl border border-stone-200 dark:border-white/[0.06]">
+              <div>
+                <label class="block text-[11px] font-bold uppercase tracking-wider text-stone-700 dark:text-stone-300 mb-1.5">Escolha o seu Arroz:</label>
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs">
+                  <label class="border border-stone-300 dark:border-white/[0.1] bg-stone-50 dark:bg-[#100d0b] p-2 rounded-lg text-center cursor-pointer">
+                    <input type="radio" name="arroz" value="Baião da Casa" checked class="accent-[#b91c1c]">
+                    <span class="block mt-0.5 text-stone-800 dark:text-stone-200 font-medium text-[11px]">Baião da Casa</span>
+                  </label>
+                  <label class="border border-stone-300 dark:border-white/[0.1] bg-stone-50 dark:bg-[#100d0b] p-2 rounded-lg text-center cursor-pointer">
+                    <input type="radio" name="arroz" value="Arroz c/ Brócolis" class="accent-[#b91c1c]">
+                    <span class="block mt-0.5 text-stone-800 dark:text-stone-200 font-medium text-[11px]">Arroz c/ Brócolis</span>
+                  </label>
+                  <label class="border border-stone-300 dark:border-white/[0.1] bg-stone-50 dark:bg-[#100d0b] p-2 rounded-lg text-center cursor-pointer">
+                    <input type="radio" name="arroz" value="Arroz Biro Biro" class="accent-[#b91c1c]">
+                    <span class="block mt-0.5 text-stone-800 dark:text-stone-200 font-medium text-[11px]">Arroz Biro Biro</span>
+                  </label>
+                  <label class="border border-stone-300 dark:border-white/[0.1] bg-stone-50 dark:bg-[#100d0b] p-2 rounded-lg text-center cursor-pointer">
+                    <input type="radio" name="arroz" value="Arroz Branco" class="accent-[#b91c1c]">
+                    <span class="block mt-0.5 text-stone-800 dark:text-stone-200 font-medium text-[11px]">Arroz Branco</span>
+                  </label>
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-[11px] font-bold uppercase tracking-wider text-stone-700 dark:text-stone-300 mb-1.5">Escolha a Guarnição:</label>
+                <div class="grid grid-cols-2 gap-2 text-xs">
+                  <label class="border border-stone-300 dark:border-white/[0.1] bg-stone-50 dark:bg-[#100d0b] p-2.5 rounded-lg text-center cursor-pointer">
+                    <input type="radio" name="guarnicao" value="Batata Frita Crocante" checked class="accent-[#b91c1c]">
+                    <span class="block mt-0.5 text-stone-800 dark:text-stone-200 font-semibold text-xs">🍟 Batata Frita</span>
+                  </label>
+                  <label class="border border-stone-300 dark:border-white/[0.1] bg-stone-50 dark:bg-[#100d0b] p-2.5 rounded-lg text-center cursor-pointer">
+                    <input type="radio" name="guarnicao" value="Macaxeira na Manteiga" class="accent-[#b91c1c]">
+                    <span class="block mt-0.5 text-stone-800 dark:text-stone-200 font-semibold text-xs">🧈 Macaxeira</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- TÓPICO 4: Adicionar Petiscos, Bebidas ou Açaí (Opcional com Preços) -->
+          <div class="bg-stone-50 dark:bg-[#100d0b] p-4 sm:p-5 rounded-2xl border border-stone-200 dark:border-white/[0.06] space-y-3">
+            <label class="block text-xs font-bold uppercase tracking-wider text-[#b91c1c] dark:text-red-400">
+              4. Deseja adicionar Petiscos, Bebidas ou Açaí? (Opcional)
+            </label>
+            <input type="text" id="res-extras" placeholder="Ex: 1x Filé c/ Fritas (R$35), 2x Chopp Cabôca (R$10), 1x Açaí c/ Charque (R$40)..." 
+                   class="w-full bg-white dark:bg-[#181412] border border-stone-300 dark:border-white/[0.1] text-stone-900 dark:text-white rounded-xl px-4 py-3 text-xs sm:text-sm focus:outline-none focus:border-[#b91c1c] transition">
+          </div>
+
+          <!-- TÓPICO 5: Observações / Ocasião Especial -->
+          <div class="bg-stone-50 dark:bg-[#100d0b] p-4 sm:p-5 rounded-2xl border border-stone-200 dark:border-white/[0.06] space-y-2">
+            <label class="block text-xs font-bold uppercase tracking-wider text-stone-700 dark:text-stone-300">
+              5. Ocasião Especial ou Ponto da Carne:
+            </label>
+            <input type="text" id="res-obs" placeholder="Ex: Comemoração de aniversário, carne ao ponto, cadeira infantil..." 
+                   class="w-full bg-white dark:bg-[#181412] border border-stone-300 dark:border-white/[0.1] text-stone-900 dark:text-white rounded-xl px-4 py-3 text-xs sm:text-sm focus:outline-none focus:border-[#b91c1c] transition">
+          </div>
+
+          <!-- Botão de Envio WhatsApp -->
+          <button type="submit" 
+                  class="w-full flex items-center justify-center gap-3 bg-[#b91c1c] hover:bg-[#991b1b] text-white font-bold text-xs sm:text-sm uppercase tracking-wider py-4 rounded-xl shadow-lg shadow-red-950/20 transition transform hover:scale-[1.01] active:scale-95">
+            <i data-lucide="message-circle" class="w-5 h-5"></i>
+            <span>Enviar Pedido / Reserva Pronto para o WhatsApp</span>
+          </button>
+        </form>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- O ESPAÇO: ESTRUTURA DE ALTO PADRÃO -->
+  <section id="espaco" class="py-16 sm:py-24 bg-white dark:bg-[#0c0a09] border-t border-stone-200 dark:border-white/[0.08] transition-colors duration-300">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      
+      <div class="text-center max-w-2xl mx-auto mb-14 reveal">
+        <span class="text-xs uppercase font-bold tracking-wider text-[#b91c1c] dark:text-red-400 bg-red-50 dark:bg-red-950/40 px-3.5 py-1 rounded-full border border-red-200 dark:border-red-800/40 mb-2 inline-block">
+          ESTRUTURA & CONFORTO
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-serif-title font-bold text-stone-900 dark:text-white mt-1">
+          Dois Ambientes & Espaço Kids
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        
+        <!-- CARD 1: Climatizado -->
+        <div class="bg-stone-50 dark:bg-[#14110f] border border-stone-200 dark:border-white/[0.08] rounded-3xl p-6 flex flex-col justify-between reveal shadow-sm">
+          <div>
+            <div class="h-44 rounded-2xl overflow-hidden mb-5">
+              <img src="images/fachada.png" alt="Salão Climatizado" class="w-full h-full object-cover">
+            </div>
+            <span class="text-[10px] font-bold text-cyan-700 dark:text-cyan-400 uppercase tracking-wider">Conforto Total</span>
+            <h3 class="text-xl font-bold text-stone-900 dark:text-white mt-1 mb-2">Salão Climatizado</h3>
+            <p class="text-stone-600 dark:text-stone-400 text-xs sm:text-sm leading-relaxed">
+              Área interna fresca com ar-condicionado, moderna e aconchegante para fugir do calor com tranquilidade.
+            </p>
+          </div>
+        </div>
+
+        <!-- CARD 2: Varanda Externa -->
+        <div class="bg-stone-50 dark:bg-[#14110f] border border-stone-200 dark:border-white/[0.08] rounded-3xl p-6 flex flex-col justify-between reveal shadow-sm">
+          <div>
+            <div class="h-44 rounded-2xl overflow-hidden mb-5">
+              <img src="images/espetos-brasa.jpg" alt="Varanda ao Ar Livre" class="w-full h-full object-cover">
+            </div>
+            <span class="text-[10px] font-bold text-amber-700 dark:text-amber-400 uppercase tracking-wider">Descontração</span>
+            <h3 class="text-xl font-bold text-stone-900 dark:text-white mt-1 mb-2">Varanda ao Ar Livre</h3>
+            <p class="text-stone-600 dark:text-stone-400 text-xs sm:text-sm leading-relaxed">
+              Área arejada e espaçosa, ideal para curtir a noite com amigos, boa música e chopp trincando.
+            </p>
+          </div>
+        </div>
+
+        <!-- CARD 3: Espaço Kids -->
+        <div class="bg-stone-50 dark:bg-[#14110f] border border-stone-200 dark:border-white/[0.08] rounded-3xl p-6 flex flex-col justify-between reveal shadow-sm">
+          <div>
+            <div class="h-44 bg-amber-100/60 dark:bg-[#1a1512] border border-amber-200 dark:border-white/[0.05] rounded-2xl mb-5 flex items-center justify-center">
+              <i data-lucide="baby" class="w-14 h-14 text-amber-600 dark:text-amber-400"></i>
+            </div>
+            <span class="text-[10px] font-bold text-emerald-700 dark:text-emerald-400 uppercase tracking-wider">Para a Família</span>
+            <h3 class="text-xl font-bold text-stone-900 dark:text-white mt-1 mb-2">Espaço Kids Seguro</h3>
+            <p class="text-stone-600 dark:text-stone-400 text-xs sm:text-sm leading-relaxed">
+              Espaço protegido para as crianças brincarem enquanto os pais aproveitam a refeição em paz.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- LOCALIZAÇÃO & HORÁRIOS -->
+  <section id="localizacao" class="py-16 sm:py-24 bg-[#faf7f2] dark:bg-[#110e0c] border-t border-stone-200 dark:border-white/[0.08] transition-colors duration-300">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+        
+        <div class="reveal">
+          <span class="text-xs uppercase font-bold tracking-wider text-[#b91c1c] dark:text-red-400 bg-red-50 dark:bg-red-950/40 px-3 py-1 rounded-full border border-red-200 dark:border-red-800/40 mb-3 inline-block">
+            Localização & Rota
+          </span>
+          <h2 class="text-3xl sm:text-4xl font-serif-title font-bold text-stone-900 dark:text-white mb-6">Como Chegar</h2>
+
+          <div class="space-y-4 mb-8 text-xs sm:text-sm">
+            <div class="flex items-start gap-4 bg-white dark:bg-[#181412] p-4 rounded-2xl border border-stone-200 dark:border-white/[0.08] shadow-sm">
+              <div class="p-2.5 rounded-xl bg-red-50 dark:bg-red-950/40 text-[#b91c1c] dark:text-red-400 shrink-0">
+                <i data-lucide="map-pin" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <p class="font-bold text-stone-900 dark:text-white">Endereço:</p>
+                <p class="text-stone-700 dark:text-stone-300">Travessa Mil Novecentos e Sessenta e Três (Tv. 1963), nº 2703</p>
+                <p class="text-stone-500 text-xs mt-0.5">Bairro Estrela (ao lado do Império das Carnes) • Castanhal - PA</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-4 bg-white dark:bg-[#181412] p-4 rounded-2xl border border-stone-200 dark:border-white/[0.08] shadow-sm">
+              <div class="p-2.5 rounded-xl bg-amber-50 dark:bg-amber-950/40 text-amber-700 dark:text-amber-400 shrink-0">
+                <i data-lucide="clock" class="w-5 h-5"></i>
+              </div>
+              <div class="w-full">
+                <p class="font-bold text-stone-900 dark:text-white mb-1">Horários de Atendimento:</p>
+                <div class="text-stone-600 dark:text-stone-300 text-xs space-y-1.5 font-normal">
+                  <div class="flex justify-between py-1 border-b border-stone-100 dark:border-white/[0.05]">
+                    <span>Terça a Sexta-feira:</span>
+                    <span class="font-semibold text-stone-900 dark:text-white">11h às 15h e 18h às 22h</span>
+                  </div>
+                  <div class="flex justify-between py-1 border-b border-stone-100 dark:border-white/[0.05]">
+                    <span class="text-[#b91c1c] dark:text-red-400 font-bold">Sábado e Domingo:</span>
+                    <span class="font-bold text-[#b91c1c] dark:text-red-400">11:00 às 15:00 (Almoço)</span>
+                  </div>
+                  <div class="flex justify-between py-1">
+                    <span class="text-red-600 dark:text-red-400">Segunda-feira:</span>
+                    <span class="text-stone-400">Fechado</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex flex-col sm:flex-row gap-3">
+            <a href="https://www.google.com/maps/dir//Tv.+Mil+Novecentos+e+Sessenta+e+Tr%C3%AAs,+2703+-+Estrela,+Castanhal+-+PA,+68742-238" 
+               target="_blank" rel="noopener noreferrer"
+               class="flex-1 flex items-center justify-center gap-2 bg-stone-900 dark:bg-white/[0.08] hover:bg-stone-800 text-white font-bold py-3.5 px-5 rounded-xl transition text-xs uppercase tracking-wider shadow">
+              <i data-lucide="navigation" class="w-4 h-4"></i> Abrir Google Maps (GPS)
+            </a>
+            <a href="https://wa.me/5591992910573" 
+               target="_blank" rel="noopener noreferrer"
+               class="flex-1 flex items-center justify-center gap-2 bg-[#b91c1c] hover:bg-[#991b1b] text-white font-bold py-3.5 px-5 rounded-xl transition text-xs uppercase tracking-wider shadow">
+              <i data-lucide="message-circle" class="w-4 h-4"></i> Falar no WhatsApp
+            </a>
+          </div>
+
+        </div>
+
+        <!-- Mapa -->
+        <div class="relative bg-white dark:bg-[#181412] border border-stone-200 dark:border-white/[0.08] rounded-3xl p-3 overflow-hidden h-[340px] sm:h-[400px] shadow-sm reveal">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.6476100236166!2d-47.930491824160485!3d-1.3879948985984436!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x92a5afedca63db17%3A0x87b921569d28569d!2sTv.%20Mil%20Novecentos%20e%20Sessenta%20e%20Tr%C3%AAs%2C%202703%20-%20Estrela%2C%20Castanhal%20-%20PA%2C%2068742-238!5e0!3m2!1spt-BR!2sbr!4v1700000000000!5m2!1spt-BR!2sbr" 
+            class="w-full h-full border-0 rounded-2xl" 
+            allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- RODAPÉ COM TROCA DE LOGO CLARA/ESCURA -->
+  <footer class="bg-[#1c1917] text-stone-400 text-xs py-12 border-t border-stone-800">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6 pb-8 border-b border-stone-800 text-center md:text-left">
+        <div class="flex flex-col md:flex-row items-center gap-4">
+          <img id="footer-logo" src="images/logo.png" alt="No Spetto" class="h-10 w-auto object-contain">
+          <span class="hidden md:inline text-stone-700">|</span>
+          <p class="text-stone-400 text-xs font-light">A autêntica espetaria de Castanhal. Carnes nobres na brasa e ambiente familiar.</p>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <a href="https://www.instagram.com/nospetto.castanhal/" target="_blank" rel="noopener noreferrer" 
+             class="p-2.5 rounded-xl bg-stone-800 hover:bg-[#b91c1c] text-white transition" aria-label="Instagram">
+            <i data-lucide="instagram" class="w-4 h-4"></i>
+          </a>
+          <a href="https://wa.me/5591992910573" target="_blank" rel="noopener noreferrer" 
+             class="p-2.5 rounded-xl bg-stone-800 hover:bg-emerald-600 text-white transition" aria-label="WhatsApp">
+            <i data-lucide="message-circle" class="w-4 h-4"></i>
+          </a>
+          <a href="tel:91992910573" class="p-2.5 rounded-xl bg-stone-800 hover:bg-stone-700 text-white transition" aria-label="Telefone">
+            <i data-lucide="phone" class="w-4 h-4"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px] text-stone-500 text-center sm:text-left">
+        <p>© 2026 No Spetto Espetaria • Castanhal / PA. Todos os direitos reservados.</p>
+        <p class="text-[#b91c1c] font-semibold">O Verdadeiro Sabor da Brasa</p>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- BOTÃO FLUTUANTE DO WHATSAPP -->
+  <aside aria-label="Contato rápido" class="fixed bottom-5 right-5 sm:bottom-6 sm:right-6 z-50">
+    <a href="https://wa.me/5591992910573?text=Ol%C3%A1!%20Vim%20pelo%20site%20do%20No%20Spetto%20e%20gostaria%20de%20fazer%20um%20pedido%20ou%20reserva." 
+       target="_blank" rel="noopener noreferrer"
+       class="flex items-center gap-2 bg-[#b91c1c] hover:bg-[#991b1b] text-white font-bold px-4 py-3 sm:px-5 sm:py-3.5 rounded-full shadow-2xl transition transform hover:scale-105 active:scale-95 group">
+      <i data-lucide="message-circle" class="w-4 h-4 sm:w-5 sm:h-5"></i>
+      <span class="hidden sm:inline text-xs">Pedir no WhatsApp</span>
+    </a>
+  </aside>
+
+  <!-- JAVASCRIPT: THEME TOGGLE (COM TROCA DE LOGO), MOTION & CONCIERGE -->
+  <script>
+    lucide.createIcons();
+
+    // ================= TEMA CLARO / ESCURO COM TROCA AUTOMÁTICA DE LOGO =================
+    function initTheme() {
+      const savedTheme = localStorage.getItem('nospetto_theme');
+      const htmlEl = document.documentElement;
+      const themeIcon = document.getElementById('theme-icon');
+      const siteLogo = document.getElementById('site-logo');
+
+      if (savedTheme === 'dark') {
+        htmlEl.classList.remove('light');
+        htmlEl.classList.add('dark');
+        themeIcon.setAttribute('data-lucide', 'sun');
+        if (siteLogo) siteLogo.src = 'images/logo.png'; // Logo branca
+      } else {
+        htmlEl.classList.remove('dark');
+        htmlEl.classList.add('light');
+        themeIcon.setAttribute('data-lucide', 'moon');
+        if (siteLogo) siteLogo.src = 'images/logo-black.png'; // Logo preta oficial
+      }
+      lucide.createIcons();
+    }
+
+    function toggleTheme() {
+      const htmlEl = document.documentElement;
+      const themeIcon = document.getElementById('theme-icon');
+      const siteLogo = document.getElementById('site-logo');
+
+      if (htmlEl.classList.contains('dark')) {
+        htmlEl.classList.remove('dark');
+        htmlEl.classList.add('light');
+        localStorage.setItem('nospetto_theme', 'light');
+        themeIcon.setAttribute('data-lucide', 'moon');
+        if (siteLogo) siteLogo.src = 'images/logo-black.png'; // Logo preta
+      } else {
+        htmlEl.classList.remove('light');
+        htmlEl.classList.add('dark');
+        localStorage.setItem('nospetto_theme', 'dark');
+        themeIcon.setAttribute('data-lucide', 'sun');
+        if (siteLogo) siteLogo.src = 'images/logo.png'; // Logo branca
+      }
+      lucide.createIcons();
+    }
+
+    initTheme();
+
+    // Menu Mobile
+    const mobileBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    mobileBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    function closeMobileMenu() {
+      mobileMenu.classList.add('hidden');
+    }
+
+    // ================= REVEAL MOTION EFFECTS (60 FPS NATIVO) =================
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // ================= 3D COVERFLOW ENGINE ADAPTATIVO =================
+    let coverflowIndex = 0;
+    const totalCoverflow = 5;
+    const coverflowSlides = document.querySelectorAll('.coverflow-slide');
+    const coverflowImages = [
+      'images/espetos-prato.png',
+      'images/linguica-corte.png',
+      'images/grelha-pao-alho.jpg',
+      'images/espetos-brasa.jpg',
+      'images/fachada.png'
+    ];
+    let isCoverflowHovered = false;
+
+    function renderCoverflow() {
+      const isMobile = window.innerWidth < 640;
+      
+      const bgImg = document.getElementById('bg-ambience-img');
+      if (bgImg && coverflowImages[coverflowIndex]) {
+        bgImg.src = coverflowImages[coverflowIndex];
+      }
+
+      const cardWidth = isMobile ? 250 : 330;
+      const cardHeight = isMobile ? 360 : 480;
+      const step1 = isMobile ? 180 : 285;
+      const step2 = isMobile ? 320 : 510;
+
+      coverflowSlides.forEach((slide, idx) => {
+        const offset = (idx - coverflowIndex + totalCoverflow) % totalCoverflow;
+        const content = slide.querySelector('.coverflow-content');
+
+        slide.style.width = cardWidth + 'px';
+        slide.style.height = cardHeight + 'px';
+
+        let transform = "translateX(0px) scale(0.4) rotateY(0deg)";
+        let opacity = 0;
+        let zIndex = 0;
+        let filter = "brightness(0.4) blur(2px)";
+        let isCenter = false;
+
+        if (offset === 0) {
+          isCenter = true;
+          transform = "translateX(0px) scale(1) rotateY(0deg)";
+          opacity = 1;
+          zIndex = 30;
+          filter = "brightness(1)";
+        } else if (offset === 1) {
+          transform = `translateX(${step1}px) scale(${isMobile ? 0.80 : 0.84}) rotateY(-24deg)`;
+          opacity = isMobile ? 0.50 : 0.65;
+          zIndex = 20;
+          filter = "brightness(0.75)";
+        } else if (offset === 2) {
+          transform = `translateX(${step2}px) scale(${isMobile ? 0.62 : 0.68}) rotateY(-36deg)`;
+          opacity = isMobile ? 0.20 : 0.38;
+          zIndex = 10;
+          filter = "brightness(0.55) blur(1px)";
+        } else if (offset === totalCoverflow - 1) {
+          transform = `translateX(-${step1}px) scale(${isMobile ? 0.80 : 0.84}) rotateY(24deg)`;
+          opacity = isMobile ? 0.50 : 0.65;
+          zIndex = 20;
+          filter = "brightness(0.75)";
+        } else if (offset === totalCoverflow - 2) {
+          transform = `translateX(-${step2}px) scale(${isMobile ? 0.62 : 0.68}) rotateY(36deg)`;
+          opacity = isMobile ? 0.20 : 0.38;
+          zIndex = 10;
+          filter = "brightness(0.55) blur(1px)";
+        }
+
+        slide.style.transform = transform;
+        slide.style.opacity = opacity;
+        slide.style.zIndex = zIndex;
+        slide.style.filter = filter;
+        slide.style.cursor = isCenter ? "default" : "pointer";
+        slide.style.boxShadow = isCenter
+          ? "0 25px 60px rgba(0,0,0,0.9), 0 0 35px rgba(185,28,28,0.3)"
+          : "0 10px 25px rgba(0,0,0,0.5)";
+
+        if (content) {
+          content.style.opacity = isCenter ? "1" : "0";
+          content.style.transform = isCenter ? "translateY(0px)" : "translateY(14px)";
+          content.style.pointerEvents = isCenter ? "auto" : "none";
+        }
+      });
+
+      const dots = document.querySelectorAll('#coverflow-dots button');
+      dots.forEach((dot, idx) => {
+        if (idx === coverflowIndex) {
+          dot.className = isMobile 
+            ? "h-1.5 rounded-full transition-all duration-300 w-7 bg-[#b91c1c]" 
+            : "h-1.5 rounded-full transition-all duration-300 w-8 bg-[#b91c1c] shadow-[0_0_10px_rgba(185,28,28,0.7)]";
+        } else {
+          dot.className = "h-1.5 rounded-full transition-all duration-300 w-2 bg-white/30";
+        }
+      });
+    }
+
+    function nextCoverflowSlide() {
+      coverflowIndex = (coverflowIndex + 1) % totalCoverflow;
+      renderCoverflow();
+    }
+
+    function prevCoverflowSlide() {
+      coverflowIndex = (coverflowIndex - 1 + totalCoverflow) % totalCoverflow;
+      renderCoverflow();
+    }
+
+    function goToCoverflowSlide(idx) {
+      coverflowIndex = idx % totalCoverflow;
+      renderCoverflow();
+    }
+
+    function handleSlideClick(idx) {
+      if (idx !== coverflowIndex) {
+        goToCoverflowSlide(idx);
+      }
+    }
+
+    // Touch Swipe no Celular
+    let touchStartX = 0;
+    const stage = document.getElementById('coverflow-stage');
+    if (stage) {
+      stage.addEventListener('touchstart', (e) => {
+        touchStartX = e.touches[0].clientX;
+      }, { passive: true });
+
+      stage.addEventListener('touchend', (e) => {
+        const diff = e.changedTouches[0].clientX - touchStartX;
+        if (Math.abs(diff) > 40) {
+          if (diff < 0) nextCoverflowSlide();
+          else prevCoverflowSlide();
+        }
+      }, { passive: true });
+    }
+
+    // Auto Play com pausa no hover
+    const coverflowSection = document.getElementById('destaques-3d');
+    if (coverflowSection) {
+      coverflowSection.addEventListener('mouseenter', () => isCoverflowHovered = true);
+      coverflowSection.addEventListener('mouseleave', () => isCoverflowHovered = false);
+
+      setInterval(() => {
+        if (!isCoverflowHovered) {
+          nextCoverflowSlide();
+        }
+      }, 5000);
+    }
+
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') prevCoverflowSlide();
+      if (e.key === 'ArrowRight') nextCoverflowSlide();
+    });
+
+    window.addEventListener('resize', renderCoverflow);
+    renderCoverflow();
+
+    // ================= FILTROS DO CARDÁPIO =================
+    function filterCategory(cat) {
+      const cards = document.querySelectorAll('.menu-card');
+      const buttons = document.querySelectorAll('.cat-btn');
+
+      buttons.forEach(btn => {
+        btn.classList.remove('bg-[#b91c1c]', 'text-white', 'shadow-sm');
+        btn.classList.add('bg-white', 'dark:bg-[#181412]', 'text-stone-700', 'dark:text-stone-300');
+      });
+
+      event.target.classList.remove('bg-white', 'dark:bg-[#181412]', 'text-stone-700', 'dark:text-stone-300');
+      event.target.classList.add('bg-[#b91c1c]', 'text-white', 'shadow-sm');
+
+      cards.forEach(card => {
+        if (cat === 'todos' || card.classList.contains(cat)) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    function searchMenu() {
+      const query = document.getElementById('menu-search').value.toLowerCase();
+      const cards = document.querySelectorAll('.menu-card');
+
+      cards.forEach(card => {
+        const text = card.innerText.toLowerCase();
+        if (text.includes(query)) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    // Alternar Guarnições no simulador
+    function toggleGuarnicoes(isCompleto) {
+      const box = document.getElementById('box-acompanhamentos-simulador');
+      box.style.display = isCompleto ? 'block' : 'none';
+    }
+
+    // ================= CONCIERGE WHATSAPP: RESERVAS & PEDIDOS DETALHADOS =================
+    function sendConciergeReservation(e) {
+      e.preventDefault();
+      
+      const form = document.getElementById('concierge-form');
+      const formData = new FormData(form);
+
+      const tipo = formData.get('tipo_atendimento');
+      const nome = document.getElementById('res-nome').value.trim();
+      const pessoas = document.getElementById('res-pessoas').value;
+      const horario = document.getElementById('res-horario').value.trim();
+      const ambiente = document.getElementById('res-ambiente').value;
+      const carne = document.getElementById('carne-select').value;
+      const tipoPrato = formData.get('tipo_prato');
+      const arroz = formData.get('arroz') || 'N/A';
+      const guarnicao = formData.get('guarnicao') || 'N/A';
+      const extras = document.getElementById('res-extras').value.trim();
+      const obs = document.getElementById('res-obs').value.trim();
+
+      let msg = `🍢 *SOLICITAÇÃO DE RESERVA / PEDIDO - NO SPETTO* 🍢%0A%0A`;
+      msg += `📌 *Tipo de Atendimento:* ${encodeURIComponent(tipo)}%0A`;
+      msg += `👤 *Nome do Cliente:* ${encodeURIComponent(nome)}%0A`;
+      msg += `👥 *Quantidade de Pessoas:* ${encodeURIComponent(pessoas)}%0A`;
+      msg += `📅 *Data e Horário Desejado:* ${encodeURIComponent(horario)}%0A`;
+      msg += `❄️ *Ambiente de Preferência:* ${encodeURIComponent(ambiente)}%0A%0A`;
+
+      if (carne !== 'Nenhum (vou escolher no restaurante)') {
+        msg += `🥩 *Carne / Espeto Selecionado:* ${encodeURIComponent(carne)}%0A`;
+        msg += `🍽️ *Formato do Prato:* ${encodeURIComponent(tipoPrato)}%0A`;
+        if (tipoPrato === 'Completo') {
+          msg += `🍚 *Arroz Escolhido:* ${encodeURIComponent(arroz)}%0A`;
+          msg += `🍟 *Guarnição:* ${encodeURIComponent(guarnicao)}%0A`;
+          msg += `🥗 *Inclusos:* Farofa da Casa e Vinagrete%0A`;
+        }
+        msg += `%0A`;
+      }
+
+      if (extras) {
+        msg += `🍟 *Petiscos / Bebidas Extras:* ${encodeURIComponent(extras)}%0A`;
+      }
+
+      if (obs) {
+        msg += `📝 *Ocasião / Observações:* ${encodeURIComponent(obs)}%0A`;
+      }
+
+      msg += `%0A_Olá! Gostaria de verificar a disponibilidade e confirmar este pedido/reserva com vocês._`;
+
+      const waUrl = `https://wa.me/5591992910573?text=${msg}`;
+      window.open(waUrl, '_blank');
+    }
+
+    // Aberto / Fechado em Tempo Real
+    function checkStatus() {
+      const now = new Date();
+      const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
+      const castanhalTime = new Date(utc + (3600000 * -3));
+      
+      const day = castanhalTime.getDay();
+      const hours = castanhalTime.getHours();
+      const minutes = castanhalTime.getMinutes();
+      const timeInMinutes = hours * 60 + minutes;
+
+      let isOpen = false;
+
+      // Terça a Sexta: 11h-15h e 18h-22h
+      if (day >= 2 && day <= 5) {
+        if ((timeInMinutes >= 660 && timeInMinutes <= 900) || (timeInMinutes >= 1080 && timeInMinutes <= 1320)) {
+          isOpen = true;
+        }
+      } 
+      // Sábado e Domingo: 11h-15h
+      else if (day === 6 || day === 0) {
+        if (timeInMinutes >= 660 && timeInMinutes <= 900) {
+          isOpen = true;
+        }
+      }
+
+      const statusText = document.getElementById('status-text');
+      const statusDot = document.getElementById('status-dot');
+      const statusPing = document.getElementById('status-ping');
+
+      if (isOpen) {
+        statusText.innerHTML = '<strong class="text-emerald-400">ABERTO AGORA</strong> • Atendendo na brasa!';
+        statusDot.className = 'relative inline-flex rounded-full h-2 w-2 bg-emerald-500';
+        statusPing.className = 'animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75';
+      } else {
+        statusText.innerHTML = '<strong class="text-amber-400">FECHADO NO MOMENTO</strong> • Veja nossos horários';
+        statusDot.className = 'relative inline-flex rounded-full h-2 w-2 bg-amber-500';
+        statusPing.className = 'hidden';
+      }
+    }
+
+    checkStatus();
+  </script>
+</body>
+</html>
