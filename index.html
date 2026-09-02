@@ -331,14 +331,14 @@
   <!-- HERO SECTION — PALCO DA BRASA (vídeo dos três espetos sobre preto puro) -->
   <section class="relative isolate overflow-hidden bg-[#0c0a09] text-white border-b border-white/[0.06]">
 
-    <!-- Brilho de brasa por trás dos espetos (desktop) -->
-    <div class="hero-ember absolute inset-0 z-0 pointer-events-none hidden lg:block" aria-hidden="true"></div>
+    <!-- Brilho de brasa ao fundo -->
+    <div class="hero-ember absolute inset-0 z-0 pointer-events-none" aria-hidden="true"></div>
 
-    <!-- Vídeo — object-contain sempre garante o leque inteiro, sem cortes.
-         Mobile: ancorado embaixo, centralizado.  Desktop: metade direita. -->
-    <div class="absolute inset-0 z-0 pointer-events-none" aria-hidden="true">
+    <!-- Vídeo dos três espetos — só no desktop, sangrando a tela (object-cover, sem moldura/linha).
+         No mobile o palco fica limpo: brasa + tipografia. -->
+    <div class="hidden lg:block absolute inset-0 z-0 pointer-events-none" aria-hidden="true">
       <video id="hero-video"
-             class="hero-media h-full w-full object-contain object-bottom lg:object-[82%_center]"
+             class="hero-media h-full w-full object-cover object-[72%_center]"
              autoplay muted playsinline preload="auto" disablepictureinpicture
              poster="assets/hero/espetos-hero-poster.jpg" tabindex="-1">
         <source src="assets/hero/espetos-hero.webm" type="video/webm">
@@ -346,11 +346,11 @@
       </video>
     </div>
 
-    <!-- Scrim de legibilidade -->
-    <div class="absolute inset-0 z-10 pointer-events-none bg-gradient-to-b from-[#0c0a09] via-[#0c0a09]/85 to-transparent lg:bg-gradient-to-r lg:from-[#0c0a09] lg:via-[#0c0a09]/40 lg:to-transparent" aria-hidden="true"></div>
+    <!-- Scrim de legibilidade (desktop) -->
+    <div class="hidden lg:block absolute inset-0 z-10 pointer-events-none bg-gradient-to-r from-[#0c0a09] via-[#0c0a09]/45 to-transparent" aria-hidden="true"></div>
 
     <!-- Conteúdo -->
-    <div class="relative z-20 mx-auto max-w-6xl px-5 sm:px-6 min-h-[92vh] lg:min-h-[86vh] flex flex-col justify-start lg:justify-center pt-12 sm:pt-16 lg:pt-32 pb-56 sm:pb-64 lg:pb-32">
+    <div class="relative z-20 mx-auto max-w-6xl px-5 sm:px-6 min-h-[78vh] lg:min-h-[86vh] flex flex-col justify-center py-16 sm:py-20 lg:py-32">
       <div class="w-full max-w-md sm:max-w-xl lg:max-w-2xl reveal">
 
         <div class="inline-flex items-center gap-2 max-w-full px-3 py-1.5 rounded-md bg-white/5 border border-white/15 text-stone-200 text-[10px] sm:text-xs font-bold uppercase tracking-wider sm:tracking-widest mb-5 sm:mb-6 backdrop-blur-sm">
@@ -622,15 +622,15 @@
     <div class="max-w-6xl mx-auto px-4 sm:px-6">
       
       <!-- Cabeçalho -->
-      <div class="text-center max-w-2xl mx-auto mb-10 reveal">
-        <span class="text-xs uppercase font-bold tracking-wider text-[#b91c1c] dark:text-red-400 bg-red-100/60 dark:bg-red-950/40 px-3.5 py-1 rounded-full border border-red-200 dark:border-red-800/40 mb-3 inline-block">
-          Nosso Menu Completo
+      <div class="text-center max-w-xl mx-auto mb-8 sm:mb-10 reveal">
+        <span class="text-[11px] uppercase font-bold tracking-[0.2em] text-[#b91c1c] dark:text-red-400">
+          Nosso menu completo
         </span>
-        <h2 class="text-3xl sm:text-4xl font-serif-title font-bold text-stone-900 dark:text-white mb-3">
-          Pratos Preparados na Brasa
+        <h2 class="text-[1.7rem] sm:text-4xl font-serif-title font-bold text-stone-900 dark:text-white mt-2 mb-3 leading-tight">
+          Pratos preparados na brasa
         </h2>
-        <p class="text-stone-600 dark:text-stone-400 text-xs sm:text-sm">
-          Escolha entre a versão <strong>Simples</strong> (só o espeto) ou <strong>Completa</strong> (com Baião da Casa, Farofa da Casa, Vinagrete e Fritas ou Macaxeira na Manteiga).
+        <p class="text-stone-600 dark:text-stone-400 text-[13px] sm:text-sm leading-relaxed">
+          Escolha a versão <strong class="text-stone-800 dark:text-stone-200">Simples</strong> (só o espeto) ou <strong class="text-stone-800 dark:text-stone-200">Completa</strong> — com Baião da Casa, Farofa da Casa, Vinagrete e batata frita ou macaxeira.
         </p>
       </div>
 
@@ -638,7 +638,7 @@
       <div class="max-w-md mx-auto mb-8 relative reveal">
         <i data-lucide="search" class="w-4 h-4 text-stone-400 absolute left-4 top-1/2 -translate-y-1/2"></i>
         <input type="text" id="menu-search" oninput="applyMenuFilters()" placeholder="Buscar prato (ex: picanha, açaí, charque, chopp...)" aria-label="Buscar prato no cardápio"
-               class="w-full bg-white dark:bg-[#181412] border border-stone-300 dark:border-white/[0.1] text-stone-900 dark:text-white rounded-xl pl-11 pr-4 py-3 text-xs sm:text-sm focus:outline-none focus:border-[#b91c1c] shadow-sm transition">
+               class="w-full bg-white dark:bg-[#181412] border border-stone-300 dark:border-white/[0.1] text-stone-900 dark:text-white rounded-xl pl-11 pr-4 py-3 text-sm focus:outline-none focus:border-[#b91c1c] shadow-sm transition">
       </div>
 
       <!-- Filtros de Categorias com Vermelho -->
@@ -653,7 +653,7 @@
       </div>
 
       <!-- Grid do Cardápio -->
-      <div class="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4" id="menu-items-container">
+      <div class="grid grid-cols-1 min-[560px]:grid-cols-2 lg:grid-cols-3 gap-4" id="menu-items-container">
 
         <!-- PICANHA -->
         <div class="menu-card carnes bg-white dark:bg-[#181412] border border-stone-200 dark:border-white/[0.08] hover:border-[#b91c1c] dark:hover:border-red-500 rounded-xl p-4 sm:p-5 flex flex-col justify-between shadow-sm hover:shadow-md transition">
@@ -662,15 +662,15 @@
               <span class="text-[11px] font-bold text-[#b91c1c] bg-red-50 dark:bg-red-950/40 px-2 py-0.5 rounded border border-red-200 dark:border-red-800/40">Corte Nobre</span>
               <span class="text-xs text-stone-500">Na Brasa</span>
             </div>
-            <h3 class="text-[0.95rem] sm:text-lg font-bold text-stone-900 dark:text-white mb-1 leading-tight">Picanha na Brasa</h3>
-            <p class="text-stone-600 dark:text-stone-400 text-xs sm:text-sm mb-3 leading-relaxed">Picanha suculenta, macia e preparada no ponto da brasa.</p>
-            <div class="rounded-lg py-1.5 text-xs space-y-0.5 mb-3">
+            <h3 class="text-base sm:text-lg font-bold text-stone-900 dark:text-white mb-1 leading-snug">Picanha na Brasa</h3>
+            <p class="text-stone-600 dark:text-stone-400 text-[13px] sm:text-sm mb-3 leading-relaxed">Picanha suculenta, macia e preparada no ponto da brasa.</p>
+            <div class="py-1.5 text-[13px] space-y-0.5 mb-4">
               <div class="flex justify-between font-medium text-stone-700 dark:text-stone-300"><span>Simples:</span> <strong>R$ 39,00</strong></div>
               <div class="flex justify-between font-bold text-[#b91c1c] dark:text-red-400"><span>Completo:</span> <strong>R$ 45,00</strong></div>
             </div>
           </div>
           <a href="https://wa.me/5591992910573?text=Ol%C3%A1!%20Gostaria%20de%20pedir%20o%20Espeto%20de%20Picanha." target="_blank" rel="noopener noreferrer"
-             class="w-full flex items-center justify-center gap-2 bg-[#b91c1c] hover:bg-[#991b1b] text-white font-semibold py-2.5 rounded-lg transition text-[11px] sm:text-sm leading-tight text-center active:scale-95 shadow-sm">
+             class="w-full flex items-center justify-center gap-2 bg-[#b91c1c] hover:bg-[#991b1b] text-white font-semibold py-3 rounded-lg transition text-xs sm:text-sm active:scale-95 shadow-sm">
             <i data-lucide="shopping-bag" class="w-4 h-4"></i> Pedir Picanha
           </a>
         </div>
@@ -681,15 +681,15 @@
             <div class="flex justify-between items-start mb-2">
               <span class="text-[11px] font-bold text-amber-800 bg-amber-50 dark:bg-amber-950/40 px-2 py-0.5 rounded border border-amber-200 dark:border-amber-800/40">Mais Pedido</span>
             </div>
-            <h3 class="text-[0.95rem] sm:text-lg font-bold text-stone-900 dark:text-white mb-1 leading-tight">Contra Filé na Brasa</h3>
-            <p class="text-stone-600 dark:text-stone-400 text-xs sm:text-sm mb-3 leading-relaxed">Contra filé macio preparado na brasa com sabor autêntico.</p>
-            <div class="rounded-lg py-1.5 text-xs space-y-0.5 mb-3">
+            <h3 class="text-base sm:text-lg font-bold text-stone-900 dark:text-white mb-1 leading-snug">Contra Filé na Brasa</h3>
+            <p class="text-stone-600 dark:text-stone-400 text-[13px] sm:text-sm mb-3 leading-relaxed">Contra filé macio preparado na brasa com sabor autêntico.</p>
+            <div class="py-1.5 text-[13px] space-y-0.5 mb-4">
               <div class="flex justify-between font-medium text-stone-700 dark:text-stone-300"><span>Simples:</span> <strong>R$ 32,00</strong></div>
               <div class="flex justify-between font-bold text-[#b91c1c] dark:text-red-400"><span>Completo:</span> <strong>R$ 37,00</strong></div>
             </div>
           </div>
           <a href="https://wa.me/5591992910573?text=Ol%C3%A1!%20Gostaria%20de%20pedir%20o%20Contra%20Fil%C3%A9." target="_blank" rel="noopener noreferrer"
-             class="w-full flex items-center justify-center gap-2 bg-[#b91c1c] hover:bg-[#991b1b] text-white font-semibold py-2.5 rounded-lg transition text-[11px] sm:text-sm leading-tight text-center active:scale-95 shadow-sm">
+             class="w-full flex items-center justify-center gap-2 bg-[#b91c1c] hover:bg-[#991b1b] text-white font-semibold py-3 rounded-lg transition text-xs sm:text-sm active:scale-95 shadow-sm">
             <i data-lucide="shopping-bag" class="w-4 h-4"></i> Pedir Contra Filé
           </a>
         </div>
@@ -701,15 +701,15 @@
           </div>
           <div>
             <span class="text-[11px] font-bold text-red-700 dark:text-red-400">Corte Especial</span>
-            <h3 class="text-[0.95rem] sm:text-lg font-bold text-stone-900 dark:text-white mb-1 mt-1 leading-tight">Picanha Steak</h3>
-            <p class="text-stone-600 dark:text-stone-400 text-xs sm:text-sm mb-3 leading-relaxed">Corte nobre e espesso de picanha com suculência inigualável.</p>
+            <h3 class="text-base sm:text-lg font-bold text-stone-900 dark:text-white mb-1 mt-1 leading-snug">Picanha Steak</h3>
+            <p class="text-stone-600 dark:text-stone-400 text-[13px] sm:text-sm mb-3 leading-relaxed">Corte nobre e espesso de picanha com suculência inigualável.</p>
             <div class="rounded-lg py-2 text-center mb-3">
               <span class="text-xs text-stone-500">Preço Especial:</span>
               <p class="text-xl font-bold text-[#b91c1c] dark:text-red-400">R$ 70,00</p>
             </div>
           </div>
           <a href="https://wa.me/5591992910573?text=Ol%C3%A1!%20Gostaria%20de%20pedir%20a%20Picanha%20Steak." target="_blank" rel="noopener noreferrer"
-             class="w-full flex items-center justify-center gap-2 bg-[#b91c1c] hover:bg-[#991b1b] text-white font-semibold py-2.5 rounded-lg transition text-[11px] sm:text-sm leading-tight text-center active:scale-95 shadow-sm">
+             class="w-full flex items-center justify-center gap-2 bg-[#b91c1c] hover:bg-[#991b1b] text-white font-semibold py-3 rounded-lg transition text-xs sm:text-sm active:scale-95 shadow-sm">
             <i data-lucide="shopping-bag" class="w-4 h-4"></i> Pedir Picanha Steak
           </a>
         </div>
@@ -717,15 +717,15 @@
         <!-- CARNE TRADICIONAL -->
         <div class="menu-card carnes bg-white dark:bg-[#181412] border border-stone-200 dark:border-white/[0.08] hover:border-[#b91c1c] rounded-xl p-4 sm:p-5 flex flex-col justify-between shadow-sm hover:shadow-md transition">
           <div>
-            <h3 class="text-[0.95rem] sm:text-lg font-bold text-stone-900 dark:text-white mb-1 leading-tight">Carne Tradicional</h3>
-            <p class="text-stone-600 dark:text-stone-400 text-xs sm:text-sm mb-3 leading-relaxed">Espeto clássico de carne com tempero suave da casa.</p>
-            <div class="rounded-lg py-1.5 text-xs space-y-0.5 mb-3">
+            <h3 class="text-base sm:text-lg font-bold text-stone-900 dark:text-white mb-1 leading-snug">Carne Tradicional</h3>
+            <p class="text-stone-600 dark:text-stone-400 text-[13px] sm:text-sm mb-3 leading-relaxed">Espeto clássico de carne com tempero suave da casa.</p>
+            <div class="py-1.5 text-[13px] space-y-0.5 mb-4">
               <div class="flex justify-between font-medium text-stone-700 dark:text-stone-300"><span>Simples:</span> <strong>R$ 18,00</strong></div>
               <div class="flex justify-between font-bold text-[#b91c1c] dark:text-red-400"><span>Completo:</span> <strong>R$ 30,00</strong></div>
             </div>
           </div>
           <a href="https://wa.me/5591992910573?text=Ol%C3%A1!%20Gostaria%20de%20pedir%20a%20Carne%20Tradicional." target="_blank" rel="noopener noreferrer"
-             class="w-full flex items-center justify-center gap-2 bg-stone-800 hover:bg-[#b91c1c] text-white font-semibold py-2.5 rounded-lg transition text-[11px] sm:text-sm leading-tight text-center active:scale-95">
+             class="w-full flex items-center justify-center gap-2 bg-stone-800 hover:bg-[#b91c1c] text-white font-semibold py-3 rounded-lg transition text-xs sm:text-sm active:scale-95">
             <i data-lucide="shopping-bag" class="w-4 h-4"></i> Pedir Tradicional
           </a>
         </div>
@@ -734,15 +734,15 @@
         <div class="menu-card carnes bg-white dark:bg-[#181412] border border-stone-200 dark:border-white/[0.08] hover:border-[#b91c1c] rounded-xl p-4 sm:p-5 flex flex-col justify-between shadow-sm hover:shadow-md transition">
           <div>
             <span class="text-[11px] font-bold text-stone-600 dark:text-stone-400">Tradição Regional</span>
-            <h3 class="text-[0.95rem] sm:text-lg font-bold text-stone-900 dark:text-white mb-1 leading-tight">Carne de Sol na Brasa</h3>
-            <p class="text-stone-600 dark:text-stone-400 text-xs sm:text-sm mb-3 leading-relaxed">Carne de sol grelhada com sabor marcante e autêntico.</p>
-            <div class="rounded-lg py-1.5 text-xs space-y-0.5 mb-3">
+            <h3 class="text-base sm:text-lg font-bold text-stone-900 dark:text-white mb-1 leading-snug">Carne de Sol na Brasa</h3>
+            <p class="text-stone-600 dark:text-stone-400 text-[13px] sm:text-sm mb-3 leading-relaxed">Carne de sol grelhada com sabor marcante e autêntico.</p>
+            <div class="py-1.5 text-[13px] space-y-0.5 mb-4">
               <div class="flex justify-between font-medium text-stone-700 dark:text-stone-300"><span>Simples:</span> <strong>R$ 34,00</strong></div>
               <div class="flex justify-between font-bold text-[#b91c1c] dark:text-red-400"><span>Completo:</span> <strong>R$ 39,00</strong></div>
             </div>
           </div>
           <a href="https://wa.me/5591992910573?text=Ol%C3%A1!%20Gostaria%20de%20pedir%20a%20Carne%20de%20Sol." target="_blank" rel="noopener noreferrer"
-             class="w-full flex items-center justify-center gap-2 bg-[#b91c1c] hover:bg-[#991b1b] text-white font-semibold py-2.5 rounded-lg transition text-[11px] sm:text-sm leading-tight text-center active:scale-95 shadow-sm">
+             class="w-full flex items-center justify-center gap-2 bg-[#b91c1c] hover:bg-[#991b1b] text-white font-semibold py-3 rounded-lg transition text-xs sm:text-sm active:scale-95 shadow-sm">
             <i data-lucide="shopping-bag" class="w-4 h-4"></i> Pedir Carne de Sol
           </a>
         </div>
@@ -750,15 +750,15 @@
         <!-- FILÉ COM BACON -->
         <div class="menu-card carnes bg-white dark:bg-[#181412] border border-stone-200 dark:border-white/[0.08] hover:border-[#b91c1c] rounded-xl p-4 sm:p-5 flex flex-col justify-between shadow-sm hover:shadow-md transition">
           <div>
-            <h3 class="text-[0.95rem] sm:text-lg font-bold text-stone-900 dark:text-white mb-1 leading-tight">Filé com Bacon</h3>
-            <p class="text-stone-600 dark:text-stone-400 text-xs sm:text-sm mb-3 leading-relaxed">Filé macio envolvido no bacon crocante e assado no ponto.</p>
-            <div class="rounded-lg py-1.5 text-xs space-y-0.5 mb-3">
+            <h3 class="text-base sm:text-lg font-bold text-stone-900 dark:text-white mb-1 leading-snug">Filé com Bacon</h3>
+            <p class="text-stone-600 dark:text-stone-400 text-[13px] sm:text-sm mb-3 leading-relaxed">Filé macio envolvido no bacon crocante e assado no ponto.</p>
+            <div class="py-1.5 text-[13px] space-y-0.5 mb-4">
               <div class="flex justify-between font-medium text-stone-700 dark:text-stone-300"><span>Simples:</span> <strong>R$ 37,00</strong></div>
               <div class="flex justify-between font-bold text-[#b91c1c] dark:text-red-400"><span>Completo:</span> <strong>R$ 42,00</strong></div>
             </div>
           </div>
           <a href="https://wa.me/5591992910573?text=Ol%C3%A1!%20Gostaria%20de%20pedir%20o%20Fil%C3%A9%20com%20Bacon." target="_blank" rel="noopener noreferrer"
-             class="w-full flex items-center justify-center gap-2 bg-[#b91c1c] hover:bg-[#991b1b] text-white font-semibold py-2.5 rounded-lg transition text-[11px] sm:text-sm leading-tight text-center active:scale-95 shadow-sm">
+             class="w-full flex items-center justify-center gap-2 bg-[#b91c1c] hover:bg-[#991b1b] text-white font-semibold py-3 rounded-lg transition text-xs sm:text-sm active:scale-95 shadow-sm">
             <i data-lucide="shopping-bag" class="w-4 h-4"></i> Pedir Filé c/ Bacon
           </a>
         </div>
@@ -766,15 +766,15 @@
         <!-- CORAÇÃO DE FRANGO -->
         <div class="menu-card frango bg-white dark:bg-[#181412] border border-stone-200 dark:border-white/[0.08] hover:border-[#b91c1c] rounded-xl p-4 sm:p-5 flex flex-col justify-between shadow-sm hover:shadow-md transition">
           <div>
-            <h3 class="text-[0.95rem] sm:text-lg font-bold text-stone-900 dark:text-white mb-1 leading-tight">Coração de Frango</h3>
-            <p class="text-stone-600 dark:text-stone-400 text-xs sm:text-sm mb-3 leading-relaxed">Coração temperado e preparado no ponto perfeito da brasa.</p>
-            <div class="rounded-lg py-1.5 text-xs space-y-0.5 mb-3">
+            <h3 class="text-base sm:text-lg font-bold text-stone-900 dark:text-white mb-1 leading-snug">Coração de Frango</h3>
+            <p class="text-stone-600 dark:text-stone-400 text-[13px] sm:text-sm mb-3 leading-relaxed">Coração temperado e preparado no ponto perfeito da brasa.</p>
+            <div class="py-1.5 text-[13px] space-y-0.5 mb-4">
               <div class="flex justify-between font-medium text-stone-700 dark:text-stone-300"><span>Simples:</span> <strong>R$ 15,00</strong></div>
               <div class="flex justify-between font-bold text-[#b91c1c] dark:text-red-400"><span>Completo:</span> <strong>R$ 20,00</strong></div>
             </div>
           </div>
           <a href="https://wa.me/5591992910573?text=Ol%C3%A1!%20Gostaria%20de%20pedir%20o%20Cora%C3%A7%C3%A3o%20de%20Frango." target="_blank" rel="noopener noreferrer"
-             class="w-full flex items-center justify-center gap-2 bg-stone-800 hover:bg-[#b91c1c] text-white font-semibold py-2.5 rounded-lg transition text-[11px] sm:text-sm leading-tight text-center active:scale-95">
+             class="w-full flex items-center justify-center gap-2 bg-stone-800 hover:bg-[#b91c1c] text-white font-semibold py-3 rounded-lg transition text-xs sm:text-sm active:scale-95">
             <i data-lucide="shopping-bag" class="w-4 h-4"></i> Pedir Coração
           </a>
         </div>
@@ -783,15 +783,15 @@
         <div class="menu-card entradas bg-white dark:bg-[#181412] border border-stone-200 dark:border-white/[0.08] hover:border-[#b91c1c] rounded-xl p-4 sm:p-5 flex flex-col justify-between shadow-sm hover:shadow-md transition">
           <div>
             <span class="text-[11px] font-bold text-amber-800 bg-amber-50 dark:bg-amber-950/40 px-2 py-0.5 rounded border border-amber-200 dark:border-amber-800/40">Petisco Campeão</span>
-            <h3 class="text-[0.95rem] sm:text-lg font-bold text-stone-900 dark:text-white mb-1 mt-1 leading-tight">Filé c/ Fritas da Casa</h3>
-            <p class="text-stone-600 dark:text-stone-400 text-xs sm:text-sm mb-3 leading-relaxed">Filé suculento servido com batatas fritas crocantes.</p>
+            <h3 class="text-base sm:text-lg font-bold text-stone-900 dark:text-white mb-1 mt-1 leading-snug">Filé c/ Fritas da Casa</h3>
+            <p class="text-stone-600 dark:text-stone-400 text-[13px] sm:text-sm mb-3 leading-relaxed">Filé suculento servido com batatas fritas crocantes.</p>
             <div class="rounded-lg py-1.5 flex justify-between items-center mb-3">
               <span class="text-xs text-stone-500">Porção generosa:</span>
               <strong class="text-[#b91c1c] dark:text-red-400 text-base">R$ 35,00</strong>
             </div>
           </div>
           <a href="https://wa.me/5591992910573?text=Ol%C3%A1!%20Gostaria%20de%20pedir%20o%20Fil%C3%A9%20c/%20Fritas." target="_blank" rel="noopener noreferrer"
-             class="w-full flex items-center justify-center gap-2 bg-[#b91c1c] hover:bg-[#991b1b] text-white font-semibold py-2.5 rounded-lg transition text-[11px] sm:text-sm leading-tight text-center active:scale-95 shadow-sm">
+             class="w-full flex items-center justify-center gap-2 bg-[#b91c1c] hover:bg-[#991b1b] text-white font-semibold py-3 rounded-lg transition text-xs sm:text-sm active:scale-95 shadow-sm">
             <i data-lucide="shopping-bag" class="w-4 h-4"></i> Pedir Filé c/ Fritas
           </a>
         </div>
@@ -800,15 +800,15 @@
         <div class="menu-card entradas bg-white dark:bg-[#181412] border border-stone-200 dark:border-white/[0.08] hover:border-[#b91c1c] rounded-xl p-4 sm:p-5 flex flex-col justify-between shadow-sm hover:shadow-md transition">
           <div>
             <span class="text-[11px] font-bold text-[#b91c1c] bg-red-50 dark:bg-red-950/40 px-2 py-0.5 rounded border border-red-200 dark:border-red-800/40">Favorito 🧀</span>
-            <h3 class="text-[0.95rem] sm:text-lg font-bold text-stone-900 dark:text-white mb-1 mt-1 leading-tight">Pipoca de Queijo Coalho</h3>
-            <p class="text-stone-600 dark:text-stone-400 text-xs sm:text-sm mb-3 leading-relaxed">Pedaços crocantes de queijo coalho dourados na hora.</p>
+            <h3 class="text-base sm:text-lg font-bold text-stone-900 dark:text-white mb-1 mt-1 leading-snug">Pipoca de Queijo Coalho</h3>
+            <p class="text-stone-600 dark:text-stone-400 text-[13px] sm:text-sm mb-3 leading-relaxed">Pedaços crocantes de queijo coalho dourados na hora.</p>
             <div class="rounded-lg py-1.5 flex justify-between items-center mb-3">
               <span class="text-xs text-stone-500">Porção:</span>
               <strong class="text-[#b91c1c] dark:text-red-400 text-base">R$ 27,00</strong>
             </div>
           </div>
           <a href="https://wa.me/5591992910573?text=Ol%C3%A1!%20Gostaria%20de%20pedir%20a%20Pipoca%20de%20Queijo%20Coalho." target="_blank" rel="noopener noreferrer"
-             class="w-full flex items-center justify-center gap-2 bg-[#b91c1c] hover:bg-[#991b1b] text-white font-semibold py-2.5 rounded-lg transition text-[11px] sm:text-sm leading-tight text-center active:scale-95 shadow-sm">
+             class="w-full flex items-center justify-center gap-2 bg-[#b91c1c] hover:bg-[#991b1b] text-white font-semibold py-3 rounded-lg transition text-xs sm:text-sm active:scale-95 shadow-sm">
             <i data-lucide="shopping-bag" class="w-4 h-4"></i> Pedir Pipoca de Coalho
           </a>
         </div>
@@ -817,15 +817,15 @@
         <div class="menu-card acai bg-white dark:bg-[#181412] border border-purple-200 dark:border-purple-900/40 rounded-xl p-4 sm:p-5 flex flex-col justify-between shadow-sm hover:shadow-md transition">
           <div>
             <span class="text-[11px] font-bold text-amber-800 bg-amber-50 dark:bg-amber-950/40 px-2 py-0.5 rounded border border-amber-200 dark:border-amber-800/40">Tradição Paraense</span>
-            <h3 class="text-[0.95rem] sm:text-lg font-bold text-stone-900 dark:text-white mb-1 mt-1 leading-tight">Açaí c/ Tiras de Charque</h3>
-            <p class="text-stone-600 dark:text-stone-400 text-xs sm:text-sm mb-3 leading-relaxed">Açaí cremoso servido com porção de charque frito crocante.</p>
+            <h3 class="text-base sm:text-lg font-bold text-stone-900 dark:text-white mb-1 mt-1 leading-snug">Açaí c/ Tiras de Charque</h3>
+            <p class="text-stone-600 dark:text-stone-400 text-[13px] sm:text-sm mb-3 leading-relaxed">Açaí cremoso servido com porção de charque frito crocante.</p>
             <div class="rounded-lg py-1.5 flex justify-between items-center mb-3">
               <span class="text-xs text-purple-900 dark:text-purple-300">Porção Completa:</span>
               <strong class="text-purple-950 dark:text-purple-400 text-base">R$ 40,00</strong>
             </div>
           </div>
           <a href="https://wa.me/5591992910573?text=Ol%C3%A1!%20Gostaria%20de%20pedir%20o%20A%C3%A7a%C3%AD%20com%20Charque." target="_blank" rel="noopener noreferrer"
-             class="w-full flex items-center justify-center gap-2 bg-purple-900 hover:bg-purple-950 text-white font-semibold py-2.5 rounded-lg transition text-[11px] sm:text-sm leading-tight text-center active:scale-95 shadow-sm">
+             class="w-full flex items-center justify-center gap-2 bg-purple-900 hover:bg-purple-950 text-white font-semibold py-3 rounded-lg transition text-xs sm:text-sm active:scale-95 shadow-sm">
             <i data-lucide="shopping-bag" class="w-4 h-4"></i> Pedir Açaí c/ Charque
           </a>
         </div>
@@ -834,15 +834,15 @@
         <div class="menu-card bebidas bg-white dark:bg-[#181412] border border-amber-300 dark:border-amber-900/40 rounded-xl p-4 sm:p-5 flex flex-col justify-between shadow-sm hover:shadow-md transition">
           <div>
             <span class="text-[11px] font-bold text-amber-800 bg-amber-50 dark:bg-amber-950/40 px-2 py-0.5 rounded border border-amber-200 dark:border-amber-800/40">Chopp Regional 🍺</span>
-            <h3 class="text-[0.95rem] sm:text-lg font-bold text-stone-900 dark:text-white mb-1 mt-1 leading-tight">Chopp Cabôca (300ml)</h3>
-            <p class="text-stone-600 dark:text-stone-400 text-xs sm:text-sm mb-3 leading-relaxed">Chopp artesanal do Pará, gelado e cremoso na medida certa.</p>
+            <h3 class="text-base sm:text-lg font-bold text-stone-900 dark:text-white mb-1 mt-1 leading-snug">Chopp Cabôca (300ml)</h3>
+            <p class="text-stone-600 dark:text-stone-400 text-[13px] sm:text-sm mb-3 leading-relaxed">Chopp artesanal do Pará, gelado e cremoso na medida certa.</p>
             <div class="rounded-lg py-1.5 flex justify-between items-center mb-3">
               <span class="text-xs text-amber-900 dark:text-amber-300">300ml trincando:</span>
               <strong class="text-amber-800 dark:text-amber-400 text-base">R$ 10,00</strong>
             </div>
           </div>
           <a href="https://wa.me/5591992910573?text=Ol%C3%A1!%20Gostaria%20de%20pedir%20Chopp%20Cab%C3%B4ca." target="_blank" rel="noopener noreferrer"
-             class="w-full flex items-center justify-center gap-2 bg-amber-600 hover:bg-amber-700 text-white font-semibold py-2.5 rounded-lg transition text-[11px] sm:text-sm leading-tight text-center active:scale-95 shadow-sm">
+             class="w-full flex items-center justify-center gap-2 bg-amber-600 hover:bg-amber-700 text-white font-semibold py-3 rounded-lg transition text-xs sm:text-sm active:scale-95 shadow-sm">
             <i data-lucide="beer" class="w-4 h-4"></i> Pedir Chopp Cabôca
           </a>
         </div>
@@ -851,15 +851,15 @@
         <div class="menu-card sobremesas bg-white dark:bg-[#181412] border border-stone-200 dark:border-white/[0.08] hover:border-[#b91c1c] rounded-xl p-4 sm:p-5 flex flex-col justify-between shadow-sm hover:shadow-md transition">
           <div>
             <span class="text-[11px] font-bold text-amber-800 bg-amber-50 dark:bg-amber-950/40 px-2 py-0.5 rounded border border-amber-200 dark:border-amber-800/40">Sobremesa da Casa</span>
-            <h3 class="text-[0.95rem] sm:text-lg font-bold text-stone-900 dark:text-white mb-1 mt-1 leading-tight">Pudim de Leite Condensado</h3>
-            <p class="text-stone-600 dark:text-stone-400 text-xs sm:text-sm mb-3 leading-relaxed">Pudim cremoso com calda de caramelo caseira.</p>
+            <h3 class="text-base sm:text-lg font-bold text-stone-900 dark:text-white mb-1 mt-1 leading-snug">Pudim de Leite Condensado</h3>
+            <p class="text-stone-600 dark:text-stone-400 text-[13px] sm:text-sm mb-3 leading-relaxed">Pudim cremoso com calda de caramelo caseira.</p>
             <div class="rounded-lg py-1.5 flex justify-between items-center mb-3">
               <span class="text-xs text-stone-500">Fatia generosa:</span>
               <strong class="text-[#b91c1c] dark:text-red-400 text-base">R$ 10,00</strong>
             </div>
           </div>
           <a href="https://wa.me/5591992910573?text=Ol%C3%A1!%20Gostaria%20de%20pedir%20o%20Pudim." target="_blank" rel="noopener noreferrer"
-             class="w-full flex items-center justify-center gap-2 bg-stone-800 hover:bg-[#b91c1c] text-white font-semibold py-2.5 rounded-lg transition text-[11px] sm:text-sm leading-tight text-center active:scale-95">
+             class="w-full flex items-center justify-center gap-2 bg-stone-800 hover:bg-[#b91c1c] text-white font-semibold py-3 rounded-lg transition text-xs sm:text-sm active:scale-95">
             <i data-lucide="shopping-bag" class="w-4 h-4"></i> Pedir Pudim
           </a>
         </div>
@@ -868,15 +868,15 @@
         <div class="menu-card carnes bg-white dark:bg-[#181412] border border-stone-200 dark:border-white/[0.08] hover:border-[#b91c1c] rounded-xl p-4 sm:p-5 flex flex-col justify-between shadow-sm hover:shadow-md transition">
           <div>
             <span class="text-[11px] font-bold text-stone-600 dark:text-stone-400">Corte Macio</span>
-            <h3 class="text-[0.95rem] sm:text-lg font-bold text-stone-900 dark:text-white mb-1 mt-1 leading-tight">Filé Mignon ao Alho</h3>
-            <p class="text-stone-600 dark:text-stone-400 text-xs sm:text-sm mb-3 leading-relaxed">Filé mignon grelhado na brasa com lâminas de alho douradas.</p>
-            <div class="rounded-lg py-1.5 text-xs space-y-0.5 mb-3">
+            <h3 class="text-base sm:text-lg font-bold text-stone-900 dark:text-white mb-1 mt-1 leading-snug">Filé Mignon ao Alho</h3>
+            <p class="text-stone-600 dark:text-stone-400 text-[13px] sm:text-sm mb-3 leading-relaxed">Filé mignon grelhado na brasa com lâminas de alho douradas.</p>
+            <div class="py-1.5 text-[13px] space-y-0.5 mb-4">
               <div class="flex justify-between font-medium text-stone-700 dark:text-stone-300"><span>Simples:</span> <strong>R$ 34,00</strong></div>
               <div class="flex justify-between font-bold text-[#b91c1c] dark:text-red-400"><span>Completo:</span> <strong>R$ 39,00</strong></div>
             </div>
           </div>
           <a href="https://wa.me/5591992910573?text=Ol%C3%A1!%20Gostaria%20de%20pedir%20o%20Fil%C3%A9%20Mignon%20ao%20Alho." target="_blank" rel="noopener noreferrer"
-             class="w-full flex items-center justify-center gap-2 bg-[#b91c1c] hover:bg-[#991b1b] text-white font-semibold py-2.5 rounded-lg transition text-[11px] sm:text-sm leading-tight text-center active:scale-95 shadow-sm">
+             class="w-full flex items-center justify-center gap-2 bg-[#b91c1c] hover:bg-[#991b1b] text-white font-semibold py-3 rounded-lg transition text-xs sm:text-sm active:scale-95 shadow-sm">
             <i data-lucide="shopping-bag" class="w-4 h-4"></i> Pedir Filé Mignon
           </a>
         </div>
@@ -885,15 +885,15 @@
         <div class="menu-card carnes bg-white dark:bg-[#181412] border border-stone-200 dark:border-white/[0.08] hover:border-[#b91c1c] rounded-xl p-4 sm:p-5 flex flex-col justify-between shadow-sm hover:shadow-md transition">
           <div>
             <span class="text-[11px] font-bold text-stone-600 dark:text-stone-400">Suíno na Brasa</span>
-            <h3 class="text-[0.95rem] sm:text-lg font-bold text-stone-900 dark:text-white mb-1 mt-1 leading-tight">Panceta Suína Crocante</h3>
-            <p class="text-stone-600 dark:text-stone-400 text-xs sm:text-sm mb-3 leading-relaxed">Barriga de porco assada na brasa, macia por dentro e crocante por fora.</p>
-            <div class="rounded-lg py-1.5 text-xs space-y-0.5 mb-3">
+            <h3 class="text-base sm:text-lg font-bold text-stone-900 dark:text-white mb-1 mt-1 leading-snug">Panceta Suína Crocante</h3>
+            <p class="text-stone-600 dark:text-stone-400 text-[13px] sm:text-sm mb-3 leading-relaxed">Barriga de porco assada na brasa, macia por dentro e crocante por fora.</p>
+            <div class="py-1.5 text-[13px] space-y-0.5 mb-4">
               <div class="flex justify-between font-medium text-stone-700 dark:text-stone-300"><span>Simples:</span> <strong>R$ 18,00</strong></div>
               <div class="flex justify-between font-bold text-[#b91c1c] dark:text-red-400"><span>Completo:</span> <strong>R$ 30,00</strong></div>
             </div>
           </div>
           <a href="https://wa.me/5591992910573?text=Ol%C3%A1!%20Gostaria%20de%20pedir%20a%20Panceta%20Su%C3%ADna." target="_blank" rel="noopener noreferrer"
-             class="w-full flex items-center justify-center gap-2 bg-[#b91c1c] hover:bg-[#991b1b] text-white font-semibold py-2.5 rounded-lg transition text-[11px] sm:text-sm leading-tight text-center active:scale-95 shadow-sm">
+             class="w-full flex items-center justify-center gap-2 bg-[#b91c1c] hover:bg-[#991b1b] text-white font-semibold py-3 rounded-lg transition text-xs sm:text-sm active:scale-95 shadow-sm">
             <i data-lucide="shopping-bag" class="w-4 h-4"></i> Pedir Panceta
           </a>
         </div>
@@ -901,15 +901,15 @@
         <!-- FILÉ DE FRANGO NA BRASA -->
         <div class="menu-card frango bg-white dark:bg-[#181412] border border-stone-200 dark:border-white/[0.08] hover:border-[#b91c1c] rounded-xl p-4 sm:p-5 flex flex-col justify-between shadow-sm hover:shadow-md transition">
           <div>
-            <h3 class="text-[0.95rem] sm:text-lg font-bold text-stone-900 dark:text-white mb-1 leading-tight">Filé de Frango na Brasa</h3>
-            <p class="text-stone-600 dark:text-stone-400 text-xs sm:text-sm mb-3 leading-relaxed">Peito de frango suculento, temperado e grelhado no ponto.</p>
-            <div class="rounded-lg py-1.5 text-xs space-y-0.5 mb-3">
+            <h3 class="text-base sm:text-lg font-bold text-stone-900 dark:text-white mb-1 leading-snug">Filé de Frango na Brasa</h3>
+            <p class="text-stone-600 dark:text-stone-400 text-[13px] sm:text-sm mb-3 leading-relaxed">Peito de frango suculento, temperado e grelhado no ponto.</p>
+            <div class="py-1.5 text-[13px] space-y-0.5 mb-4">
               <div class="flex justify-between font-medium text-stone-700 dark:text-stone-300"><span>Simples:</span> <strong>R$ 18,00</strong></div>
               <div class="flex justify-between font-bold text-[#b91c1c] dark:text-red-400"><span>Completo:</span> <strong>R$ 30,00</strong></div>
             </div>
           </div>
           <a href="https://wa.me/5591992910573?text=Ol%C3%A1!%20Gostaria%20de%20pedir%20o%20Fil%C3%A9%20de%20Frango%20na%20Brasa." target="_blank" rel="noopener noreferrer"
-             class="w-full flex items-center justify-center gap-2 bg-stone-800 hover:bg-[#b91c1c] text-white font-semibold py-2.5 rounded-lg transition text-[11px] sm:text-sm leading-tight text-center active:scale-95">
+             class="w-full flex items-center justify-center gap-2 bg-stone-800 hover:bg-[#b91c1c] text-white font-semibold py-3 rounded-lg transition text-xs sm:text-sm active:scale-95">
             <i data-lucide="shopping-bag" class="w-4 h-4"></i> Pedir Filé de Frango
           </a>
         </div>
@@ -917,15 +917,15 @@
         <!-- TULIPA CROCANTE -->
         <div class="menu-card frango bg-white dark:bg-[#181412] border border-stone-200 dark:border-white/[0.08] hover:border-[#b91c1c] rounded-xl p-4 sm:p-5 flex flex-col justify-between shadow-sm hover:shadow-md transition">
           <div>
-            <h3 class="text-[0.95rem] sm:text-lg font-bold text-stone-900 dark:text-white mb-1 leading-tight">Tulipa Crocante</h3>
-            <p class="text-stone-600 dark:text-stone-400 text-xs sm:text-sm mb-3 leading-relaxed">Tulipa de frango dourada e crocante, no capricho da brasa.</p>
-            <div class="rounded-lg py-1.5 text-xs space-y-0.5 mb-3">
+            <h3 class="text-base sm:text-lg font-bold text-stone-900 dark:text-white mb-1 leading-snug">Tulipa Crocante</h3>
+            <p class="text-stone-600 dark:text-stone-400 text-[13px] sm:text-sm mb-3 leading-relaxed">Tulipa de frango dourada e crocante, no capricho da brasa.</p>
+            <div class="py-1.5 text-[13px] space-y-0.5 mb-4">
               <div class="flex justify-between font-medium text-stone-700 dark:text-stone-300"><span>Simples:</span> <strong>R$ 28,00</strong></div>
               <div class="flex justify-between font-bold text-[#b91c1c] dark:text-red-400"><span>Completo:</span> <strong>R$ 33,00</strong></div>
             </div>
           </div>
           <a href="https://wa.me/5591992910573?text=Ol%C3%A1!%20Gostaria%20de%20pedir%20a%20Tulipa%20Crocante." target="_blank" rel="noopener noreferrer"
-             class="w-full flex items-center justify-center gap-2 bg-stone-800 hover:bg-[#b91c1c] text-white font-semibold py-2.5 rounded-lg transition text-[11px] sm:text-sm leading-tight text-center active:scale-95">
+             class="w-full flex items-center justify-center gap-2 bg-stone-800 hover:bg-[#b91c1c] text-white font-semibold py-3 rounded-lg transition text-xs sm:text-sm active:scale-95">
             <i data-lucide="shopping-bag" class="w-4 h-4"></i> Pedir Tulipa
           </a>
         </div>
@@ -934,15 +934,15 @@
         <div class="menu-card frango bg-white dark:bg-[#181412] border border-stone-200 dark:border-white/[0.08] hover:border-[#b91c1c] rounded-xl p-4 sm:p-5 flex flex-col justify-between shadow-sm hover:shadow-md transition">
           <div>
             <span class="text-[11px] font-bold text-amber-800 bg-amber-50 dark:bg-amber-950/40 px-2 py-0.5 rounded border border-amber-200 dark:border-amber-800/40">Combinação Certeira</span>
-            <h3 class="text-[0.95rem] sm:text-lg font-bold text-stone-900 dark:text-white mb-1 mt-1 leading-tight">Frango com Bacon</h3>
-            <p class="text-stone-600 dark:text-stone-400 text-xs sm:text-sm mb-3 leading-relaxed">Iscas de frango enroladas no bacon crocante, assadas na brasa.</p>
-            <div class="rounded-lg py-1.5 text-xs space-y-0.5 mb-3">
+            <h3 class="text-base sm:text-lg font-bold text-stone-900 dark:text-white mb-1 mt-1 leading-snug">Frango com Bacon</h3>
+            <p class="text-stone-600 dark:text-stone-400 text-[13px] sm:text-sm mb-3 leading-relaxed">Iscas de frango enroladas no bacon crocante, assadas na brasa.</p>
+            <div class="py-1.5 text-[13px] space-y-0.5 mb-4">
               <div class="flex justify-between font-medium text-stone-700 dark:text-stone-300"><span>Simples:</span> <strong>R$ 32,00</strong></div>
               <div class="flex justify-between font-bold text-[#b91c1c] dark:text-red-400"><span>Completo:</span> <strong>R$ 37,00</strong></div>
             </div>
           </div>
           <a href="https://wa.me/5591992910573?text=Ol%C3%A1!%20Gostaria%20de%20pedir%20o%20Frango%20com%20Bacon." target="_blank" rel="noopener noreferrer"
-             class="w-full flex items-center justify-center gap-2 bg-[#b91c1c] hover:bg-[#991b1b] text-white font-semibold py-2.5 rounded-lg transition text-[11px] sm:text-sm leading-tight text-center active:scale-95 shadow-sm">
+             class="w-full flex items-center justify-center gap-2 bg-[#b91c1c] hover:bg-[#991b1b] text-white font-semibold py-3 rounded-lg transition text-xs sm:text-sm active:scale-95 shadow-sm">
             <i data-lucide="shopping-bag" class="w-4 h-4"></i> Pedir Frango c/ Bacon
           </a>
         </div>
