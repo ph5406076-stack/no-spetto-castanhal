@@ -1,10 +1,104 @@
 <!DOCTYPE html>
-<html lang="pt-BR" class="scroll-smooth light">
+<html lang="pt-BR" class="scroll-smooth light no-js">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
   <title>No Spetto Espetaria | O Verdadeiro Sabor da Brasa em Castanhal</title>
   <meta name="description" content="A autêntica espetaria de Castanhal - PA. Carnes nobres na brasa, açaí do Pará com charque, salão climatizado, varanda e espaço kids para toda a família.">
+  <meta name="keywords" content="espetaria Castanhal, churrasco Castanhal, espeto na brasa, açaí com charque, restaurante Castanhal PA, No Spetto, almoço de domingo Castanhal">
+  <meta name="author" content="No Spetto Espetaria">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#b91c1c">
+  <link rel="canonical" href="https://ph5406076-stack.github.io/no-spetto-castanhal/">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="images/logo-black.png">
+  <link rel="apple-touch-icon" href="images/logo-black.png">
+
+  <!-- Geo -->
+  <meta name="geo.region" content="BR-PA">
+  <meta name="geo.placename" content="Castanhal">
+  <meta name="geo.position" content="-1.387995;-47.930492">
+  <meta name="ICBM" content="-1.387995, -47.930492">
+
+  <!-- Open Graph (WhatsApp / Facebook) -->
+  <meta property="og:type" content="restaurant.restaurant">
+  <meta property="og:site_name" content="No Spetto Espetaria">
+  <meta property="og:title" content="No Spetto Espetaria | O Verdadeiro Sabor da Brasa em Castanhal">
+  <meta property="og:description" content="Carnes nobres na brasa, açaí do Pará com charque, salão climatizado, varanda e espaço kids. A autêntica espetaria de Castanhal - PA.">
+  <meta property="og:url" content="https://ph5406076-stack.github.io/no-spetto-castanhal/">
+  <meta property="og:image" content="https://ph5406076-stack.github.io/no-spetto-castanhal/images/espetos-prato.jpg">
+  <meta property="og:image:alt" content="Espetos completos na brasa do No Spetto">
+  <meta property="og:locale" content="pt_BR">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="No Spetto Espetaria | O Verdadeiro Sabor da Brasa em Castanhal">
+  <meta name="twitter:description" content="Carnes nobres na brasa, açaí do Pará com charque, salão climatizado e espaço kids em Castanhal - PA.">
+  <meta name="twitter:image" content="https://ph5406076-stack.github.io/no-spetto-castanhal/images/espetos-prato.jpg">
+
+  <!-- Evita flash de tema (FOUC) antes do carregamento do JS -->
+  <script>
+    (function () {
+      var el = document.documentElement;
+      el.classList.remove('no-js');
+      try {
+        var t = localStorage.getItem('nospetto_theme');
+        if (t === 'dark') { el.classList.add('dark'); el.classList.remove('light'); }
+        else { el.classList.add('light'); el.classList.remove('dark'); }
+      } catch (e) {}
+    })();
+  </script>
+
+  <!-- Dados estruturados: Restaurante (Google / rich results) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Restaurant",
+    "name": "No Spetto Espetaria",
+    "description": "A autêntica espetaria de Castanhal - PA. Carnes nobres na brasa, açaí do Pará com charque, salão climatizado, varanda e espaço kids para toda a família.",
+    "servesCuisine": ["Churrasco", "Brasileira", "Regional Paraense"],
+    "priceRange": "$$",
+    "url": "https://ph5406076-stack.github.io/no-spetto-castanhal/",
+    "image": "https://ph5406076-stack.github.io/no-spetto-castanhal/images/espetos-prato.jpg",
+    "telephone": "+55-91-99291-0573",
+    "acceptsReservations": "True",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Tv. Mil Novecentos e Sessenta e Três, 2703 - Bairro Estrela",
+      "addressLocality": "Castanhal",
+      "addressRegion": "PA",
+      "postalCode": "68742-238",
+      "addressCountry": "BR"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": -1.387995,
+      "longitude": -47.930492
+    },
+    "sameAs": ["https://www.instagram.com/nospetto.castanhal/"],
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Tuesday", "Wednesday", "Thursday", "Friday"],
+        "opens": "11:00",
+        "closes": "15:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Tuesday", "Wednesday", "Thursday", "Friday"],
+        "opens": "18:00",
+        "closes": "22:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Saturday", "Sunday"],
+        "opens": "11:00",
+        "closes": "15:00"
+      }
+    ]
+  }
+  </script>
 
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -41,8 +135,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <!-- Lucide Icons -->
-  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Lucide Icons (versão fixada para não quebrar sem aviso) -->
+  <script src="https://unpkg.com/lucide@0.544.0/dist/umd/lucide.min.js"></script>
 
   <style>
     .font-serif-title { font-family: 'Playfair Display', serif; }
@@ -64,6 +158,16 @@
       width: 100%;
       -webkit-tap-highlight-color: transparent;
     }
+
+    /* Respeita usuários que pediram menos animação no sistema */
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+      * { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
+      html { scroll-behavior: auto !important; }
+    }
+
+    /* Fallback: se o JS não rodar, o conteúdo continua visível */
+    .no-js .reveal { opacity: 1; transform: none; }
   </style>
 </head>
 
@@ -102,7 +206,7 @@
       
       <!-- LOGO OFICIAL (TROCA AUTOMÁTICA CLARO / ESCURO) -->
       <a href="#" class="flex items-center gap-3 group py-2">
-        <img id="site-logo" src="images/logo-black.png" alt="No Spetto Espetaria" class="h-12 sm:h-16 w-auto object-contain transition-transform group-hover:scale-105">
+        <img id="site-logo" src="images/logo-black.png" alt="No Spetto Espetaria" width="1024" height="512" fetchpriority="high" class="h-12 sm:h-16 w-auto object-contain transition-transform group-hover:scale-105">
       </a>
 
       <!-- MENU DESKTOP -->
@@ -134,7 +238,7 @@
         </a>
 
         <!-- Botão Mobile -->
-        <button id="mobile-menu-btn" class="md:hidden p-2.5 text-stone-700 dark:text-stone-200 hover:text-black dark:hover:text-white rounded-xl bg-stone-100 dark:bg-white/[0.05] border border-stone-200 dark:border-white/[0.1]" aria-label="Abrir Menu">
+        <button id="mobile-menu-btn" class="md:hidden p-2.5 text-stone-700 dark:text-stone-200 hover:text-black dark:hover:text-white rounded-xl bg-stone-100 dark:bg-white/[0.05] border border-stone-200 dark:border-white/[0.1]" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobile-menu">
           <i data-lucide="menu" class="w-5 h-5"></i>
         </button>
       </div>
@@ -211,7 +315,7 @@
         <!-- Foto Gastronômica Destaque -->
         <div class="lg:col-span-5 relative mt-4 lg:mt-0 reveal">
           <div class="relative mx-auto max-w-sm sm:max-w-md rounded-lg overflow-hidden shadow-2xl border border-stone-200 dark:border-white/10">
-            <img src="images/espetos-prato.png" alt="Churrasco No Spetto" class="w-full h-72 sm:h-96 object-cover">
+            <img src="images/espetos-prato.jpg" alt="Espetos completos na brasa do No Spetto" width="667" height="1000" fetchpriority="high" class="w-full h-72 sm:h-96 object-cover">
             <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/95 via-black/60 to-transparent p-5 sm:p-6 text-white">
               <span class="text-xs font-bold uppercase tracking-widest text-[#c5a880]">Espetos Completos</span>
               <p class="text-xs sm:text-sm font-medium text-stone-200 mt-1 leading-snug">Com Baião de Dois, Farofa da Casa, Vinagrete e Fritas ou Macaxeira na Manteiga.</p>
@@ -258,14 +362,14 @@
             <div class="bg-red-50 dark:bg-red-950/30 p-3.5 rounded-xl border border-red-200 dark:border-red-900/40">
               <span class="font-bold text-[#b91c1c] dark:text-red-400 block mb-1">Sábado e Domingo:</span>
               <p class="text-[#b91c1c] dark:text-red-300 font-bold">11:00 às 15:00</p>
-              <span class="text-[10px] text-stone-500 dark:text-stone-400">Almoço especial em família</span>
+              <span class="text-[11px] text-stone-500 dark:text-stone-400">Almoço especial em família</span>
             </div>
 
             <!-- Segunda -->
             <div class="bg-white dark:bg-[#100d0b] p-3.5 rounded-xl border border-stone-200 dark:border-white/[0.06]">
               <span class="font-bold text-stone-500 block mb-1">Segunda-feira:</span>
               <p class="text-stone-400 font-medium">Fechado</p>
-              <span class="text-[10px] text-stone-400">Descanso da equipe</span>
+              <span class="text-[11px] text-stone-400">Descanso da equipe</span>
             </div>
 
           </div>
@@ -282,9 +386,9 @@
     
     <!-- Background Ambiente Dinâmico -->
     <div class="absolute inset-0 overflow-hidden pointer-events-none z-0">
-      <img id="bg-ambience-img" src="images/espetos-prato.png" alt="Ambience background"
+      <img id="bg-ambience-img" src="images/espetos-prato.jpg" alt="" aria-hidden="true" loading="lazy"
            class="w-full h-full object-cover filter brightness-[0.15] blur-[32px] sm:blur-[44px] scale-110 transition-all duration-1000">
-      <div class="absolute inset-0 bg-radial-gradient from-black/40 via-[#120f0e]/85 to-[#120f0e]"></div>
+      <div class="absolute inset-0" style="background: radial-gradient(circle at center, rgba(0,0,0,0.4) 0%, rgba(18,15,14,0.85) 55%, #120f0e 100%);"></div>
     </div>
 
     <div class="relative w-full max-w-5xl mx-auto px-4 z-10 flex flex-col items-center reveal">
@@ -304,6 +408,12 @@
         <p class="text-stone-400 text-xs sm:text-sm mt-1 max-w-md mx-auto">
           Arraste com o dedo ou use as setas para sentir o clima da nossa grelha.
         </p>
+        <button id="coverflow-autoplay-btn" onclick="toggleCoverflowAutoplay()" type="button"
+                class="mt-3 inline-flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-wider text-stone-400 hover:text-white border border-white/15 hover:border-white/30 rounded-full px-3 py-1.5 transition"
+                aria-label="Pausar ou retomar a passagem automática de imagens">
+          <i data-lucide="pause" class="w-3.5 h-3.5"></i>
+          <span id="coverflow-autoplay-label">Pausar</span>
+        </button>
       </div>
 
       <!-- Palco 3D do Coverflow Responsivo -->
@@ -312,7 +422,7 @@
         <!-- SLIDE 0: Picanha na Brasa -->
         <div class="coverflow-slide" data-index="0" onclick="handleSlideClick(0)"
              style="position: absolute; width: 260px; height: 380px; border-radius: 20px; overflow: hidden; background-color: #171311; border: 1px solid rgba(255,255,255,0.15); cursor: pointer; transition: all 700ms cubic-bezier(0.25, 1, 0.5, 1);">
-          <img src="images/espetos-prato.png" alt="Picanha na Brasa" class="absolute inset-0 w-full h-full object-cover">
+          <img src="images/espetos-prato.jpg" alt="Picanha na brasa" width="667" height="1000" loading="lazy" class="absolute inset-0 w-full h-full object-cover">
           <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/30 to-transparent z-10 pointer-events-none"></div>
           <div class="coverflow-content relative w-full h-full p-5 flex flex-col justify-end text-center z-20 transition-all duration-400">
             <p class="text-xs sm:text-sm text-stone-100 font-serif-title italic leading-relaxed drop-shadow-md">
@@ -324,7 +434,7 @@
         <!-- SLIDE 1: Linguiça Artesanal Fatiada -->
         <div class="coverflow-slide" data-index="1" onclick="handleSlideClick(1)"
              style="position: absolute; width: 260px; height: 380px; border-radius: 20px; overflow: hidden; background-color: #171311; border: 1px solid rgba(255,255,255,0.15); cursor: pointer; transition: all 700ms cubic-bezier(0.25, 1, 0.5, 1);">
-          <img src="images/linguica-corte.png" alt="Linguiça com Queijo Coalho" class="absolute inset-0 w-full h-full object-cover">
+          <img src="images/linguica-corte.jpg" alt="Linguiça artesanal com queijo coalho" width="667" height="1000" loading="lazy" class="absolute inset-0 w-full h-full object-cover">
           <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/30 to-transparent z-10 pointer-events-none"></div>
           <div class="coverflow-content relative w-full h-full p-5 flex flex-col justify-end text-center z-20 transition-all duration-400">
             <p class="text-xs sm:text-sm text-stone-100 font-serif-title italic leading-relaxed drop-shadow-md">
@@ -336,7 +446,7 @@
         <!-- SLIDE 2: Pão de Alho Dourado na Grelha -->
         <div class="coverflow-slide" data-index="2" onclick="handleSlideClick(2)"
              style="position: absolute; width: 260px; height: 380px; border-radius: 20px; overflow: hidden; background-color: #171311; border: 1px solid rgba(255,255,255,0.15); cursor: pointer; transition: all 700ms cubic-bezier(0.25, 1, 0.5, 1);">
-          <img src="images/grelha-pao-alho.jpg" alt="Pão de Alho na Brasa" class="absolute inset-0 w-full h-full object-cover">
+          <img src="images/grelha-pao-alho.jpg" alt="Pão de alho dourado na grelha" width="682" height="1024" loading="lazy" class="absolute inset-0 w-full h-full object-cover">
           <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/30 to-transparent z-10 pointer-events-none"></div>
           <div class="coverflow-content relative w-full h-full p-5 flex flex-col justify-end text-center z-20 transition-all duration-400">
             <p class="text-xs sm:text-sm text-stone-100 font-serif-title italic leading-relaxed drop-shadow-md">
@@ -348,7 +458,7 @@
         <!-- SLIDE 3: Espetos de Frango e Coração -->
         <div class="coverflow-slide" data-index="3" onclick="handleSlideClick(3)"
              style="position: absolute; width: 260px; height: 380px; border-radius: 20px; overflow: hidden; background-color: #171311; border: 1px solid rgba(255,255,255,0.15); cursor: pointer; transition: all 700ms cubic-bezier(0.25, 1, 0.5, 1);">
-          <img src="images/espetos-brasa.jpg" alt="Churrasco de Frango" class="absolute inset-0 w-full h-full object-cover">
+          <img src="images/espetos-brasa.jpg" alt="Espetos de frango e coração na brasa" width="680" height="1020" loading="lazy" class="absolute inset-0 w-full h-full object-cover">
           <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/30 to-transparent z-10 pointer-events-none"></div>
           <div class="coverflow-content relative w-full h-full p-5 flex flex-col justify-end text-center z-20 transition-all duration-400">
             <p class="text-xs sm:text-sm text-stone-100 font-serif-title italic leading-relaxed drop-shadow-md">
@@ -360,7 +470,7 @@
         <!-- SLIDE 4: Fachada Noturna -->
         <div class="coverflow-slide" data-index="4" onclick="handleSlideClick(4)"
              style="position: absolute; width: 260px; height: 380px; border-radius: 20px; overflow: hidden; background-color: #171311; border: 1px solid rgba(255,255,255,0.15); cursor: pointer; transition: all 700ms cubic-bezier(0.25, 1, 0.5, 1);">
-          <img src="images/fachada.png" alt="Fachada No Spetto" class="absolute inset-0 w-full h-full object-cover">
+          <img src="images/fachada.jpg" alt="Fachada noturna do No Spetto em Castanhal" width="667" height="1000" loading="lazy" class="absolute inset-0 w-full h-full object-cover">
           <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/30 to-transparent z-10 pointer-events-none"></div>
           <div class="coverflow-content relative w-full h-full p-5 flex flex-col justify-end text-center z-20 transition-all duration-400">
             <p class="text-xs sm:text-sm text-stone-100 font-serif-title italic leading-relaxed drop-shadow-md">
@@ -443,19 +553,19 @@
       <!-- Barra de Pesquisa -->
       <div class="max-w-md mx-auto mb-8 relative reveal">
         <i data-lucide="search" class="w-4 h-4 text-stone-400 absolute left-4 top-1/2 -translate-y-1/2"></i>
-        <input type="text" id="menu-search" oninput="searchMenu()" placeholder="Buscar prato (ex: picanha, açaí, charque, chopp...)" 
+        <input type="text" id="menu-search" oninput="applyMenuFilters()" placeholder="Buscar prato (ex: picanha, açaí, charque, chopp...)" aria-label="Buscar prato no cardápio"
                class="w-full bg-white dark:bg-[#181412] border border-stone-300 dark:border-white/[0.1] text-stone-900 dark:text-white rounded-xl pl-11 pr-4 py-3 text-xs sm:text-sm focus:outline-none focus:border-[#b91c1c] shadow-sm transition">
       </div>
 
       <!-- Filtros de Categorias com Vermelho -->
       <div class="flex flex-wrap justify-center gap-2 mb-10" id="category-buttons">
-        <button onclick="filterCategory('todos')" class="cat-btn active px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-[#b91c1c] text-white transition shadow-sm">Todos</button>
-        <button onclick="filterCategory('carnes')" class="cat-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-white dark:bg-[#181412] text-stone-700 dark:text-stone-300 border border-stone-300 dark:border-white/[0.1] hover:border-[#b91c1c] transition">🥩 Carnes na Brasa</button>
-        <button onclick="filterCategory('frango')" class="cat-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-white dark:bg-[#181412] text-stone-700 dark:text-stone-300 border border-stone-300 dark:border-white/[0.1] hover:border-[#b91c1c] transition">🍗 Frango & Coração</button>
-        <button onclick="filterCategory('entradas')" class="cat-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-white dark:bg-[#181412] text-stone-700 dark:text-stone-300 border border-stone-300 dark:border-white/[0.1] hover:border-[#b91c1c] transition">🍟 Petiscos & Entradas</button>
-        <button onclick="filterCategory('acai')" class="cat-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-white dark:bg-[#181412] text-stone-700 dark:text-stone-300 border border-stone-300 dark:border-white/[0.1] hover:border-[#b91c1c] transition">🥣 Açaí do Pará</button>
-        <button onclick="filterCategory('acompanhamentos')" class="cat-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-white dark:bg-[#181412] text-stone-700 dark:text-stone-300 border border-stone-300 dark:border-white/[0.1] hover:border-[#b91c1c] transition">🍚 Guarnições</button>
-        <button onclick="filterCategory('bebidas')" class="cat-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-white dark:bg-[#181412] text-stone-700 dark:text-stone-300 border border-stone-300 dark:border-white/[0.1] hover:border-[#b91c1c] transition">🍺 Chopp & Bebidas</button>
+        <button type="button" data-cat="todos" onclick="filterCategory('todos', this)" class="cat-btn active px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-[#b91c1c] text-white transition shadow-sm">Todos</button>
+        <button type="button" data-cat="carnes" onclick="filterCategory('carnes', this)" class="cat-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-white dark:bg-[#181412] text-stone-700 dark:text-stone-300 border border-stone-300 dark:border-white/[0.1] hover:border-[#b91c1c] transition">🥩 Carnes na Brasa</button>
+        <button type="button" data-cat="frango" onclick="filterCategory('frango', this)" class="cat-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-white dark:bg-[#181412] text-stone-700 dark:text-stone-300 border border-stone-300 dark:border-white/[0.1] hover:border-[#b91c1c] transition">🍗 Frango &amp; Coração</button>
+        <button type="button" data-cat="entradas" onclick="filterCategory('entradas', this)" class="cat-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-white dark:bg-[#181412] text-stone-700 dark:text-stone-300 border border-stone-300 dark:border-white/[0.1] hover:border-[#b91c1c] transition">🍟 Petiscos &amp; Entradas</button>
+        <button type="button" data-cat="acai" onclick="filterCategory('acai', this)" class="cat-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-white dark:bg-[#181412] text-stone-700 dark:text-stone-300 border border-stone-300 dark:border-white/[0.1] hover:border-[#b91c1c] transition">🥣 Açaí do Pará</button>
+        <button type="button" data-cat="bebidas" onclick="filterCategory('bebidas', this)" class="cat-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-white dark:bg-[#181412] text-stone-700 dark:text-stone-300 border border-stone-300 dark:border-white/[0.1] hover:border-[#b91c1c] transition">🍺 Chopp &amp; Bebidas</button>
+        <button type="button" data-cat="sobremesas" onclick="filterCategory('sobremesas', this)" class="cat-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-white dark:bg-[#181412] text-stone-700 dark:text-stone-300 border border-stone-300 dark:border-white/[0.1] hover:border-[#b91c1c] transition">🍮 Sobremesas</button>
       </div>
 
       <!-- Grid do Cardápio -->
@@ -670,7 +780,95 @@
           </a>
         </div>
 
+        <!-- FILÉ MIGNON AO ALHO -->
+        <div class="menu-card carnes bg-white dark:bg-[#181412] border border-stone-200 dark:border-white/[0.08] hover:border-[#b91c1c] rounded-2xl p-5 flex flex-col justify-between shadow-sm hover:shadow-md transition">
+          <div>
+            <span class="text-[11px] font-bold text-stone-600 dark:text-stone-400">Corte Macio</span>
+            <h3 class="text-lg font-bold text-stone-900 dark:text-white mb-1 mt-1">Filé Mignon ao Alho</h3>
+            <p class="text-stone-600 dark:text-stone-400 text-xs sm:text-sm mb-4 leading-relaxed">Filé mignon grelhado na brasa com lâminas de alho douradas.</p>
+            <div class="bg-stone-50 dark:bg-[#100d0b] rounded-xl p-3 text-xs space-y-1 mb-4 border border-stone-200 dark:border-white/[0.04]">
+              <div class="flex justify-between font-medium text-stone-700 dark:text-stone-300"><span>Simples:</span> <strong>R$ 34,00</strong></div>
+              <div class="flex justify-between font-bold text-[#b91c1c] dark:text-red-400"><span>Completo:</span> <strong>R$ 39,00</strong></div>
+            </div>
+          </div>
+          <a href="https://wa.me/5591992910573?text=Ol%C3%A1!%20Gostaria%20de%20pedir%20o%20Fil%C3%A9%20Mignon%20ao%20Alho." target="_blank" rel="noopener noreferrer"
+             class="w-full flex items-center justify-center gap-2 bg-[#b91c1c] hover:bg-[#991b1b] text-white font-semibold py-2.5 rounded-xl transition text-xs sm:text-sm active:scale-95 shadow-sm">
+            <i data-lucide="shopping-bag" class="w-4 h-4"></i> Pedir Filé Mignon
+          </a>
+        </div>
+
+        <!-- PANCETA SUÍNA -->
+        <div class="menu-card carnes bg-white dark:bg-[#181412] border border-stone-200 dark:border-white/[0.08] hover:border-[#b91c1c] rounded-2xl p-5 flex flex-col justify-between shadow-sm hover:shadow-md transition">
+          <div>
+            <span class="text-[11px] font-bold text-stone-600 dark:text-stone-400">Suíno na Brasa</span>
+            <h3 class="text-lg font-bold text-stone-900 dark:text-white mb-1 mt-1">Panceta Suína Crocante</h3>
+            <p class="text-stone-600 dark:text-stone-400 text-xs sm:text-sm mb-4 leading-relaxed">Barriga de porco assada na brasa, macia por dentro e crocante por fora.</p>
+            <div class="bg-stone-50 dark:bg-[#100d0b] rounded-xl p-3 text-xs space-y-1 mb-4 border border-stone-200 dark:border-white/[0.04]">
+              <div class="flex justify-between font-medium text-stone-700 dark:text-stone-300"><span>Simples:</span> <strong>R$ 18,00</strong></div>
+              <div class="flex justify-between font-bold text-[#b91c1c] dark:text-red-400"><span>Completo:</span> <strong>R$ 30,00</strong></div>
+            </div>
+          </div>
+          <a href="https://wa.me/5591992910573?text=Ol%C3%A1!%20Gostaria%20de%20pedir%20a%20Panceta%20Su%C3%ADna." target="_blank" rel="noopener noreferrer"
+             class="w-full flex items-center justify-center gap-2 bg-[#b91c1c] hover:bg-[#991b1b] text-white font-semibold py-2.5 rounded-xl transition text-xs sm:text-sm active:scale-95 shadow-sm">
+            <i data-lucide="shopping-bag" class="w-4 h-4"></i> Pedir Panceta
+          </a>
+        </div>
+
+        <!-- FILÉ DE FRANGO NA BRASA -->
+        <div class="menu-card frango bg-white dark:bg-[#181412] border border-stone-200 dark:border-white/[0.08] hover:border-[#b91c1c] rounded-2xl p-5 flex flex-col justify-between shadow-sm hover:shadow-md transition">
+          <div>
+            <h3 class="text-lg font-bold text-stone-900 dark:text-white mb-1">Filé de Frango na Brasa</h3>
+            <p class="text-stone-600 dark:text-stone-400 text-xs sm:text-sm mb-4 leading-relaxed">Peito de frango suculento, temperado e grelhado no ponto.</p>
+            <div class="bg-stone-50 dark:bg-[#100d0b] rounded-xl p-3 text-xs space-y-1 mb-4 border border-stone-200 dark:border-white/[0.04]">
+              <div class="flex justify-between font-medium text-stone-700 dark:text-stone-300"><span>Simples:</span> <strong>R$ 18,00</strong></div>
+              <div class="flex justify-between font-bold text-[#b91c1c] dark:text-red-400"><span>Completo:</span> <strong>R$ 30,00</strong></div>
+            </div>
+          </div>
+          <a href="https://wa.me/5591992910573?text=Ol%C3%A1!%20Gostaria%20de%20pedir%20o%20Fil%C3%A9%20de%20Frango%20na%20Brasa." target="_blank" rel="noopener noreferrer"
+             class="w-full flex items-center justify-center gap-2 bg-stone-800 hover:bg-[#b91c1c] text-white font-semibold py-2.5 rounded-xl transition text-xs sm:text-sm active:scale-95">
+            <i data-lucide="shopping-bag" class="w-4 h-4"></i> Pedir Filé de Frango
+          </a>
+        </div>
+
+        <!-- TULIPA CROCANTE -->
+        <div class="menu-card frango bg-white dark:bg-[#181412] border border-stone-200 dark:border-white/[0.08] hover:border-[#b91c1c] rounded-2xl p-5 flex flex-col justify-between shadow-sm hover:shadow-md transition">
+          <div>
+            <h3 class="text-lg font-bold text-stone-900 dark:text-white mb-1">Tulipa Crocante</h3>
+            <p class="text-stone-600 dark:text-stone-400 text-xs sm:text-sm mb-4 leading-relaxed">Tulipa de frango dourada e crocante, no capricho da brasa.</p>
+            <div class="bg-stone-50 dark:bg-[#100d0b] rounded-xl p-3 text-xs space-y-1 mb-4 border border-stone-200 dark:border-white/[0.04]">
+              <div class="flex justify-between font-medium text-stone-700 dark:text-stone-300"><span>Simples:</span> <strong>R$ 28,00</strong></div>
+              <div class="flex justify-between font-bold text-[#b91c1c] dark:text-red-400"><span>Completo:</span> <strong>R$ 33,00</strong></div>
+            </div>
+          </div>
+          <a href="https://wa.me/5591992910573?text=Ol%C3%A1!%20Gostaria%20de%20pedir%20a%20Tulipa%20Crocante." target="_blank" rel="noopener noreferrer"
+             class="w-full flex items-center justify-center gap-2 bg-stone-800 hover:bg-[#b91c1c] text-white font-semibold py-2.5 rounded-xl transition text-xs sm:text-sm active:scale-95">
+            <i data-lucide="shopping-bag" class="w-4 h-4"></i> Pedir Tulipa
+          </a>
+        </div>
+
+        <!-- FRANGO COM BACON -->
+        <div class="menu-card frango bg-white dark:bg-[#181412] border border-stone-200 dark:border-white/[0.08] hover:border-[#b91c1c] rounded-2xl p-5 flex flex-col justify-between shadow-sm hover:shadow-md transition">
+          <div>
+            <span class="text-[11px] font-bold text-amber-800 bg-amber-50 dark:bg-amber-950/40 px-2 py-0.5 rounded border border-amber-200 dark:border-amber-800/40">Combinação Certeira</span>
+            <h3 class="text-lg font-bold text-stone-900 dark:text-white mb-1 mt-1">Frango com Bacon</h3>
+            <p class="text-stone-600 dark:text-stone-400 text-xs sm:text-sm mb-4 leading-relaxed">Iscas de frango enroladas no bacon crocante, assadas na brasa.</p>
+            <div class="bg-stone-50 dark:bg-[#100d0b] rounded-xl p-3 text-xs space-y-1 mb-4 border border-stone-200 dark:border-white/[0.04]">
+              <div class="flex justify-between font-medium text-stone-700 dark:text-stone-300"><span>Simples:</span> <strong>R$ 32,00</strong></div>
+              <div class="flex justify-between font-bold text-[#b91c1c] dark:text-red-400"><span>Completo:</span> <strong>R$ 37,00</strong></div>
+            </div>
+          </div>
+          <a href="https://wa.me/5591992910573?text=Ol%C3%A1!%20Gostaria%20de%20pedir%20o%20Frango%20com%20Bacon." target="_blank" rel="noopener noreferrer"
+             class="w-full flex items-center justify-center gap-2 bg-[#b91c1c] hover:bg-[#991b1b] text-white font-semibold py-2.5 rounded-xl transition text-xs sm:text-sm active:scale-95 shadow-sm">
+            <i data-lucide="shopping-bag" class="w-4 h-4"></i> Pedir Frango c/ Bacon
+          </a>
+        </div>
+
       </div>
+
+      <!-- Estado vazio da busca / filtro -->
+      <p id="menu-empty" class="hidden text-center text-stone-500 dark:text-stone-400 text-sm mt-10">
+        Nenhum prato encontrado com esse filtro. <button type="button" onclick="resetMenuFilters()" class="text-[#b91c1c] dark:text-red-400 font-semibold underline">Limpar busca</button>
+      </p>
 
     </div>
   </section>
@@ -706,7 +904,7 @@
                 <input type="radio" name="tipo_atendimento" value="Reservar Mesa no Restaurante" checked class="accent-[#b91c1c]">
                 <div>
                   <p class="text-xs font-bold text-stone-900 dark:text-white">🍽️ Reservar Mesa</p>
-                  <p class="text-[10px] text-stone-500">Garantir mesa com antecedência</p>
+                  <p class="text-[11px] text-stone-500">Garantir mesa com antecedência</p>
                 </div>
               </label>
 
@@ -714,7 +912,7 @@
                 <input type="radio" name="tipo_atendimento" value="Fazer Pedido / Delivery" class="accent-[#b91c1c]">
                 <div>
                   <p class="text-xs font-bold text-stone-700 dark:text-stone-300">🛵 Pedido / Delivery</p>
-                  <p class="text-[10px] text-stone-400">Entrega rápida ou retirada</p>
+                  <p class="text-[11px] text-stone-400">Entrega rápida ou retirada</p>
                 </div>
               </label>
 
@@ -722,7 +920,7 @@
                 <input type="radio" name="tipo_atendimento" value="Reservar Mesa & Já Adiantar os Pratos" class="accent-[#b91c1c]">
                 <div>
                   <p class="text-xs font-bold text-stone-700 dark:text-stone-300">🥩 Mesa + Pratos Prontos</p>
-                  <p class="text-[10px] text-stone-400">Chegar e já encontrar na brasa</p>
+                  <p class="text-[11px] text-stone-400">Chegar e já encontrar na brasa</p>
                 </div>
               </label>
             </div>
@@ -736,14 +934,22 @@
 
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label class="block text-xs font-semibold text-stone-700 dark:text-stone-300 mb-1">Seu Nome Completo:</label>
-                <input type="text" id="res-nome" required placeholder="Ex: Carlos Silva" 
+                <label for="res-nome" class="block text-xs font-semibold text-stone-700 dark:text-stone-300 mb-1">Seu Nome Completo:</label>
+                <input type="text" id="res-nome" name="res-nome" required autocomplete="name" placeholder="Ex: Carlos Silva"
                        class="w-full bg-white dark:bg-[#181412] border border-stone-300 dark:border-white/[0.1] text-stone-900 dark:text-white rounded-xl px-3.5 py-2.5 text-xs sm:text-sm focus:outline-none focus:border-[#b91c1c]">
               </div>
 
               <div>
-                <label class="block text-xs font-semibold text-stone-700 dark:text-stone-300 mb-1">Quantas Pessoas virão?</label>
-                <select id="res-pessoas" class="w-full bg-white dark:bg-[#181412] border border-stone-300 dark:border-white/[0.1] text-stone-900 dark:text-white rounded-xl px-3.5 py-2.5 text-xs sm:text-sm focus:outline-none focus:border-[#b91c1c]">
+                <label for="res-telefone" class="block text-xs font-semibold text-stone-700 dark:text-stone-300 mb-1">Seu WhatsApp / Telefone:</label>
+                <input type="tel" id="res-telefone" name="res-telefone" inputmode="tel" autocomplete="tel" placeholder="(91) 9 0000-0000"
+                       class="w-full bg-white dark:bg-[#181412] border border-stone-300 dark:border-white/[0.1] text-stone-900 dark:text-white rounded-xl px-3.5 py-2.5 text-xs sm:text-sm focus:outline-none focus:border-[#b91c1c]">
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label for="res-pessoas" class="block text-xs font-semibold text-stone-700 dark:text-stone-300 mb-1">Quantas Pessoas virão?</label>
+                <select id="res-pessoas" name="res-pessoas" class="w-full bg-white dark:bg-[#181412] border border-stone-300 dark:border-white/[0.1] text-stone-900 dark:text-white rounded-xl px-3.5 py-2.5 text-xs sm:text-sm focus:outline-none focus:border-[#b91c1c]">
                   <option value="Casal (2 pessoas)">Casal (2 pessoas)</option>
                   <option value="Família (3 a 5 pessoas)">Família (3 a 5 pessoas)</option>
                   <option value="Grupo / Amigos (6 a 10 pessoas)">Grupo / Amigos (6 a 10 pessoas)</option>
@@ -755,15 +961,15 @@
 
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label class="block text-xs font-semibold text-stone-700 dark:text-stone-300 mb-1">Data & Horário Desejado:</label>
-                <input type="text" id="res-horario" required placeholder="Ex: Domingo às 12:30 ou Hoje às 20h" 
+                <label for="res-horario" class="block text-xs font-semibold text-stone-700 dark:text-stone-300 mb-1">Data & Horário Desejado:</label>
+                <input type="text" id="res-horario" name="res-horario" required placeholder="Ex: Domingo às 12:30 ou Hoje às 20h"
                        class="w-full bg-white dark:bg-[#181412] border border-stone-300 dark:border-white/[0.1] text-stone-900 dark:text-white rounded-xl px-3.5 py-2.5 text-xs sm:text-sm focus:outline-none focus:border-[#b91c1c]">
-                <span class="text-[10px] text-stone-500 mt-1 block">Atendimento: Ter-Sex (11h-15h e 18h-22h) | Sáb-Dom (11h-15h)</span>
+                <span class="text-[11px] text-stone-500 mt-1 block">Atendimento: Ter-Sex (11h-15h e 18h-22h) | Sáb-Dom (11h-15h)</span>
               </div>
 
               <div>
-                <label class="block text-xs font-semibold text-stone-700 dark:text-stone-300 mb-1">Ambiente de Preferência:</label>
-                <select id="res-ambiente" class="w-full bg-white dark:bg-[#181412] border border-stone-300 dark:border-white/[0.1] text-stone-900 dark:text-white rounded-xl px-3.5 py-2.5 text-xs sm:text-sm focus:outline-none focus:border-[#b91c1c]">
+                <label for="res-ambiente" class="block text-xs font-semibold text-stone-700 dark:text-stone-300 mb-1">Ambiente de Preferência:</label>
+                <select id="res-ambiente" name="res-ambiente" class="w-full bg-white dark:bg-[#181412] border border-stone-300 dark:border-white/[0.1] text-stone-900 dark:text-white rounded-xl px-3.5 py-2.5 text-xs sm:text-sm focus:outline-none focus:border-[#b91c1c]">
                   <option value="Salão Interno Climatizado (com Ar-Condicionado)">❄️ Salão Interno Climatizado</option>
                   <option value="Varanda Externa ao Ar Livre">🌿 Varanda Externa ao Ar Livre</option>
                   <option value="Mesa Próxima ao Espaço Kids (Família com Crianças)">🧸 Mesa Próxima ao Espaço Kids</option>
@@ -780,7 +986,8 @@
             </label>
 
             <div>
-              <select id="carne-select" class="w-full bg-white dark:bg-[#181412] border border-stone-300 dark:border-white/[0.1] text-stone-900 dark:text-white rounded-xl p-3 text-xs sm:text-sm focus:outline-none focus:border-[#b91c1c]">
+              <label for="carne-select" class="sr-only">Escolha o corte principal</label>
+              <select id="carne-select" name="carne-select" onchange="updateEstimate()" class="w-full bg-white dark:bg-[#181412] border border-stone-300 dark:border-white/[0.1] text-stone-900 dark:text-white rounded-xl p-3 text-xs sm:text-sm focus:outline-none focus:border-[#b91c1c]">
                 <option value="Nenhum (vou escolher no restaurante)">Nenhum (vou escolher no restaurante)</option>
                 <option value="Picanha na Brasa">Picanha na Brasa (Simples R$39 | Completo R$45)</option>
                 <option value="Contra Filé na Brasa">Contra Filé na Brasa (Simples R$32 | Completo R$37)</option>
@@ -803,10 +1010,10 @@
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <label class="cursor-pointer border-2 border-[#b91c1c] bg-red-50/60 dark:bg-red-950/30 p-3 rounded-xl flex items-center justify-between transition">
                   <div class="flex items-center gap-2.5">
-                    <input type="radio" name="tipo_prato" value="Completo" checked class="accent-[#b91c1c]" onchange="toggleGuarnicoes(true)">
+                    <input type="radio" name="tipo_prato" value="Completo" checked class="accent-[#b91c1c]" onchange="toggleGuarnicoes(true); updateEstimate()">
                     <div>
                       <p class="text-xs font-bold text-stone-900 dark:text-white">Espeto Completo</p>
-                      <p class="text-[10px] text-stone-500">Com arroz, farofa, vinagrete e batata/macaxeira</p>
+                      <p class="text-[11px] text-stone-500">Com arroz, farofa, vinagrete e batata/macaxeira</p>
                     </div>
                   </div>
                   <span class="text-[#b91c1c] dark:text-red-400 font-bold text-xs">Mais Farto</span>
@@ -814,10 +1021,10 @@
 
                 <label class="cursor-pointer border border-stone-300 dark:border-white/[0.08] bg-white dark:bg-[#14100e] p-3 rounded-xl flex items-center justify-between transition">
                   <div class="flex items-center gap-2.5">
-                    <input type="radio" name="tipo_prato" value="Simples" class="accent-[#b91c1c]" onchange="toggleGuarnicoes(false)">
+                    <input type="radio" name="tipo_prato" value="Simples" class="accent-[#b91c1c]" onchange="toggleGuarnicoes(false); updateEstimate()">
                     <div>
                       <p class="text-xs font-bold text-stone-700 dark:text-stone-300">Espeto Simples</p>
-                      <p class="text-[10px] text-stone-500">Apenas a carne grelhada</p>
+                      <p class="text-[11px] text-stone-500">Apenas a carne grelhada</p>
                     </div>
                   </div>
                   <span class="text-stone-400 font-medium text-xs">Individual</span>
@@ -870,8 +1077,18 @@
             <label class="block text-xs font-bold uppercase tracking-wider text-[#b91c1c] dark:text-red-400">
               4. Deseja adicionar Petiscos, Bebidas ou Açaí? (Opcional)
             </label>
-            <input type="text" id="res-extras" placeholder="Ex: 1x Filé c/ Fritas (R$35), 2x Chopp Cabôca (R$10), 1x Açaí c/ Charque (R$40)..." 
+            <label for="res-extras" class="sr-only">Petiscos, bebidas ou açaí adicionais</label>
+            <input type="text" id="res-extras" name="res-extras" oninput="updateEstimate()" placeholder="Ex: 2x Chopp Cabôca (R$10), 1x Açaí c/ Charque (R$40)..."
                    class="w-full bg-white dark:bg-[#181412] border border-stone-300 dark:border-white/[0.1] text-stone-900 dark:text-white rounded-xl px-4 py-3 text-xs sm:text-sm focus:outline-none focus:border-[#b91c1c] transition">
+          </div>
+
+          <!-- Estimativa de valor -->
+          <div id="estimate-box" class="flex items-center justify-between gap-3 bg-[#1c1917] text-white rounded-2xl px-5 py-4 border border-white/5">
+            <div>
+              <p class="text-[11px] uppercase tracking-wider text-stone-400 font-semibold">Estimativa do pedido</p>
+              <p class="text-[11px] text-stone-400 mt-0.5">Valor de referência — a confirmação final é feita no atendimento.</p>
+            </div>
+            <span id="estimate-value" class="text-xl font-bold text-[#c5a880] whitespace-nowrap">R$ 0,00</span>
           </div>
 
           <!-- TÓPICO 5: Observações / Ocasião Especial -->
@@ -879,7 +1096,8 @@
             <label class="block text-xs font-bold uppercase tracking-wider text-stone-700 dark:text-stone-300">
               5. Ocasião Especial ou Ponto da Carne:
             </label>
-            <input type="text" id="res-obs" placeholder="Ex: Comemoração de aniversário, carne ao ponto, cadeira infantil..." 
+            <label for="res-obs" class="sr-only">Ocasião especial ou ponto da carne</label>
+            <input type="text" id="res-obs" name="res-obs" placeholder="Ex: Comemoração de aniversário, carne ao ponto, cadeira infantil..."
                    class="w-full bg-white dark:bg-[#181412] border border-stone-300 dark:border-white/[0.1] text-stone-900 dark:text-white rounded-xl px-4 py-3 text-xs sm:text-sm focus:outline-none focus:border-[#b91c1c] transition">
           </div>
 
@@ -915,9 +1133,9 @@
         <div class="bg-stone-50 dark:bg-[#14110f] border border-stone-200 dark:border-white/[0.08] rounded-lg p-6 flex flex-col justify-between reveal shadow-sm">
           <div>
             <div class="h-44 rounded-md overflow-hidden mb-5">
-              <img src="images/foto-almoco-familia.jpg" alt="Salão Climatizado" class="w-full h-full object-cover">
+              <img src="images/foto-almoco-familia.jpg" alt="Famílias almoçando no salão climatizado do No Spetto" width="825" height="1024" loading="lazy" class="w-full h-full object-cover">
             </div>
-            <span class="text-[10px] font-bold text-cyan-700 dark:text-cyan-400 uppercase tracking-wider">Conforto Total</span>
+            <span class="text-[11px] font-bold text-cyan-700 dark:text-cyan-400 uppercase tracking-wider">Conforto Total</span>
             <h3 class="text-xl font-bold text-stone-900 dark:text-white mt-1 mb-2">Salão Climatizado</h3>
             <p class="text-stone-600 dark:text-stone-400 text-xs sm:text-sm leading-relaxed">
               Área interna fresca com ar-condicionado, moderna e aconchegante para fugir do calor com tranquilidade.
@@ -929,9 +1147,9 @@
         <div class="bg-stone-50 dark:bg-[#14110f] border border-stone-200 dark:border-white/[0.08] rounded-lg p-6 flex flex-col justify-between reveal shadow-sm">
           <div>
             <div class="h-44 rounded-md overflow-hidden mb-5">
-              <img src="images/espetos-brasa.jpg" alt="Varanda ao Ar Livre" class="w-full h-full object-cover">
+              <img src="images/fachada.jpg" alt="Área externa do No Spetto ao ar livre" width="667" height="1000" loading="lazy" class="w-full h-full object-cover object-top">
             </div>
-            <span class="text-[10px] font-bold text-amber-700 dark:text-amber-400 uppercase tracking-wider">Descontração</span>
+            <span class="text-[11px] font-bold text-amber-700 dark:text-amber-400 uppercase tracking-wider">Descontração</span>
             <h3 class="text-xl font-bold text-stone-900 dark:text-white mt-1 mb-2">Varanda ao Ar Livre</h3>
             <p class="text-stone-600 dark:text-stone-400 text-xs sm:text-sm leading-relaxed">
               Área arejada e espaçosa, ideal para curtir a noite com amigos, boa música e chopp trincando.
@@ -945,7 +1163,7 @@
             <div class="h-44 bg-amber-100/60 dark:bg-[#1a1512] border border-amber-200 dark:border-white/[0.05] rounded-md mb-5 flex items-center justify-center">
               <i data-lucide="baby" class="w-14 h-14 text-amber-600 dark:text-amber-400"></i>
             </div>
-            <span class="text-[10px] font-bold text-emerald-700 dark:text-emerald-400 uppercase tracking-wider">Para a Família</span>
+            <span class="text-[11px] font-bold text-emerald-700 dark:text-emerald-400 uppercase tracking-wider">Para a Família</span>
             <h3 class="text-xl font-bold text-stone-900 dark:text-white mt-1 mb-2">Espaço Kids Seguro</h3>
             <p class="text-stone-600 dark:text-stone-400 text-xs sm:text-sm leading-relaxed">
               Espaço protegido para as crianças brincarem enquanto os pais aproveitam a refeição em paz.
@@ -1036,7 +1254,7 @@
   </section>
 
   <!-- ================= NEIGHBORHOOD SECTION: NO MESMO QUARTEIRÃO ================= -->
-  <section id="quarteirao-complexo" class="py-16 sm:py-24 bg-[#120f0e] text-white border-t border-stone-850 transition-colors duration-300">
+  <section id="quarteirao-complexo" class="py-16 sm:py-24 bg-[#120f0e] text-white border-t border-[#26211e] transition-colors duration-300">
     <div class="max-w-6xl mx-auto px-4 sm:px-6">
       
       <!-- Cabeçalho Editorial -->
@@ -1063,7 +1281,7 @@
         <div class="bg-[#181412] border border-white/5 hover:border-white/10 rounded-lg p-5 flex flex-col justify-between reveal transition duration-300">
           <div>
             <div class="h-48 rounded-md overflow-hidden mb-5 relative group">
-              <img src="images/foto-imperio-das-carnes.jpg" alt="Império das Carnes" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
+              <img src="images/foto-imperio-das-carnes.jpg" alt="Fachada do Império das Carnes" width="1024" height="771" loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
             </div>
             <h3 class="text-lg font-bold text-white mb-2">Império das Carnes</h3>
             <p class="text-stone-400 text-xs leading-relaxed mb-5">
@@ -1093,7 +1311,7 @@
           
           <div>
             <div class="h-48 rounded-md overflow-hidden mb-5 relative group">
-              <img src="images/fachada.png" alt="No Spetto Espetaria" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
+              <img src="images/fachada.jpg" alt="Fachada do No Spetto Espetaria" width="667" height="1000" loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
             </div>
             <h3 class="text-xl font-bold text-white mb-2">No Spetto Espetaria</h3>
             <p class="text-stone-300 text-xs leading-relaxed mb-5">
@@ -1118,7 +1336,7 @@
         <div class="bg-[#181412] border border-white/5 hover:border-white/10 rounded-lg p-5 flex flex-col justify-between reveal transition duration-300">
           <div>
             <div class="h-48 rounded-md overflow-hidden mb-5 relative group">
-              <img src="images/foto-imperio-acai.jpg" alt="Império do Açaí" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
+              <img src="images/foto-imperio-acai.jpg" alt="Copo de açaí do Império do Açaí" width="681" height="1024" loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
             </div>
             <h3 class="text-lg font-bold text-white mb-2">Império do Açaí</h3>
             <p class="text-stone-400 text-xs leading-relaxed mb-5">
@@ -1151,28 +1369,28 @@
       
       <div class="flex flex-col md:flex-row items-center justify-between gap-6 pb-8 border-b border-stone-800 text-center md:text-left">
         <div class="flex flex-col md:flex-row items-center gap-4">
-          <img id="footer-logo" src="images/logo.png" alt="No Spetto" class="h-10 w-auto object-contain">
+          <img id="footer-logo" src="images/logo.png" alt="No Spetto Espetaria" width="1024" height="439" loading="lazy" class="h-10 w-auto object-contain">
           <span class="hidden md:inline text-stone-700">|</span>
           <p class="text-stone-400 text-xs font-light">A autêntica espetaria de Castanhal. Carnes nobres na brasa e ambiente familiar.</p>
         </div>
 
         <div class="flex items-center gap-3">
           <a href="https://www.instagram.com/nospetto.castanhal/" target="_blank" rel="noopener noreferrer" 
-             class="p-2.5 rounded-md bg-stone-850 hover:bg-[#c5a880] hover:text-black text-stone-300 transition" aria-label="Instagram">
+             class="p-2.5 rounded-md bg-[#26211e] hover:bg-[#c5a880] hover:text-black text-stone-300 transition" aria-label="Instagram">
             <i data-lucide="instagram" class="w-4 h-4"></i>
           </a>
           <a href="https://wa.me/5591992910573" target="_blank" rel="noopener noreferrer" 
-             class="p-2.5 rounded-md bg-stone-850 hover:bg-emerald-600 text-stone-300 transition" aria-label="WhatsApp">
+             class="p-2.5 rounded-md bg-[#26211e] hover:bg-emerald-600 text-stone-300 transition" aria-label="WhatsApp">
             <i data-lucide="message-circle" class="w-4 h-4"></i>
           </a>
-          <a href="tel:91992910573" class="p-2.5 rounded-md bg-stone-850 hover:bg-stone-700 text-white transition" aria-label="Telefone">
+          <a href="tel:91992910573" class="p-2.5 rounded-md bg-[#26211e] hover:bg-stone-700 text-white transition" aria-label="Telefone">
             <i data-lucide="phone" class="w-4 h-4"></i>
           </a>
         </div>
       </div>
 
       <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px] text-stone-500 text-center sm:text-left">
-        <p>© 2026 No Spetto Espetaria • Castanhal / PA. Todos os direitos reservados.</p>
+        <p>© <span id="footer-year">2026</span> No Spetto Espetaria • Castanhal / PA. Todos os direitos reservados.</p>
         <p class="text-[#c5a880] font-semibold uppercase tracking-wider">O Verdadeiro Sabor da Brasa</p>
       </div>
 
@@ -1183,7 +1401,7 @@
   <aside aria-label="Contato rápido" class="fixed bottom-5 right-5 sm:bottom-6 sm:right-6 z-50">
     <a href="https://wa.me/5591992910573?text=Ol%C3%A1!%20Vim%20pelo%20site%20do%20No%20Spetto%20e%20gostaria%20de%20fazer%20um%20pedido%20ou%20reserva." 
        target="_blank" rel="noopener noreferrer"
-       class="flex items-center gap-2 bg-[#1c1917] hover:bg-stone-850 text-white font-bold px-4 py-3 sm:px-5 sm:py-3.5 rounded-md shadow-2xl border border-white/5 transition transform hover:scale-105 active:scale-95 group hover:border-[#c5a880]">
+       class="flex items-center gap-2 bg-[#1c1917] hover:bg-[#26211e] text-white font-bold px-4 py-3 sm:px-5 sm:py-3.5 rounded-md shadow-2xl border border-white/5 transition transform hover:scale-105 active:scale-95 group hover:border-[#c5a880]">
       <i data-lucide="message-circle" class="w-4 h-4 sm:w-5 sm:h-5 text-[#c5a880]"></i>
       <span class="hidden sm:inline text-xs">Pedir no WhatsApp</span>
     </a>
@@ -1241,34 +1459,43 @@
     const mobileBtn = document.getElementById('mobile-menu-btn');
     const mobileMenu = document.getElementById('mobile-menu');
     mobileBtn.addEventListener('click', () => {
-      mobileMenu.classList.toggle('hidden');
+      const isOpen = mobileMenu.classList.toggle('hidden') === false;
+      mobileBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
     });
 
     function closeMobileMenu() {
       mobileMenu.classList.add('hidden');
+      mobileBtn.setAttribute('aria-expanded', 'false');
     }
 
-    // ================= REVEAL MOTION EFFECTS (60 FPS NATIVO) =================
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('active');
-        }
-      });
-    }, { threshold: 0.1 });
+    // ================= REVEAL MOTION EFFECTS =================
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const revealEls = document.querySelectorAll('.reveal');
 
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    if (prefersReducedMotion || !('IntersectionObserver' in window)) {
+      revealEls.forEach(el => el.classList.add('active'));
+    } else {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+      revealEls.forEach(el => observer.observe(el));
+    }
 
     // ================= 3D COVERFLOW ENGINE ADAPTATIVO =================
     let coverflowIndex = 0;
     const totalCoverflow = 5;
     const coverflowSlides = document.querySelectorAll('.coverflow-slide');
     const coverflowImages = [
-      'images/espetos-prato.png',
-      'images/linguica-corte.png',
+      'images/espetos-prato.jpg',
+      'images/linguica-corte.jpg',
       'images/grelha-pao-alho.jpg',
       'images/espetos-brasa.jpg',
-      'images/fachada.png'
+      'images/fachada.jpg'
     ];
     let isCoverflowHovered = false;
 
@@ -1392,61 +1619,105 @@
       }, { passive: true });
     }
 
-    // Auto Play com pausa no hover
+    // ================= AUTOPLAY DO CARROSSEL (com pausa e acessibilidade) =================
     const coverflowSection = document.getElementById('destaques-3d');
+    const autoplayBtn = document.getElementById('coverflow-autoplay-btn');
+    const autoplayLabel = document.getElementById('coverflow-autoplay-label');
+    let coverflowTimer = null;
+    let coverflowPlaying = false;
+
+    function setAutoplayIcon(name) {
+      if (!autoplayBtn) return;
+      const ic = autoplayBtn.querySelector('[data-lucide]');
+      if (ic) { ic.setAttribute('data-lucide', name); lucide.createIcons(); }
+    }
+
+    function startCoverflowAutoplay() {
+      if (prefersReducedMotion || coverflowTimer) return;
+      coverflowPlaying = true;
+      coverflowTimer = setInterval(() => { if (!isCoverflowHovered) nextCoverflowSlide(); }, 5000);
+      if (autoplayLabel) autoplayLabel.textContent = 'Pausar';
+      if (autoplayBtn) autoplayBtn.setAttribute('aria-pressed', 'false');
+      setAutoplayIcon('pause');
+    }
+
+    function stopCoverflowAutoplay() {
+      clearInterval(coverflowTimer);
+      coverflowTimer = null;
+      coverflowPlaying = false;
+      if (autoplayLabel) autoplayLabel.textContent = 'Retomar';
+      if (autoplayBtn) autoplayBtn.setAttribute('aria-pressed', 'true');
+      setAutoplayIcon('play');
+    }
+
+    function toggleCoverflowAutoplay() {
+      if (coverflowPlaying) { stopCoverflowAutoplay(); coverflowUserPaused = true; }
+      else { coverflowUserPaused = false; startCoverflowAutoplay(); }
+    }
+    let coverflowUserPaused = false;
+
     if (coverflowSection) {
       coverflowSection.addEventListener('mouseenter', () => isCoverflowHovered = true);
       coverflowSection.addEventListener('mouseleave', () => isCoverflowHovered = false);
 
-      setInterval(() => {
-        if (!isCoverflowHovered) {
-          nextCoverflowSlide();
-        }
-      }, 5000);
-    }
+      if (prefersReducedMotion) {
+        if (autoplayBtn) autoplayBtn.style.display = 'none';
+      } else if ('IntersectionObserver' in window) {
+        const cfObs = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting && !coverflowUserPaused) startCoverflowAutoplay();
+            else stopCoverflowAutoplay();
+          });
+        }, { threshold: 0.25 });
+        cfObs.observe(coverflowSection);
+      } else {
+        startCoverflowAutoplay();
+      }
 
-    window.addEventListener('keydown', (e) => {
-      if (e.key === 'ArrowLeft') prevCoverflowSlide();
-      if (e.key === 'ArrowRight') nextCoverflowSlide();
-    });
+      // Setas do teclado só agem quando o foco está dentro do carrossel
+      coverflowSection.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') { e.preventDefault(); prevCoverflowSlide(); }
+        if (e.key === 'ArrowRight') { e.preventDefault(); nextCoverflowSlide(); }
+      });
+    }
 
     window.addEventListener('resize', renderCoverflow);
     renderCoverflow();
 
-    // ================= FILTROS DO CARDÁPIO =================
-    function filterCategory(cat) {
-      const cards = document.querySelectorAll('.menu-card');
-      const buttons = document.querySelectorAll('.cat-btn');
+    // ================= FILTROS + BUSCA DO CARDÁPIO (unificados) =================
+    let currentCategory = 'todos';
 
-      buttons.forEach(btn => {
-        btn.classList.remove('bg-[#b91c1c]', 'text-white', 'shadow-sm');
-        btn.classList.add('bg-white', 'dark:bg-[#181412]', 'text-stone-700', 'dark:text-stone-300');
+    function filterCategory(cat, btn) {
+      currentCategory = cat;
+      document.querySelectorAll('.cat-btn').forEach(b => {
+        b.classList.remove('bg-[#b91c1c]', 'text-white', 'shadow-sm', 'active');
+        b.classList.add('bg-white', 'dark:bg-[#181412]', 'text-stone-700', 'dark:text-stone-300', 'border', 'border-stone-300', 'dark:border-white/[0.1]');
       });
-
-      event.target.classList.remove('bg-white', 'dark:bg-[#181412]', 'text-stone-700', 'dark:text-stone-300');
-      event.target.classList.add('bg-[#b91c1c]', 'text-white', 'shadow-sm');
-
-      cards.forEach(card => {
-        if (cat === 'todos' || card.classList.contains(cat)) {
-          card.style.display = 'flex';
-        } else {
-          card.style.display = 'none';
-        }
-      });
+      const active = btn || document.querySelector('.cat-btn[data-cat="' + cat + '"]');
+      if (active) {
+        active.classList.remove('bg-white', 'dark:bg-[#181412]', 'text-stone-700', 'dark:text-stone-300', 'border', 'border-stone-300', 'dark:border-white/[0.1]');
+        active.classList.add('bg-[#b91c1c]', 'text-white', 'shadow-sm', 'active');
+      }
+      applyMenuFilters();
     }
 
-    function searchMenu() {
-      const query = document.getElementById('menu-search').value.toLowerCase();
-      const cards = document.querySelectorAll('.menu-card');
-
-      cards.forEach(card => {
-        const text = card.innerText.toLowerCase();
-        if (text.includes(query)) {
-          card.style.display = 'flex';
-        } else {
-          card.style.display = 'none';
-        }
+    function applyMenuFilters() {
+      const query = (document.getElementById('menu-search').value || '').toLowerCase().trim();
+      let visible = 0;
+      document.querySelectorAll('.menu-card').forEach(card => {
+        const matchCat = currentCategory === 'todos' || card.classList.contains(currentCategory);
+        const matchText = !query || card.innerText.toLowerCase().includes(query);
+        const show = matchCat && matchText;
+        card.style.display = show ? 'flex' : 'none';
+        if (show) visible++;
       });
+      const empty = document.getElementById('menu-empty');
+      if (empty) empty.classList.toggle('hidden', visible > 0);
+    }
+
+    function resetMenuFilters() {
+      document.getElementById('menu-search').value = '';
+      filterCategory('todos', document.querySelector('.cat-btn[data-cat="todos"]'));
     }
 
     // Alternar Guarnições no simulador
@@ -1454,6 +1725,52 @@
       const box = document.getElementById('box-acompanhamentos-simulador');
       box.style.display = isCompleto ? 'block' : 'none';
     }
+
+    // ================= ESTIMATIVA DE VALOR DO PEDIDO =================
+    const precosCarne = {
+      'Picanha na Brasa': { Simples: 39, Completo: 45 },
+      'Contra Filé na Brasa': { Simples: 32, Completo: 37 },
+      'Picanha Steak Especial': { Simples: 70, Completo: 70 },
+      'Carne de Sol Artesanal': { Simples: 34, Completo: 39 },
+      'Filé com Bacon': { Simples: 37, Completo: 42 },
+      'Filé Mignon ao Alho': { Simples: 34, Completo: 39 },
+      'Carne Tradicional': { Simples: 18, Completo: 30 },
+      'Panceta Suína Crocante': { Simples: 18, Completo: 30 },
+      'Coração de Frango': { Simples: 15, Completo: 20 },
+      'Filé de Frango na Brasa': { Simples: 18, Completo: 30 },
+      'Tulipa Crocante': { Simples: 28, Completo: 33 },
+      'Frango com Bacon': { Simples: 32, Completo: 37 }
+    };
+
+    function parseExtras(str) {
+      let total = 0;
+      if (!str) return 0;
+      str.split(/[,;\n]+/).forEach(part => {
+        const priceMatch = part.match(/r\$\s*(\d+(?:[.,]\d{1,2})?)/i);
+        if (!priceMatch) return;
+        const price = parseFloat(priceMatch[1].replace('.', '').replace(',', '.'));
+        const qtyMatch = part.match(/(\d+)\s*x/i);
+        const qty = qtyMatch ? parseInt(qtyMatch[1], 10) : 1;
+        total += price * (isNaN(qty) ? 1 : qty);
+      });
+      return total;
+    }
+
+    function currencyBR(v) {
+      return 'R$ ' + v.toFixed(2).replace('.', ',');
+    }
+
+    function updateEstimate() {
+      const carne = document.getElementById('carne-select').value;
+      const checked = document.querySelector('input[name="tipo_prato"]:checked');
+      const tipoPrato = checked ? checked.value : 'Completo';
+      let total = 0;
+      if (precosCarne[carne]) total += precosCarne[carne][tipoPrato] || 0;
+      total += parseExtras(document.getElementById('res-extras').value);
+      const out = document.getElementById('estimate-value');
+      if (out) out.textContent = currencyBR(total);
+    }
+    updateEstimate();
 
     // ================= CONCIERGE WHATSAPP: RESERVAS & PEDIDOS DETALHADOS =================
     function sendConciergeReservation(e) {
@@ -1464,6 +1781,7 @@
 
       const tipo = formData.get('tipo_atendimento');
       const nome = document.getElementById('res-nome').value.trim();
+      const telefone = document.getElementById('res-telefone').value.trim();
       const pessoas = document.getElementById('res-pessoas').value;
       const horario = document.getElementById('res-horario').value.trim();
       const ambiente = document.getElementById('res-ambiente').value;
@@ -1477,6 +1795,7 @@
       let msg = `🍢 *SOLICITAÇÃO DE RESERVA / PEDIDO - NO SPETTO* 🍢%0A%0A`;
       msg += `📌 *Tipo de Atendimento:* ${encodeURIComponent(tipo)}%0A`;
       msg += `👤 *Nome do Cliente:* ${encodeURIComponent(nome)}%0A`;
+      if (telefone) msg += `📱 *Contato:* ${encodeURIComponent(telefone)}%0A`;
       msg += `👥 *Quantidade de Pessoas:* ${encodeURIComponent(pessoas)}%0A`;
       msg += `📅 *Data e Horário Desejado:* ${encodeURIComponent(horario)}%0A`;
       msg += `❄️ *Ambiente de Preferência:* ${encodeURIComponent(ambiente)}%0A%0A`;
@@ -1500,35 +1819,54 @@
         msg += `📝 *Ocasião / Observações:* ${encodeURIComponent(obs)}%0A`;
       }
 
+      const estimativa = document.getElementById('estimate-value').textContent.trim();
+      if (estimativa && estimativa !== 'R$ 0,00') {
+        msg += `%0A💰 *Estimativa pelo site:* ${encodeURIComponent(estimativa)} (a confirmar no atendimento)%0A`;
+      }
+
       msg += `%0A_Olá! Gostaria de verificar a disponibilidade e confirmar este pedido/reserva com vocês._`;
 
       const waUrl = `https://wa.me/5591992910573?text=${msg}`;
       window.open(waUrl, '_blank');
     }
 
-    // Aberto / Fechado em Tempo Real
+    // ================= ABERTO / FECHADO EM TEMPO REAL =================
+    const diasNome = ['domingo', 'segunda', 'terça', 'quarta', 'quinta', 'sexta', 'sábado'];
+
+    function getSchedule(day) {
+      if (day >= 2 && day <= 5) return [[660, 900], [1080, 1320]]; // Ter-Sex
+      if (day === 6 || day === 0) return [[660, 900]];             // Sáb/Dom
+      return [];                                                   // Segunda fechado
+    }
+
+    function fmtHora(mins) {
+      const h = Math.floor(mins / 60), m = mins % 60;
+      return m === 0 ? h + 'h' : h + 'h' + String(m).padStart(2, '0');
+    }
+
     function checkStatus() {
       const now = new Date();
       const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
       const castanhalTime = new Date(utc + (3600000 * -3));
-      
+
       const day = castanhalTime.getDay();
-      const hours = castanhalTime.getHours();
-      const minutes = castanhalTime.getMinutes();
-      const timeInMinutes = hours * 60 + minutes;
+      const timeInMinutes = castanhalTime.getHours() * 60 + castanhalTime.getMinutes();
 
       let isOpen = false;
+      getSchedule(day).forEach(([start, end]) => {
+        if (timeInMinutes >= start && timeInMinutes < end) isOpen = true;
+      });
 
-      // Terça a Sexta: 11h-15h e 18h-22h
-      if (day >= 2 && day <= 5) {
-        if ((timeInMinutes >= 660 && timeInMinutes <= 900) || (timeInMinutes >= 1080 && timeInMinutes <= 1320)) {
-          isOpen = true;
-        }
-      } 
-      // Sábado e Domingo: 11h-15h
-      else if (day === 6 || day === 0) {
-        if (timeInMinutes >= 660 && timeInMinutes <= 900) {
-          isOpen = true;
+      // Próxima abertura, quando fechado
+      let proxima = '';
+      for (let i = 0; i < 8 && !proxima; i++) {
+        const d = (day + i) % 7;
+        for (const [start] of getSchedule(d)) {
+          if (i === 0 && timeInMinutes >= start) continue;
+          proxima = i === 0 ? 'Abre hoje às ' + fmtHora(start)
+                  : i === 1 ? 'Abre amanhã às ' + fmtHora(start)
+                  : 'Abre ' + diasNome[d] + ' às ' + fmtHora(start);
+          break;
         }
       }
 
@@ -1541,13 +1879,18 @@
         statusDot.className = 'relative inline-flex rounded-full h-2 w-2 bg-emerald-500';
         statusPing.className = 'animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75';
       } else {
-        statusText.innerHTML = '<strong class="text-amber-400">FECHADO NO MOMENTO</strong> • Veja nossos horários';
+        statusText.innerHTML = '<strong class="text-amber-400">FECHADO NO MOMENTO</strong>' + (proxima ? ' • ' + proxima : ' • Veja nossos horários');
         statusDot.className = 'relative inline-flex rounded-full h-2 w-2 bg-amber-500';
         statusPing.className = 'hidden';
       }
     }
 
     checkStatus();
+    setInterval(checkStatus, 60000);
+
+    // Ano dinâmico no rodapé
+    const yEl = document.getElementById('footer-year');
+    if (yEl) yEl.textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
