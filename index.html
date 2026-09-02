@@ -1132,62 +1132,73 @@
   </section>
 
   <!-- O ESPAÇO: ESTRUTURA DE ALTO PADRÃO -->
-  <section id="espaco" class="py-16 sm:py-24 bg-white dark:bg-[#0c0a09] border-t border-stone-200 dark:border-white/[0.08] transition-colors duration-300">
+  <section id="espaco" class="py-20 sm:py-28 bg-white dark:bg-[#0c0a09] border-t border-stone-200 dark:border-white/[0.08] transition-colors duration-300">
     <div class="max-w-6xl mx-auto px-4 sm:px-6">
-      
-      <div class="text-center max-w-2xl mx-auto mb-14 reveal">
-        <span class="text-xs uppercase font-bold tracking-wider text-[#b91c1c] dark:text-red-400 bg-red-50 dark:bg-red-950/40 px-3.5 py-1 rounded-full border border-red-200 dark:border-red-800/40 mb-2 inline-block">
-          ESTRUTURA & CONFORTO
+
+      <!-- Cabeçalho editorial, alinhado à esquerda -->
+      <div class="max-w-2xl reveal">
+        <span class="text-[11px] uppercase font-bold tracking-[0.2em] text-[#b91c1c] dark:text-red-400">
+          Estrutura &amp; Conforto
         </span>
-        <h2 class="text-3xl sm:text-4xl font-serif-title font-bold text-stone-900 dark:text-white mt-1">
-          Dois Ambientes & Espaço Kids
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-serif-title font-bold text-stone-900 dark:text-white mt-2 leading-[1.1]">
+          Dois ambientes, um só cuidado com você
         </h2>
+        <p class="text-stone-600 dark:text-stone-400 text-sm sm:text-base mt-4 leading-relaxed">
+          Salão interno climatizado, varanda ao ar livre e um espaço kids seguro — para a família toda ficar à vontade do começo ao fim da refeição.
+        </p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        
-        <!-- CARD 1: Climatizado -->
-        <div class="bg-stone-50 dark:bg-[#14110f] border border-stone-200 dark:border-white/[0.08] rounded-lg p-6 flex flex-col justify-between reveal shadow-sm">
-          <div>
-            <div class="h-44 rounded-md overflow-hidden mb-5">
-              <img src="images/foto-almoco-familia.jpg" alt="Famílias almoçando no salão climatizado do No Spetto" width="825" height="1024" loading="lazy" class="w-full h-full object-cover">
-            </div>
-            <span class="text-[11px] font-bold text-cyan-700 dark:text-cyan-400 uppercase tracking-wider">Conforto Total</span>
-            <h3 class="text-xl font-bold text-stone-900 dark:text-white mt-1 mb-2">Salão Climatizado</h3>
-            <p class="text-stone-600 dark:text-stone-400 text-xs sm:text-sm leading-relaxed">
-              Área interna fresca com ar-condicionado, moderna e aconchegante para fugir do calor com tranquilidade.
-            </p>
-          </div>
-        </div>
+      <!-- Grade editorial assimétrica -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-5 mt-10 sm:mt-14">
 
-        <!-- CARD 2: Varanda Externa -->
-        <div class="bg-stone-50 dark:bg-[#14110f] border border-stone-200 dark:border-white/[0.08] rounded-lg p-6 flex flex-col justify-between reveal shadow-sm">
-          <div>
-            <div class="h-44 rounded-md overflow-hidden mb-5">
-              <img src="images/fachada.jpg" alt="Área externa do No Spetto ao ar livre" width="667" height="1000" loading="lazy" class="w-full h-full object-cover object-top">
-            </div>
-            <span class="text-[11px] font-bold text-amber-700 dark:text-amber-400 uppercase tracking-wider">Descontração</span>
-            <h3 class="text-xl font-bold text-stone-900 dark:text-white mt-1 mb-2">Varanda ao Ar Livre</h3>
-            <p class="text-stone-600 dark:text-stone-400 text-xs sm:text-sm leading-relaxed">
+        <!-- Destaque: varanda + letreiro da casa -->
+        <figure class="lg:col-span-7 relative rounded-xl overflow-hidden shadow-lg reveal group">
+          <img src="images/fachada.jpg" alt="Varanda coberta do No Spetto com o letreiro da casa em Castanhal"
+               width="667" height="1000" loading="lazy"
+               class="w-full h-[360px] sm:h-[440px] lg:h-[560px] object-cover object-center transition-transform duration-700 group-hover:scale-[1.03]">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/45 to-black/10"></div>
+          <figcaption class="absolute bottom-0 inset-x-0 p-6 sm:p-8 text-white">
+            <span class="text-[11px] font-bold uppercase tracking-[0.2em] text-[#c5a880]">Descontração</span>
+            <h3 class="text-2xl sm:text-3xl font-serif-title font-bold mt-1.5">Varanda ao ar livre</h3>
+            <p class="text-stone-200 text-sm sm:text-base mt-2 max-w-md leading-relaxed">
               Área arejada e espaçosa, ideal para curtir a noite com amigos, boa música e chopp trincando.
             </p>
-          </div>
-        </div>
+          </figcaption>
+        </figure>
 
-        <!-- CARD 3: Espaço Kids -->
-        <div class="bg-stone-50 dark:bg-[#14110f] border border-stone-200 dark:border-white/[0.08] rounded-lg p-6 flex flex-col justify-between reveal shadow-sm">
-          <div>
-            <div class="h-44 bg-amber-100/60 dark:bg-[#1a1512] border border-amber-200 dark:border-white/[0.05] rounded-md mb-5 flex items-center justify-center">
-              <i data-lucide="baby" class="w-14 h-14 text-amber-600 dark:text-amber-400"></i>
+        <!-- Coluna direita -->
+        <div class="lg:col-span-5 flex flex-col gap-4 sm:gap-5">
+
+          <!-- Salão climatizado -->
+          <figure class="relative rounded-xl overflow-hidden shadow-lg flex-1 min-h-[240px] sm:min-h-[280px] reveal group">
+            <img src="images/foto-almoco-familia.jpg" alt="Famílias almoçando no salão climatizado do No Spetto"
+                 width="825" height="1024" loading="lazy"
+                 class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-black/5"></div>
+            <figcaption class="absolute bottom-0 inset-x-0 p-5 sm:p-6 text-white">
+              <span class="text-[11px] font-bold uppercase tracking-[0.2em] text-cyan-300">Conforto total</span>
+              <h3 class="text-xl sm:text-2xl font-serif-title font-bold mt-1.5">Salão climatizado</h3>
+              <p class="text-stone-200 text-xs sm:text-sm mt-1.5 leading-relaxed">
+                Área interna fresca com ar-condicionado, moderna e aconchegante para fugir do calor com tranquilidade.
+              </p>
+            </figcaption>
+          </figure>
+
+          <!-- Espaço Kids -->
+          <div class="rounded-xl border border-stone-200 dark:border-white/[0.08] bg-stone-50 dark:bg-[#14110f] p-5 sm:p-6 flex items-start gap-4 shadow-sm reveal">
+            <div class="p-3 rounded-lg bg-amber-100 dark:bg-amber-950/40 text-amber-700 dark:text-amber-400 shrink-0">
+              <i data-lucide="baby" class="w-6 h-6"></i>
             </div>
-            <span class="text-[11px] font-bold text-emerald-700 dark:text-emerald-400 uppercase tracking-wider">Para a Família</span>
-            <h3 class="text-xl font-bold text-stone-900 dark:text-white mt-1 mb-2">Espaço Kids Seguro</h3>
-            <p class="text-stone-600 dark:text-stone-400 text-xs sm:text-sm leading-relaxed">
-              Espaço protegido para as crianças brincarem enquanto os pais aproveitam a refeição em paz.
-            </p>
+            <div>
+              <span class="text-[11px] font-bold uppercase tracking-[0.2em] text-emerald-700 dark:text-emerald-400">Para a família</span>
+              <h3 class="text-lg sm:text-xl font-bold text-stone-900 dark:text-white mt-1">Espaço Kids seguro</h3>
+              <p class="text-stone-600 dark:text-stone-400 text-xs sm:text-sm mt-1.5 leading-relaxed">
+                Espaço protegido para as crianças brincarem enquanto os pais aproveitam a refeição em paz.
+              </p>
+            </div>
           </div>
-        </div>
 
+        </div>
       </div>
 
     </div>
