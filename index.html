@@ -419,56 +419,37 @@
     })();
   </script>
 
-  <!-- ================= QUADRO EXPLÍCITO DE HORÁRIOS DE ATENDIMENTO ================= -->
-  <section id="horarios-section" class="bg-white dark:bg-[#14110f] border-b border-stone-200 dark:border-white/[0.08] py-8 sm:py-10 transition-colors duration-300">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6">
-      
-      <div class="bg-stone-50 dark:bg-[#181412] border border-stone-300/80 dark:border-white/[0.08] rounded-2xl p-6 sm:p-8 shadow-sm">
-        
-        <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
-          
-          <div class="flex items-start gap-4">
-            <div class="p-3 bg-red-100 dark:bg-red-950/60 text-[#b91c1c] dark:text-red-400 rounded-2xl shrink-0">
-              <i data-lucide="clock" class="w-6 h-6"></i>
-            </div>
-            <div>
-              <span class="text-xs uppercase font-bold tracking-wider text-[#b91c1c] dark:text-red-400">Horários de Atendimento</span>
-              <h3 class="text-lg sm:text-xl font-bold font-serif-title text-stone-900 dark:text-white mt-0.5">
-                Quando estamos de portas abertas na brasa:
-              </h3>
-            </div>
+  <!-- ================= FAIXA DE HORÁRIOS — PONTE VISUAL ENTRE HERO E CARROSSEL ================= -->
+  <section id="horarios-section" class="bg-[#14110f] text-white border-b border-white/[0.06]">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-7 sm:py-8">
+      <div class="flex flex-col lg:flex-row lg:items-center gap-6 lg:gap-10">
+
+        <div class="flex items-center gap-3 shrink-0">
+          <span class="p-2.5 rounded-lg bg-[#b91c1c]/15 text-[#e0a3a3]">
+            <i data-lucide="clock" class="w-5 h-5"></i>
+          </span>
+          <div>
+            <span class="block text-[10px] font-bold uppercase tracking-[0.2em] text-[#c5a880]">Horários</span>
+            <span class="block text-sm font-serif-title font-bold">Portas abertas na brasa</span>
           </div>
+        </div>
 
-          <!-- Cards dos Turnos -->
-          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 flex-1 max-w-2xl text-xs">
-            
-            <!-- Terça a Sexta -->
-            <div class="bg-white dark:bg-[#100d0b] p-3.5 rounded-xl border border-stone-200 dark:border-white/[0.06]">
-              <span class="font-bold text-stone-900 dark:text-white block mb-1">Terça a Sexta:</span>
-              <p class="text-stone-600 dark:text-stone-300 font-medium">11:00 às 15:00 <span class="text-stone-400">(Almoço)</span></p>
-              <p class="text-stone-600 dark:text-stone-300 font-medium">18:00 às 22:00 <span class="text-stone-400">(Jantar)</span></p>
-            </div>
-
-            <!-- Sábado e Domingo -->
-            <div class="bg-red-50 dark:bg-red-950/30 p-3.5 rounded-xl border border-red-200 dark:border-red-900/40">
-              <span class="font-bold text-[#b91c1c] dark:text-red-400 block mb-1">Sábado e Domingo:</span>
-              <p class="text-[#b91c1c] dark:text-red-300 font-bold">11:00 às 15:00</p>
-              <span class="text-[11px] text-stone-500 dark:text-stone-400">Almoço especial em família</span>
-            </div>
-
-            <!-- Segunda -->
-            <div class="bg-white dark:bg-[#100d0b] p-3.5 rounded-xl border border-stone-200 dark:border-white/[0.06]">
-              <span class="font-bold text-stone-500 block mb-1">Segunda-feira:</span>
-              <p class="text-stone-400 font-medium">Fechado</p>
-              <span class="text-[11px] text-stone-400">Descanso da equipe</span>
-            </div>
-
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-x-8 gap-y-3 flex-1 text-xs sm:text-sm border-t border-white/[0.08] pt-5 lg:border-t-0 lg:pt-0 lg:border-l lg:border-white/[0.08] lg:pl-10">
+          <div>
+            <span class="block font-bold text-white">Terça a sexta</span>
+            <span class="text-stone-400">11h–15h &middot; 18h–22h</span>
           </div>
-
+          <div>
+            <span class="block font-bold text-red-300">Sábado e domingo</span>
+            <span class="text-stone-300">11h–15h &middot; almoço em família</span>
+          </div>
+          <div>
+            <span class="block font-bold text-stone-500">Segunda-feira</span>
+            <span class="text-stone-500">Fechado &middot; descanso da equipe</span>
+          </div>
         </div>
 
       </div>
-
     </div>
   </section>
 
