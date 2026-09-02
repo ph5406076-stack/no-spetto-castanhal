@@ -194,6 +194,47 @@
       .hero-media { opacity: 1; animation: none; }
       .hero-ember { animation: none; }
     }
+
+    /* ===== Monte seu Prato — chips, steppers, disclosure ===== */
+    .chip {
+      display: inline-flex; align-items: center; gap: .4rem;
+      padding: .5rem .8rem; border-radius: .55rem;
+      font-size: .78rem; font-weight: 600; line-height: 1.1;
+      border: 1px solid #d6d3d1; background: #fff; color: #44403c;
+      cursor: pointer; transition: border-color .15s, background .15s, color .15s;
+    }
+    .chip:hover { border-color: #b91c1c; }
+    .dark .chip { background: #14100e; border-color: rgba(255,255,255,.12); color: #d6d3d1; }
+    label > input:checked + .chip,
+    .chip.is-on {
+      background: #b91c1c; border-color: #b91c1c; color: #fff;
+    }
+    label > input:focus-visible + .chip { outline: 2px solid #c5a880; outline-offset: 2px; }
+    .chip:focus-visible { outline: 2px solid #c5a880; outline-offset: 2px; }
+    #cut-chips .chip { padding: .4rem .6rem; font-size: .72rem; }
+
+    .stepper-btn {
+      width: 2rem; height: 2rem; flex: none;
+      display: grid; place-items: center;
+      border-radius: .45rem; border: 1px solid #d6d3d1;
+      font-weight: 700; color: #44403c; background: #fff;
+      transition: border-color .15s, background .15s;
+    }
+    .stepper-btn:hover { border-color: #b91c1c; }
+    .dark .stepper-btn { background: #14100e; border-color: rgba(255,255,255,.15); color: #e7e5e4; }
+
+    /* Campos condicionais: somem de verdade (não ocupam espaço) */
+    [data-disclosure][hidden] { display: none !important; }
+
+    .inp {
+      width: 100%; border-radius: .6rem;
+      border: 1px solid #d6d3d1; background: #fff; color: #1c1917;
+      padding: .6rem .8rem; font-size: .85rem;
+      transition: border-color .15s;
+    }
+    .inp:focus { outline: none; border-color: #b91c1c; }
+    .inp::placeholder { color: #a8a29e; }
+    .dark .inp { background: #181412; border-color: rgba(255,255,255,.1); color: #fff; }
   </style>
 </head>
 
@@ -290,13 +331,14 @@
   <!-- HERO SECTION — PALCO DA BRASA (vídeo dos três espetos sobre preto puro) -->
   <section class="relative isolate overflow-hidden bg-[#0c0a09] text-white border-b border-white/[0.06]">
 
-    <!-- Brilho de brasa por trás dos espetos -->
-    <div class="hero-ember absolute inset-0 z-0 pointer-events-none" aria-hidden="true"></div>
+    <!-- Brilho de brasa por trás dos espetos (desktop) -->
+    <div class="hero-ember absolute inset-0 z-0 pointer-events-none hidden lg:block" aria-hidden="true"></div>
 
-    <!-- Vídeo: preto puro some com mix-blend screen. Toca uma vez e congela no leque final. -->
-    <div class="absolute inset-0 z-0 lg:left-[30%] pointer-events-none" aria-hidden="true">
+    <!-- Vídeo — object-contain sempre garante o leque inteiro, sem cortes.
+         Mobile: ancorado embaixo, centralizado.  Desktop: metade direita. -->
+    <div class="absolute inset-0 z-0 pointer-events-none" aria-hidden="true">
       <video id="hero-video"
-             class="hero-media h-full w-full object-cover object-[68%_center] sm:object-[76%_center] lg:object-[62%_center]"
+             class="hero-media h-full w-full object-contain object-bottom lg:object-[82%_center]"
              autoplay muted playsinline preload="auto" disablepictureinpicture
              poster="assets/hero/espetos-hero-poster.jpg" tabindex="-1">
         <source src="assets/hero/espetos-hero.webm" type="video/webm">
@@ -304,12 +346,11 @@
       </video>
     </div>
 
-    <!-- Scrims para legibilidade da copy (mais forte no mobile) -->
-    <div class="absolute inset-0 z-10 pointer-events-none bg-gradient-to-r from-[#0c0a09] via-[#0c0a09]/90 to-[#0c0a09]/40 lg:via-[#0c0a09]/45 lg:to-transparent" aria-hidden="true"></div>
-    <div class="absolute inset-0 z-10 pointer-events-none bg-gradient-to-t from-[#0c0a09] via-[#0c0a09]/20 to-transparent lg:hidden" aria-hidden="true"></div>
+    <!-- Scrim de legibilidade -->
+    <div class="absolute inset-0 z-10 pointer-events-none bg-gradient-to-b from-[#0c0a09] via-[#0c0a09]/85 to-transparent lg:bg-gradient-to-r lg:from-[#0c0a09] lg:via-[#0c0a09]/40 lg:to-transparent" aria-hidden="true"></div>
 
     <!-- Conteúdo -->
-    <div class="relative z-20 mx-auto max-w-6xl px-5 sm:px-6 min-h-[86vh] flex flex-col justify-center py-20 sm:py-28 lg:py-32">
+    <div class="relative z-20 mx-auto max-w-6xl px-5 sm:px-6 min-h-[92vh] lg:min-h-[86vh] flex flex-col justify-start lg:justify-center pt-12 sm:pt-16 lg:pt-32 pb-56 sm:pb-64 lg:pb-32">
       <div class="w-full max-w-md sm:max-w-xl lg:max-w-2xl reveal">
 
         <div class="inline-flex items-center gap-2 max-w-full px-3 py-1.5 rounded-md bg-white/5 border border-white/15 text-stone-200 text-[10px] sm:text-xs font-bold uppercase tracking-wider sm:tracking-widest mb-5 sm:mb-6 backdrop-blur-sm">
@@ -937,69 +978,44 @@
           <h2 class="text-2xl sm:text-4xl font-serif-title font-bold text-stone-900 dark:text-white">
             Monte seu Prato ou Reserve sua Mesa
           </h2>
-          <p class="text-stone-600 dark:text-stone-400 text-xs sm:text-sm mt-2 max-w-xl mx-auto leading-relaxed">
-            Selecione suas opções abaixo com <strong>preços e acompanhamentos detalhados</strong>. Nós geramos a mensagem 100% pronta para enviar ao WhatsApp oficial do No Spetto!
+          <p class="text-stone-600 dark:text-stone-400 text-xs sm:text-sm mt-2 max-w-md mx-auto leading-relaxed">
+            Preencha o essencial e, se quiser, já adiante seus espetos. Geramos a mensagem pronta pro WhatsApp do No Spetto.
           </p>
         </div>
 
-        <form id="concierge-form" class="space-y-7" onsubmit="sendConciergeReservation(event)">
-          
-          <!-- TÓPICO 1: Tipo de Atendimento -->
-          <div class="bg-stone-50 dark:bg-[#100d0b] p-4 sm:p-5 rounded-2xl border border-stone-200 dark:border-white/[0.06]">
-            <label class="block text-xs font-bold uppercase tracking-wider text-[#b91c1c] dark:text-red-400 mb-3">
-              1. O que você deseja fazer?
-            </label>
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-              <label class="cursor-pointer border-2 border-[#b91c1c] bg-red-50/60 dark:bg-red-950/30 p-3.5 rounded-xl flex items-center gap-2.5 transition">
-                <input type="radio" name="tipo_atendimento" value="Reservar Mesa no Restaurante" checked class="accent-[#b91c1c]">
-                <div>
-                  <p class="text-xs font-bold text-stone-900 dark:text-white">🍽️ Reservar Mesa</p>
-                  <p class="text-[11px] text-stone-500">Garantir mesa com antecedência</p>
-                </div>
-              </label>
+        <form id="concierge-form" class="space-y-6" onsubmit="sendConciergeReservation(event)">
 
-              <label class="cursor-pointer border border-stone-300 dark:border-white/[0.08] bg-white dark:bg-[#14100e] p-3.5 rounded-xl flex items-center gap-2.5 transition hover:border-[#b91c1c]">
-                <input type="radio" name="tipo_atendimento" value="Fazer Pedido / Delivery" class="accent-[#b91c1c]">
-                <div>
-                  <p class="text-xs font-bold text-stone-700 dark:text-stone-300">🛵 Pedido / Delivery</p>
-                  <p class="text-[11px] text-stone-400">Entrega rápida ou retirada</p>
-                </div>
-              </label>
-
-              <label class="cursor-pointer border border-stone-300 dark:border-white/[0.08] bg-white dark:bg-[#14100e] p-3.5 rounded-xl flex items-center gap-2.5 transition hover:border-[#b91c1c]">
-                <input type="radio" name="tipo_atendimento" value="Reservar Mesa & Já Adiantar os Pratos" class="accent-[#b91c1c]">
-                <div>
-                  <p class="text-xs font-bold text-stone-700 dark:text-stone-300">🥩 Mesa + Pratos Prontos</p>
-                  <p class="text-[11px] text-stone-400">Chegar e já encontrar na brasa</p>
-                </div>
-              </label>
+          <!-- 1. Tipo de atendimento -->
+          <fieldset>
+            <legend class="text-xs font-bold uppercase tracking-wider text-[#b91c1c] dark:text-red-400 mb-2.5">1. O que você deseja?</legend>
+            <div class="flex flex-wrap gap-2">
+              <label><input type="radio" name="tipo_atendimento" value="Reservar mesa" checked class="sr-only"><span class="chip"><i data-lucide="calendar-check" class="w-3.5 h-3.5"></i>Reservar mesa</span></label>
+              <label><input type="radio" name="tipo_atendimento" value="Pedido / Delivery" class="sr-only"><span class="chip"><i data-lucide="bike" class="w-3.5 h-3.5"></i>Pedido / Delivery</span></label>
+              <label><input type="radio" name="tipo_atendimento" value="Mesa + pratos já na brasa" class="sr-only"><span class="chip"><i data-lucide="flame" class="w-3.5 h-3.5"></i>Mesa + pratos prontos</span></label>
             </div>
-          </div>
+          </fieldset>
 
-          <!-- TÓPICO 2: Dados do Cliente & Horários -->
-          <div class="bg-stone-50 dark:bg-[#100d0b] p-4 sm:p-5 rounded-2xl border border-stone-200 dark:border-white/[0.06] space-y-4">
-            <label class="block text-xs font-bold uppercase tracking-wider text-[#b91c1c] dark:text-red-400">
-              2. Seus Dados & Horário Desejado
-            </label>
+          <hr class="border-stone-200 dark:border-white/10">
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <!-- 2. Dados e horário -->
+          <div>
+            <p class="text-xs font-bold uppercase tracking-wider text-[#b91c1c] dark:text-red-400 mb-2.5">2. Seus dados e horário</p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <div>
-                <label for="res-nome" class="block text-xs font-semibold text-stone-700 dark:text-stone-300 mb-1">Seu Nome Completo:</label>
-                <input type="text" id="res-nome" name="res-nome" required autocomplete="name" placeholder="Ex: Carlos Silva"
-                       class="w-full bg-white dark:bg-[#181412] border border-stone-300 dark:border-white/[0.1] text-stone-900 dark:text-white rounded-xl px-3.5 py-2.5 text-xs sm:text-sm focus:outline-none focus:border-[#b91c1c]">
+                <label for="res-nome" class="sr-only">Nome completo</label>
+                <input type="text" id="res-nome" name="res-nome" required autocomplete="name" placeholder="Nome completo *" class="inp">
               </div>
-
               <div>
-                <label for="res-telefone" class="block text-xs font-semibold text-stone-700 dark:text-stone-300 mb-1">Seu WhatsApp / Telefone:</label>
-                <input type="tel" id="res-telefone" name="res-telefone" inputmode="tel" autocomplete="tel" placeholder="(91) 9 0000-0000"
-                       class="w-full bg-white dark:bg-[#181412] border border-stone-300 dark:border-white/[0.1] text-stone-900 dark:text-white rounded-xl px-3.5 py-2.5 text-xs sm:text-sm focus:outline-none focus:border-[#b91c1c]">
+                <label for="res-telefone" class="sr-only">WhatsApp / telefone</label>
+                <input type="tel" id="res-telefone" name="res-telefone" inputmode="tel" autocomplete="tel" placeholder="WhatsApp / telefone" class="inp">
               </div>
-            </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label for="res-pessoas" class="block text-xs font-semibold text-stone-700 dark:text-stone-300 mb-1">Quantas Pessoas virão?</label>
-                <select id="res-pessoas" name="res-pessoas" class="w-full bg-white dark:bg-[#181412] border border-stone-300 dark:border-white/[0.1] text-stone-900 dark:text-white rounded-xl px-3.5 py-2.5 text-xs sm:text-sm focus:outline-none focus:border-[#b91c1c]">
+                <label for="res-horario" class="sr-only">Data e horário desejado</label>
+                <input type="text" id="res-horario" name="res-horario" required placeholder="Data e horário * (ex: domingo 12:30)" class="inp">
+              </div>
+              <div>
+                <label for="res-pessoas" class="sr-only">Quantas pessoas</label>
+                <select id="res-pessoas" name="res-pessoas" class="inp">
                   <option value="Casal (2 pessoas)">Casal (2 pessoas)</option>
                   <option value="Família (3 a 5 pessoas)">Família (3 a 5 pessoas)</option>
                   <option value="Grupo / Amigos (6 a 10 pessoas)">Grupo / Amigos (6 a 10 pessoas)</option>
@@ -1007,155 +1023,106 @@
                   <option value="Individual (1 pessoa)">Individual (1 pessoa)</option>
                 </select>
               </div>
-            </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div>
-                <label for="res-horario" class="block text-xs font-semibold text-stone-700 dark:text-stone-300 mb-1">Data & Horário Desejado:</label>
-                <input type="text" id="res-horario" name="res-horario" required placeholder="Ex: Domingo às 12:30 ou Hoje às 20h"
-                       class="w-full bg-white dark:bg-[#181412] border border-stone-300 dark:border-white/[0.1] text-stone-900 dark:text-white rounded-xl px-3.5 py-2.5 text-xs sm:text-sm focus:outline-none focus:border-[#b91c1c]">
-                <span class="text-[11px] text-stone-500 mt-1 block">Atendimento: Ter-Sex (11h-15h e 18h-22h) | Sáb-Dom (11h-15h)</span>
-              </div>
-
-              <div>
-                <label for="res-ambiente" class="block text-xs font-semibold text-stone-700 dark:text-stone-300 mb-1">Ambiente de Preferência:</label>
-                <select id="res-ambiente" name="res-ambiente" class="w-full bg-white dark:bg-[#181412] border border-stone-300 dark:border-white/[0.1] text-stone-900 dark:text-white rounded-xl px-3.5 py-2.5 text-xs sm:text-sm focus:outline-none focus:border-[#b91c1c]">
-                  <option value="Salão Interno Climatizado (com Ar-Condicionado)">❄️ Salão Interno Climatizado</option>
-                  <option value="Varanda Externa ao Ar Livre">🌿 Varanda Externa ao Ar Livre</option>
-                  <option value="Mesa Próxima ao Espaço Kids (Família com Crianças)">🧸 Mesa Próxima ao Espaço Kids</option>
-                  <option value="Sem preferência / Onde tiver vaga">Qualquer ambiente disponível</option>
+              <div class="sm:col-span-2">
+                <label for="res-ambiente" class="sr-only">Ambiente de preferência</label>
+                <select id="res-ambiente" name="res-ambiente" class="inp">
+                  <option value="Salão interno climatizado">❄️ Salão interno climatizado</option>
+                  <option value="Varanda externa ao ar livre">🌿 Varanda externa ao ar livre</option>
+                  <option value="Mesa próxima ao Espaço Kids">🧸 Mesa próxima ao Espaço Kids</option>
+                  <option value="Sem preferência">Qualquer ambiente disponível</option>
                 </select>
               </div>
             </div>
+            <p class="text-[11px] text-stone-500 mt-2">Atendimento: Ter–Sex 11h–15h e 18h–22h · Sáb–Dom 11h–15h</p>
           </div>
 
-          <!-- TÓPICO 3: Escolha dos Cortes na Brasa & Preços Detalhados -->
-          <div class="bg-stone-50 dark:bg-[#100d0b] p-4 sm:p-5 rounded-2xl border border-stone-200 dark:border-white/[0.06] space-y-4">
-            <label class="block text-xs font-bold uppercase tracking-wider text-[#b91c1c] dark:text-red-400">
-              3. Escolha o seu Espeto / Carne Principal (Opcional ou p/ Pedido)
-            </label>
+          <hr class="border-stone-200 dark:border-white/10">
 
-            <div>
-              <label for="carne-select" class="sr-only">Escolha o corte principal</label>
-              <select id="carne-select" name="carne-select" onchange="updateEstimate()" class="w-full bg-white dark:bg-[#181412] border border-stone-300 dark:border-white/[0.1] text-stone-900 dark:text-white rounded-xl p-3 text-xs sm:text-sm focus:outline-none focus:border-[#b91c1c]">
-                <option value="Nenhum (vou escolher no restaurante)">Nenhum (vou escolher no restaurante)</option>
-                <option value="Picanha na Brasa">Picanha na Brasa (Simples R$39 | Completo R$45)</option>
-                <option value="Contra Filé na Brasa">Contra Filé na Brasa (Simples R$32 | Completo R$37)</option>
-                <option value="Picanha Steak Especial">Picanha Steak Especial (R$ 70,00)</option>
-                <option value="Carne de Sol Artesanal">Carne de Sol Artesanal (Simples R$34 | Completo R$39)</option>
-                <option value="Filé com Bacon">Filé com Bacon (Simples R$37 | Completo R$42)</option>
-                <option value="Filé Mignon ao Alho">Filé Mignon ao Alho (Simples R$34 | Completo R$39)</option>
-                <option value="Carne Tradicional">Carne Tradicional (Simples R$18 | Completo R$30)</option>
-                <option value="Panceta Suína Crocante">Panceta Suína Crocante (Simples R$18 | Completo R$30)</option>
-                <option value="Coração de Frango">Coração de Frango (Simples R$15 | Completo R$20)</option>
-                <option value="Filé de Frango na Brasa">Filé de Frango na Brasa (Simples R$18 | Completo R$30)</option>
-                <option value="Tulipa Crocante">Tulipa Crocante (Simples R$28 | Completo R$33)</option>
-                <option value="Frango com Bacon">Frango com Bacon (Simples R$32 | Completo R$37)</option>
-              </select>
+          <!-- 3. Espetos (opcional, recolhido por padrão) -->
+          <div>
+            <p class="text-xs font-bold uppercase tracking-wider text-[#b91c1c] dark:text-red-400 mb-2">
+              3. Espetos <span class="text-stone-400 font-medium normal-case tracking-normal">— opcional</span>
+            </p>
+            <div class="flex flex-wrap gap-2">
+              <label><input type="radio" name="modo_espeto" value="restaurante" checked class="sr-only" onchange="espetoMode()"><span class="chip">Vou escolher no restaurante</span></label>
+              <label><input type="radio" name="modo_espeto" value="adiantar" class="sr-only" onchange="espetoMode()"><span class="chip">Já quero adiantar meus espetos</span></label>
             </div>
 
-            <!-- Tipo: Completo vs Simples -->
-            <div>
-              <label class="block text-xs font-semibold text-stone-700 dark:text-stone-300 mb-2">Deseja Completo ou Simples?</label>
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                <label class="cursor-pointer border-2 border-[#b91c1c] bg-red-50/60 dark:bg-red-950/30 p-3 rounded-xl flex items-center justify-between transition">
-                  <div class="flex items-center gap-2.5">
-                    <input type="radio" name="tipo_prato" value="Completo" checked class="accent-[#b91c1c]" onchange="toggleGuarnicoes(true); updateEstimate()">
-                    <div>
-                      <p class="text-xs font-bold text-stone-900 dark:text-white">Espeto Completo</p>
-                      <p class="text-[11px] text-stone-500">Com arroz, farofa, vinagrete e batata/macaxeira</p>
-                    </div>
-                  </div>
-                  <span class="text-[#b91c1c] dark:text-red-400 font-bold text-xs">Mais Farto</span>
-                </label>
-
-                <label class="cursor-pointer border border-stone-300 dark:border-white/[0.08] bg-white dark:bg-[#14100e] p-3 rounded-xl flex items-center justify-between transition">
-                  <div class="flex items-center gap-2.5">
-                    <input type="radio" name="tipo_prato" value="Simples" class="accent-[#b91c1c]" onchange="toggleGuarnicoes(false); updateEstimate()">
-                    <div>
-                      <p class="text-xs font-bold text-stone-700 dark:text-stone-300">Espeto Simples</p>
-                      <p class="text-[11px] text-stone-500">Apenas a carne grelhada</p>
-                    </div>
-                  </div>
-                  <span class="text-stone-400 font-medium text-xs">Individual</span>
-                </label>
-              </div>
-            </div>
-
-            <!-- Acompanhamentos do Completo -->
-            <div id="box-acompanhamentos-simulador" class="space-y-3 bg-white dark:bg-[#181412] p-3.5 rounded-xl border border-stone-200 dark:border-white/[0.06]">
-              <div>
-                <label class="block text-[11px] font-bold uppercase tracking-wider text-stone-700 dark:text-stone-300 mb-1.5">Escolha o seu Arroz:</label>
-                <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs">
-                  <label class="border border-stone-300 dark:border-white/[0.1] bg-stone-50 dark:bg-[#100d0b] p-2 rounded-lg text-center cursor-pointer">
-                    <input type="radio" name="arroz" value="Baião da Casa" checked class="accent-[#b91c1c]">
-                    <span class="block mt-0.5 text-stone-800 dark:text-stone-200 font-medium text-[11px]">Baião da Casa</span>
-                  </label>
-                  <label class="border border-stone-300 dark:border-white/[0.1] bg-stone-50 dark:bg-[#100d0b] p-2 rounded-lg text-center cursor-pointer">
-                    <input type="radio" name="arroz" value="Arroz c/ Brócolis" class="accent-[#b91c1c]">
-                    <span class="block mt-0.5 text-stone-800 dark:text-stone-200 font-medium text-[11px]">Arroz c/ Brócolis</span>
-                  </label>
-                  <label class="border border-stone-300 dark:border-white/[0.1] bg-stone-50 dark:bg-[#100d0b] p-2 rounded-lg text-center cursor-pointer">
-                    <input type="radio" name="arroz" value="Arroz Biro Biro" class="accent-[#b91c1c]">
-                    <span class="block mt-0.5 text-stone-800 dark:text-stone-200 font-medium text-[11px]">Arroz Biro Biro</span>
-                  </label>
-                  <label class="border border-stone-300 dark:border-white/[0.1] bg-stone-50 dark:bg-[#100d0b] p-2 rounded-lg text-center cursor-pointer">
-                    <input type="radio" name="arroz" value="Arroz Branco" class="accent-[#b91c1c]">
-                    <span class="block mt-0.5 text-stone-800 dark:text-stone-200 font-medium text-[11px]">Arroz Branco</span>
-                  </label>
-                </div>
-              </div>
+            <div id="espeto-builder" data-disclosure hidden class="mt-4 space-y-4">
 
               <div>
-                <label class="block text-[11px] font-bold uppercase tracking-wider text-stone-700 dark:text-stone-300 mb-1.5">Escolha a Guarnição:</label>
-                <div class="grid grid-cols-2 gap-2 text-xs">
-                  <label class="border border-stone-300 dark:border-white/[0.1] bg-stone-50 dark:bg-[#100d0b] p-2.5 rounded-lg text-center cursor-pointer">
-                    <input type="radio" name="guarnicao" value="Batata Frita Crocante" checked class="accent-[#b91c1c]">
-                    <span class="block mt-0.5 text-stone-800 dark:text-stone-200 font-semibold text-xs">🍟 Batata Frita</span>
-                  </label>
-                  <label class="border border-stone-300 dark:border-white/[0.1] bg-stone-50 dark:bg-[#100d0b] p-2.5 rounded-lg text-center cursor-pointer">
-                    <input type="radio" name="guarnicao" value="Macaxeira na Manteiga" class="accent-[#b91c1c]">
-                    <span class="block mt-0.5 text-stone-800 dark:text-stone-200 font-semibold text-xs">🧈 Macaxeira</span>
-                  </label>
+                <p class="text-[11px] font-bold uppercase tracking-wider text-stone-600 dark:text-stone-300 mb-1.5">Toque nos cortes que quer adiantar</p>
+                <div id="cut-chips" class="flex flex-wrap gap-1.5"></div>
+              </div>
+
+              <div id="espeto-list" class="space-y-2"></div>
+
+              <div id="espeto-servir" data-disclosure hidden>
+                <p class="text-[11px] font-bold uppercase tracking-wider text-stone-600 dark:text-stone-300 mb-1.5">Como deseja servir?</p>
+                <div class="flex flex-wrap gap-2">
+                  <label><input type="radio" name="tipo_prato" value="Simples" class="sr-only" onchange="refreshEspetoUI()"><span class="chip">Simples</span></label>
+                  <label><input type="radio" name="tipo_prato" value="Completo" checked class="sr-only" onchange="refreshEspetoUI()"><span class="chip">Completo</span></label>
                 </div>
+                <p class="text-[11px] text-stone-500 mt-1.5">Simples = só a carne. Completo = arroz, farofa, vinagrete e batata ou macaxeira.</p>
+              </div>
+
+              <div id="espeto-completo" data-disclosure hidden class="space-y-3">
+                <div>
+                  <p class="text-[11px] font-bold uppercase tracking-wider text-stone-600 dark:text-stone-300 mb-1.5">Arroz</p>
+                  <div class="flex flex-wrap gap-1.5">
+                    <label><input type="radio" name="arroz" value="Baião da Casa" checked class="sr-only"><span class="chip">Baião da Casa</span></label>
+                    <label><input type="radio" name="arroz" value="Arroz c/ Brócolis" class="sr-only"><span class="chip">c/ Brócolis</span></label>
+                    <label><input type="radio" name="arroz" value="Arroz Biro Biro" class="sr-only"><span class="chip">Biro Biro</span></label>
+                    <label><input type="radio" name="arroz" value="Arroz Branco" class="sr-only"><span class="chip">Branco</span></label>
+                  </div>
+                </div>
+                <div>
+                  <p class="text-[11px] font-bold uppercase tracking-wider text-stone-600 dark:text-stone-300 mb-1.5">Guarnição</p>
+                  <div class="flex flex-wrap gap-1.5">
+                    <label><input type="radio" name="guarnicao" value="Batata Frita Crocante" checked class="sr-only"><span class="chip">🍟 Batata Frita</span></label>
+                    <label><input type="radio" name="guarnicao" value="Macaxeira na Manteiga" class="sr-only"><span class="chip">🧈 Macaxeira</span></label>
+                  </div>
+                </div>
+                <p class="text-[11px] text-stone-500">Farofa da Casa e Vinagrete já inclusos no Completo.</p>
+              </div>
+
+              <div id="espeto-estimate" data-disclosure hidden class="bg-[#1c1917] text-white rounded-xl px-4 py-3 border border-white/5">
+                <div class="flex items-baseline justify-between gap-3">
+                  <p class="text-[11px] uppercase tracking-wider text-stone-400 font-semibold">Estimativa dos espetos</p>
+                  <span id="estimate-value" class="text-xl font-bold text-[#c5a880] whitespace-nowrap">R$ 0,00</span>
+                </div>
+                <p class="text-[11px] text-stone-400 mt-1">Estimativa referente apenas aos espetos selecionados. Confirmação final no atendimento.</p>
               </div>
             </div>
           </div>
 
-          <!-- TÓPICO 4: Adicionar Petiscos, Bebidas ou Açaí (Opcional com Preços) -->
-          <div class="bg-stone-50 dark:bg-[#100d0b] p-4 sm:p-5 rounded-2xl border border-stone-200 dark:border-white/[0.06] space-y-3">
-            <label class="block text-xs font-bold uppercase tracking-wider text-[#b91c1c] dark:text-red-400">
-              4. Deseja adicionar Petiscos, Bebidas ou Açaí? (Opcional)
-            </label>
-            <label for="res-extras" class="sr-only">Petiscos, bebidas ou açaí adicionais</label>
-            <input type="text" id="res-extras" name="res-extras" oninput="updateEstimate()" placeholder="Ex: 2x Chopp Cabôca (R$10), 1x Açaí c/ Charque (R$40)..."
-                   class="w-full bg-white dark:bg-[#181412] border border-stone-300 dark:border-white/[0.1] text-stone-900 dark:text-white rounded-xl px-4 py-3 text-xs sm:text-sm focus:outline-none focus:border-[#b91c1c] transition">
+          <hr class="border-stone-200 dark:border-white/10">
+
+          <!-- 4. Extras (não entram na estimativa) -->
+          <div>
+            <p class="text-xs font-bold uppercase tracking-wider text-[#b91c1c] dark:text-red-400 mb-2">
+              4. Petiscos, bebidas ou açaí <span class="text-stone-400 font-medium normal-case tracking-normal">— opcional</span>
+            </p>
+            <label for="res-extras" class="sr-only">Petiscos, bebidas ou açaí</label>
+            <input type="text" id="res-extras" name="res-extras" placeholder="Ex: 2x Chopp Cabôca, 1x Açaí c/ Charque" class="inp">
+            <p class="text-[11px] text-stone-500 mt-1.5">Esses itens não entram na estimativa dos espetos.</p>
           </div>
 
-          <!-- Estimativa de valor -->
-          <div id="estimate-box" class="flex items-center justify-between gap-3 bg-[#1c1917] text-white rounded-2xl px-5 py-4 border border-white/5">
-            <div>
-              <p class="text-[11px] uppercase tracking-wider text-stone-400 font-semibold">Estimativa do pedido</p>
-              <p class="text-[11px] text-stone-400 mt-0.5">Valor de referência — a confirmação final é feita no atendimento.</p>
-            </div>
-            <span id="estimate-value" class="text-xl font-bold text-[#c5a880] whitespace-nowrap">R$ 0,00</span>
+          <hr class="border-stone-200 dark:border-white/10">
+
+          <!-- 5. Observações -->
+          <div>
+            <p class="text-xs font-bold uppercase tracking-wider text-[#b91c1c] dark:text-red-400 mb-2">
+              5. Ocasião ou ponto da carne <span class="text-stone-400 font-medium normal-case tracking-normal">— opcional</span>
+            </p>
+            <label for="res-obs" class="sr-only">Ocasião ou ponto da carne</label>
+            <input type="text" id="res-obs" name="res-obs" placeholder="Ex: aniversário, carne ao ponto" class="inp">
           </div>
 
-          <!-- TÓPICO 5: Observações / Ocasião Especial -->
-          <div class="bg-stone-50 dark:bg-[#100d0b] p-4 sm:p-5 rounded-2xl border border-stone-200 dark:border-white/[0.06] space-y-2">
-            <label class="block text-xs font-bold uppercase tracking-wider text-stone-700 dark:text-stone-300">
-              5. Ocasião Especial ou Ponto da Carne:
-            </label>
-            <label for="res-obs" class="sr-only">Ocasião especial ou ponto da carne</label>
-            <input type="text" id="res-obs" name="res-obs" placeholder="Ex: Comemoração de aniversário, carne ao ponto, cadeira infantil..."
-                   class="w-full bg-white dark:bg-[#181412] border border-stone-300 dark:border-white/[0.1] text-stone-900 dark:text-white rounded-xl px-4 py-3 text-xs sm:text-sm focus:outline-none focus:border-[#b91c1c] transition">
-          </div>
-
-          <!-- Botão de Envio WhatsApp -->
-          <button type="submit" 
+          <button type="submit"
                   class="w-full flex items-center justify-center gap-3 bg-[#1c1917] hover:bg-stone-800 dark:bg-[#1c1917] dark:hover:bg-[#2e2a27] text-white font-bold text-xs sm:text-sm uppercase tracking-wider py-4 rounded-md shadow-lg border border-white/5 transition transform hover:scale-[1.01] active:scale-95 hover:border-[#c5a880]">
             <i data-lucide="message-circle" class="w-5 h-5 text-[#c5a880]"></i>
-            <span>Enviar Pedido / Reserva Pronto para o WhatsApp</span>
+            <span>Enviar pedido / reserva pronto no WhatsApp</span>
           </button>
         </form>
 
@@ -1783,13 +1750,8 @@
       filterCategory('todos', document.querySelector('.cat-btn[data-cat="todos"]'));
     }
 
-    // Alternar Guarnições no simulador
-    function toggleGuarnicoes(isCompleto) {
-      const box = document.getElementById('box-acompanhamentos-simulador');
-      box.style.display = isCompleto ? 'block' : 'none';
-    }
-
-    // ================= ESTIMATIVA DE VALOR DO PEDIDO =================
+    // ================= MONTE SEU PRATO — ESPETOS, STEPPERS E ESTIMATIVA =================
+    // Preços oficiais dos espetos (fonte única de verdade). Estimativa considera SOMENTE estes itens.
     const precosCarne = {
       'Picanha na Brasa': { Simples: 39, Completo: 45 },
       'Contra Filé na Brasa': { Simples: 32, Completo: 37 },
@@ -1804,93 +1766,150 @@
       'Tulipa Crocante': { Simples: 28, Completo: 33 },
       'Frango com Bacon': { Simples: 32, Completo: 37 }
     };
+    const CUTS = Object.keys(precosCarne);
+    const espetoQty = {};
 
-    function parseExtras(str) {
-      let total = 0;
-      if (!str) return 0;
-      str.split(/[,;\n]+/).forEach(part => {
-        const priceMatch = part.match(/r\$\s*(\d+(?:[.,]\d{1,2})?)/i);
-        if (!priceMatch) return;
-        const price = parseFloat(priceMatch[1].replace('.', '').replace(',', '.'));
-        const qtyMatch = part.match(/(\d+)\s*x/i);
-        const qty = qtyMatch ? parseInt(qtyMatch[1], 10) : 1;
-        total += price * (isNaN(qty) ? 1 : qty);
-      });
-      return total;
+    function brl(v) { return 'R$ ' + v.toFixed(2).replace('.', ','); }
+    function esc(s) { return String(s).replace(/\\/g, '\\\\').replace(/'/g, "\\'"); }
+    function tipoPratoVal() {
+      const c = document.querySelector('input[name="tipo_prato"]:checked');
+      return c ? c.value : 'Completo';
     }
 
-    function currencyBR(v) {
-      return 'R$ ' + v.toFixed(2).replace('.', ',');
+    function espetoMode() {
+      const c = document.querySelector('input[name="modo_espeto"]:checked');
+      const on = c && c.value === 'adiantar';
+      document.getElementById('espeto-builder').hidden = !on;
+      if (!on) {
+        CUTS.forEach(k => delete espetoQty[k]);
+        renderCutChips();
+        renderEspetoRows();
+        refreshEspetoUI();
+      }
     }
 
-    function updateEstimate() {
-      const carne = document.getElementById('carne-select').value;
-      const checked = document.querySelector('input[name="tipo_prato"]:checked');
-      const tipoPrato = checked ? checked.value : 'Completo';
-      let total = 0;
-      if (precosCarne[carne]) total += precosCarne[carne][tipoPrato] || 0;
-      total += parseExtras(document.getElementById('res-extras').value);
+    function renderCutChips() {
+      const wrap = document.getElementById('cut-chips');
+      if (!wrap) return;
+      wrap.innerHTML = CUTS.map(c =>
+        `<button type="button" class="chip${espetoQty[c] ? ' is-on' : ''}" aria-pressed="${!!espetoQty[c]}" onclick="toggleCut('${esc(c)}')">${c}</button>`
+      ).join('');
+    }
+
+    function toggleCut(c) {
+      if (espetoQty[c]) delete espetoQty[c]; else espetoQty[c] = 1;
+      renderCutChips();
+      renderEspetoRows();
+      refreshEspetoUI();
+    }
+
+    function bumpCut(c, d) {
+      if (!espetoQty[c]) return;
+      espetoQty[c] = Math.max(1, Math.min(99, espetoQty[c] + d));
+      renderEspetoRows();
+      refreshEspetoUI();
+    }
+
+    function removeCut(c) {
+      delete espetoQty[c];
+      renderCutChips();
+      renderEspetoRows();
+      refreshEspetoUI();
+    }
+
+    function renderEspetoRows() {
+      const list = document.getElementById('espeto-list');
+      if (!list) return;
+      const keys = CUTS.filter(c => espetoQty[c]);
+      list.innerHTML = keys.map(c => `
+        <div class="flex items-center justify-between gap-3 bg-white dark:bg-[#181412] border border-stone-200 dark:border-white/[0.06] rounded-lg px-3 py-2">
+          <span class="text-xs font-semibold text-stone-800 dark:text-stone-100">${c}</span>
+          <div class="flex items-center gap-1.5">
+            <button type="button" class="stepper-btn" aria-label="Diminuir ${c}" onclick="bumpCut('${esc(c)}',-1)">&minus;</button>
+            <span class="w-6 text-center text-sm font-bold tabular-nums">${espetoQty[c]}</span>
+            <button type="button" class="stepper-btn" aria-label="Aumentar ${c}" onclick="bumpCut('${esc(c)}',1)">+</button>
+            <button type="button" class="ml-1 text-stone-400 hover:text-[#b91c1c] p-1 text-base leading-none" aria-label="Remover ${c}" onclick="removeCut('${esc(c)}')">&times;</button>
+          </div>
+        </div>`).join('');
+    }
+
+    function calcEspetoEstimate() {
+      const tp = tipoPratoVal();
+      let t = 0;
+      CUTS.forEach(c => { if (espetoQty[c]) t += (precosCarne[c][tp] || 0) * espetoQty[c]; });
+      return t;
+    }
+
+    function refreshEspetoUI() {
+      const has = CUTS.some(c => espetoQty[c]);
+      const completo = tipoPratoVal() === 'Completo';
+      const srv = document.getElementById('espeto-servir');
+      const cmp = document.getElementById('espeto-completo');
+      const est = document.getElementById('espeto-estimate');
+      if (srv) srv.hidden = !has;
+      if (cmp) cmp.hidden = !(has && completo);
+      if (est) est.hidden = !has;
       const out = document.getElementById('estimate-value');
-      if (out) out.textContent = currencyBR(total);
+      if (out) out.textContent = brl(calcEspetoEstimate());
     }
-    updateEstimate();
 
-    // ================= CONCIERGE WHATSAPP: RESERVAS & PEDIDOS DETALHADOS =================
+    renderCutChips();
+    espetoMode();
+
+    // ================= CONCIERGE WHATSAPP: MENSAGEM PRONTA =================
     function sendConciergeReservation(e) {
       e.preventDefault();
-      
-      const form = document.getElementById('concierge-form');
-      const formData = new FormData(form);
+      const g = id => { const el = document.getElementById(id); return el ? el.value.trim() : ''; };
+      const rv = n => { const el = document.querySelector(`input[name="${n}"]:checked`); return el ? el.value : ''; };
 
-      const tipo = formData.get('tipo_atendimento');
-      const nome = document.getElementById('res-nome').value.trim();
-      const telefone = document.getElementById('res-telefone').value.trim();
-      const pessoas = document.getElementById('res-pessoas').value;
-      const horario = document.getElementById('res-horario').value.trim();
-      const ambiente = document.getElementById('res-ambiente').value;
-      const carne = document.getElementById('carne-select').value;
-      const tipoPrato = formData.get('tipo_prato');
-      const arroz = formData.get('arroz') || 'N/A';
-      const guarnicao = formData.get('guarnicao') || 'N/A';
-      const extras = document.getElementById('res-extras').value.trim();
-      const obs = document.getElementById('res-obs').value.trim();
+      const tipo = rv('tipo_atendimento');
+      const nome = g('res-nome');
+      const tel = g('res-telefone');
+      const pessoas = g('res-pessoas');
+      const horario = g('res-horario');
+      const ambiente = g('res-ambiente');
+      const modo = rv('modo_espeto');
+      const extras = g('res-extras');
+      const obs = g('res-obs');
+      const cuts = CUTS.filter(c => espetoQty[c]);
+      const temEspetos = modo === 'adiantar' && cuts.length > 0;
 
-      let msg = `🍢 *SOLICITAÇÃO DE RESERVA / PEDIDO - NO SPETTO* 🍢%0A%0A`;
-      msg += `📌 *Tipo de Atendimento:* ${encodeURIComponent(tipo)}%0A`;
-      msg += `👤 *Nome do Cliente:* ${encodeURIComponent(nome)}%0A`;
-      if (telefone) msg += `📱 *Contato:* ${encodeURIComponent(telefone)}%0A`;
-      msg += `👥 *Quantidade de Pessoas:* ${encodeURIComponent(pessoas)}%0A`;
-      msg += `📅 *Data e Horário Desejado:* ${encodeURIComponent(horario)}%0A`;
-      msg += `❄️ *Ambiente de Preferência:* ${encodeURIComponent(ambiente)}%0A%0A`;
+      const L = [];
+      L.push('*RESERVA / PEDIDO — NO SPETTO*');
+      L.push('');
+      L.push('Atendimento: ' + tipo);
+      L.push('Nome: ' + nome);
+      if (tel) L.push('WhatsApp: ' + tel);
+      L.push('Pessoas: ' + pessoas);
+      L.push('Data e horário: ' + horario);
+      L.push('Ambiente: ' + ambiente);
 
-      if (carne !== 'Nenhum (vou escolher no restaurante)') {
-        msg += `🥩 *Carne / Espeto Selecionado:* ${encodeURIComponent(carne)}%0A`;
-        msg += `🍽️ *Formato do Prato:* ${encodeURIComponent(tipoPrato)}%0A`;
-        if (tipoPrato === 'Completo') {
-          msg += `🍚 *Arroz Escolhido:* ${encodeURIComponent(arroz)}%0A`;
-          msg += `🍟 *Guarnição:* ${encodeURIComponent(guarnicao)}%0A`;
-          msg += `🥗 *Inclusos:* Farofa da Casa e Vinagrete%0A`;
+      if (temEspetos) {
+        const tp = tipoPratoVal();
+        L.push('');
+        L.push('Espetos:');
+        cuts.forEach(c => L.push('- ' + c + ': ' + espetoQty[c]));
+        L.push('Servir: ' + tp);
+        if (tp === 'Completo') {
+          L.push('Arroz: ' + rv('arroz'));
+          L.push('Guarnição: ' + rv('guarnicao'));
+          L.push('(Farofa da Casa e Vinagrete inclusos)');
         }
-        msg += `%0A`;
       }
 
-      if (extras) {
-        msg += `🍟 *Petiscos / Bebidas Extras:* ${encodeURIComponent(extras)}%0A`;
+      if (extras) { L.push(''); L.push('Outros itens: ' + extras); }
+      if (obs) { L.push(''); L.push('Observações: ' + obs); }
+
+      if (temEspetos) {
+        L.push('');
+        L.push('Estimativa dos espetos: ' + brl(calcEspetoEstimate()) + ' (apenas espetos, a confirmar no atendimento)');
       }
 
-      if (obs) {
-        msg += `📝 *Ocasião / Observações:* ${encodeURIComponent(obs)}%0A`;
-      }
+      L.push('');
+      L.push('_Olá! Gostaria de confirmar a disponibilidade deste pedido/reserva._');
 
-      const estimativa = document.getElementById('estimate-value').textContent.trim();
-      if (estimativa && estimativa !== 'R$ 0,00') {
-        msg += `%0A💰 *Estimativa pelo site:* ${encodeURIComponent(estimativa)} (a confirmar no atendimento)%0A`;
-      }
-
-      msg += `%0A_Olá! Gostaria de verificar a disponibilidade e confirmar este pedido/reserva com vocês._`;
-
-      const waUrl = `https://wa.me/5591992910573?text=${msg}`;
-      window.open(waUrl, '_blank');
+      const text = L.map(encodeURIComponent).join('%0A');
+      window.open('https://wa.me/5591992910573?text=' + text, '_blank');
     }
 
     // ================= ABERTO / FECHADO EM TEMPO REAL =================
