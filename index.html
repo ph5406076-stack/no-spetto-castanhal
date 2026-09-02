@@ -596,27 +596,39 @@
   </section>
 
   <!-- BANNER: ALMOÇO DE DOMINGO EM FAMÍLIA -->
-  <section id="almoco-domingo" class="bg-[#f4ede2] dark:bg-[#14110f] border-b border-stone-200 dark:border-white/[0.08] py-12 transition-colors duration-300">
+  <section id="almoco-domingo" class="bg-[#f4ede2] dark:bg-[#14110f] border-b border-stone-200 dark:border-white/[0.08] py-16 sm:py-24 transition-colors duration-300">
     <div class="max-w-6xl mx-auto px-4 sm:px-6">
-      <div class="bg-white dark:bg-[#181412] rounded-lg p-6 sm:p-10 border border-stone-300/80 dark:border-white/[0.08] shadow-sm flex flex-col lg:flex-row items-center justify-between gap-8 reveal">
-        
-        <div class="max-w-2xl text-center lg:text-left">
-          <span class="inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest text-stone-700 dark:text-stone-300 bg-transparent px-3 py-1 rounded-md border border-stone-300 dark:border-white/10 mb-3">
-            <i data-lucide="calendar" class="w-3.5 h-3.5 text-[#c5a880]"></i> Tradição de Fim de Semana
+      <div class="grid grid-cols-1 lg:grid-cols-2 rounded-2xl overflow-hidden border border-stone-300/70 dark:border-white/[0.08] shadow-xl reveal">
+
+        <!-- Lado da imagem -->
+        <div class="relative min-h-[260px] sm:min-h-[340px] lg:min-h-full">
+          <img src="images/foto-almoco-familia.jpg" alt="Família reunida no almoço de domingo do No Spetto"
+               width="825" height="1024" loading="lazy"
+               class="absolute inset-0 w-full h-full object-cover">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent lg:bg-gradient-to-r lg:from-transparent lg:to-black/10"></div>
+          <span class="absolute top-5 left-5 inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-[0.2em] text-white bg-black/55 backdrop-blur-sm px-3 py-1.5 rounded-md border border-white/15">
+            <i data-lucide="calendar" class="w-3.5 h-3.5 text-[#c5a880]"></i> Tradição de fim de semana
           </span>
-          <h2 class="text-2xl sm:text-3xl lg:text-4xl font-serif-title font-bold text-stone-900 dark:text-white mb-3">
-            Domingo é dia de reunir a família no No Spetto! 🥩
-          </h2>
-          <p class="text-stone-600 dark:text-stone-300 text-xs sm:text-base leading-relaxed">
-            Abrimos especialmente para o <strong>almoço de domingo (das 11h às 15h)</strong> para você aproveitar um ambiente agradável, espetos suculentos, chopp gelado e aquele sabor que faz toda a diferença.
-          </p>
         </div>
 
-        <div class="shrink-0 w-full sm:w-auto">
-          <a href="#reserva-section" 
-             class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#1c1917] hover:bg-stone-800 dark:bg-[#1c1917] dark:hover:bg-[#2e2a27] text-white font-bold text-xs sm:text-sm uppercase tracking-wider px-6 py-4 rounded-md shadow-md border border-white/5 transition active:scale-95 hover:border-[#c5a880]">
-            <i data-lucide="calendar-check" class="w-4 h-4 text-[#c5a880]"></i>
-            <span>Reservar Mesa p/ Domingo</span>
+        <!-- Lado do texto -->
+        <div class="bg-white dark:bg-[#181412] p-7 sm:p-10 lg:p-14 flex flex-col justify-center">
+          <h2 class="text-2xl sm:text-3xl lg:text-4xl font-serif-title font-bold text-stone-900 dark:text-white leading-[1.15] mb-4 [text-wrap:balance]">
+            Domingo é dia de reunir a família no No Spetto
+          </h2>
+          <p class="text-stone-600 dark:text-stone-300 text-sm sm:text-base leading-relaxed mb-6">
+            Abrimos especialmente para o <strong class="text-stone-900 dark:text-white">almoço de domingo, das 11h às 15h</strong>, para você aproveitar um ambiente agradável, espetos suculentos, chopp gelado e aquele sabor que faz toda a diferença.
+          </p>
+
+          <div class="flex items-center gap-2 text-xs sm:text-sm text-stone-500 dark:text-stone-400 mb-7 pb-7 border-b border-stone-200 dark:border-white/[0.08]">
+            <i data-lucide="clock" class="w-4 h-4 text-[#b91c1c] dark:text-red-400"></i>
+            <span>Sábado e domingo &middot; 11h às 15h &middot; almoço em família</span>
+          </div>
+
+          <a href="#reserva-section"
+             class="self-start inline-flex items-center justify-center gap-2 bg-[#b91c1c] hover:bg-[#a81919] text-white font-bold text-xs sm:text-sm uppercase tracking-wider px-7 py-4 rounded-md shadow-lg shadow-red-950/20 transition transform hover:-translate-y-0.5 active:scale-95">
+            <i data-lucide="calendar-check" class="w-4 h-4"></i>
+            <span>Reservar mesa p/ domingo</span>
           </a>
         </div>
 
