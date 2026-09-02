@@ -15,6 +15,9 @@
   <link rel="icon" type="image/png" href="images/logo-black.png">
   <link rel="apple-touch-icon" href="images/logo-black.png">
 
+  <!-- Prioriza o quadro da hero (LCP) -->
+  <link rel="preload" as="image" href="assets/hero/espetos-hero-poster.jpg" fetchpriority="high">
+
   <!-- Geo -->
   <meta name="geo.region" content="BR-PA">
   <meta name="geo.placename" content="Castanhal">
@@ -27,7 +30,7 @@
   <meta property="og:title" content="No Spetto Espetaria | O Verdadeiro Sabor da Brasa em Castanhal">
   <meta property="og:description" content="Carnes nobres na brasa, açaí do Pará com charque, salão climatizado, varanda e espaço kids. A autêntica espetaria de Castanhal - PA.">
   <meta property="og:url" content="https://ph5406076-stack.github.io/no-spetto-castanhal/">
-  <meta property="og:image" content="https://ph5406076-stack.github.io/no-spetto-castanhal/images/espetos-prato.jpg">
+  <meta property="og:image" content="https://ph5406076-stack.github.io/no-spetto-castanhal/assets/hero/espetos-hero-poster.jpg">
   <meta property="og:image:alt" content="Espetos completos na brasa do No Spetto">
   <meta property="og:locale" content="pt_BR">
 
@@ -35,7 +38,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="No Spetto Espetaria | O Verdadeiro Sabor da Brasa em Castanhal">
   <meta name="twitter:description" content="Carnes nobres na brasa, açaí do Pará com charque, salão climatizado e espaço kids em Castanhal - PA.">
-  <meta name="twitter:image" content="https://ph5406076-stack.github.io/no-spetto-castanhal/images/espetos-prato.jpg">
+  <meta name="twitter:image" content="https://ph5406076-stack.github.io/no-spetto-castanhal/assets/hero/espetos-hero-poster.jpg">
 
   <!-- Evita flash de tema (FOUC) antes do carregamento do JS -->
   <script>
@@ -60,7 +63,7 @@
     "servesCuisine": ["Churrasco", "Brasileira", "Regional Paraense"],
     "priceRange": "$$",
     "url": "https://ph5406076-stack.github.io/no-spetto-castanhal/",
-    "image": "https://ph5406076-stack.github.io/no-spetto-castanhal/images/espetos-prato.jpg",
+    "image": "https://ph5406076-stack.github.io/no-spetto-castanhal/assets/hero/espetos-hero-poster.jpg",
     "telephone": "+55-91-99291-0573",
     "acceptsReservations": "True",
     "address": {
@@ -168,6 +171,29 @@
 
     /* Fallback: se o JS não rodar, o conteúdo continua visível */
     .no-js .reveal { opacity: 1; transform: none; }
+
+    /* ===== HERO — palco da brasa ===== */
+    .hero-media {
+      mix-blend-mode: screen;            /* preto puro do vídeo some por completo */
+      opacity: 0;
+      animation: heroMediaIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.15s forwards;
+    }
+    @keyframes heroMediaIn { to { opacity: 1; } }
+
+    .hero-ember {
+      background: radial-gradient(50% 50% at 78% 52%, rgba(185,28,28,0.26) 0%, rgba(185,28,28,0.08) 42%, transparent 72%);
+      animation: heroEmber 6s ease-in-out infinite alternate;
+      will-change: opacity, transform;
+    }
+    @keyframes heroEmber {
+      from { opacity: 0.65; transform: scale(1); }
+      to   { opacity: 1;    transform: scale(1.06); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .hero-media { opacity: 1; animation: none; }
+      .hero-ember { animation: none; }
+    }
   </style>
 </head>
 
@@ -261,72 +287,96 @@
     </div>
   </header>
 
-  <!-- HERO SECTION ACOLHEDOR COM TOQUE VERMELHO & ESTRUTURA CLARA -->
-  <section class="relative bg-gradient-to-b from-[#faf7f2] via-[#faf7f2] to-[#f4ede2] dark:from-[#0c0a09] dark:via-[#110e0c] dark:to-[#0c0a09] overflow-hidden py-12 sm:py-20 border-b border-stone-200 dark:border-white/[0.08] transition-colors duration-300">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
-      
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-        
-        <!-- Textos Principais -->
-        <div class="lg:col-span-7 text-center lg:text-left reveal">
-          
-          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-md bg-transparent border border-stone-300 dark:border-white/10 text-stone-700 dark:text-stone-300 text-xs font-bold uppercase tracking-widest mb-4 sm:mb-6">
-            <i data-lucide="flame" class="w-4 h-4 text-[#b91c1c] animate-pulse"></i>
-            A Autêntica Espetaria de Castanhal
-          </div>
+  <!-- HERO SECTION — PALCO DA BRASA (vídeo dos três espetos sobre preto puro) -->
+  <section class="relative isolate overflow-hidden bg-[#0c0a09] text-white border-b border-white/[0.06]">
 
-          <h1 class="text-3xl sm:text-5xl lg:text-6xl font-bold font-serif-title tracking-tight text-stone-900 dark:text-white leading-[1.15] mb-5">
-            O verdadeiro sabor da brasa com a tradição que você ama.
-          </h1>
+    <!-- Brilho de brasa por trás dos espetos -->
+    <div class="hero-ember absolute inset-0 z-0 pointer-events-none" aria-hidden="true"></div>
 
-          <p class="text-stone-600 dark:text-stone-300 text-sm sm:text-base md:text-lg mb-8 leading-relaxed max-w-xl mx-auto lg:mx-0 font-normal">
-            Carnes nobres suculentas, acompanhamentos fartos da casa, o autêntico <strong>Açaí do Pará com charque</strong>, chopp trincando, salão climatizado e <strong>espaço kids</strong> para toda a família.
-          </p>
+    <!-- Vídeo: preto puro some com mix-blend screen. Toca uma vez e congela no leque final. -->
+    <div class="absolute inset-0 z-0 lg:left-[30%] pointer-events-none" aria-hidden="true">
+      <video id="hero-video"
+             class="hero-media h-full w-full object-cover object-[68%_center] sm:object-[76%_center] lg:object-[62%_center]"
+             autoplay muted playsinline preload="auto" disablepictureinpicture
+             poster="assets/hero/espetos-hero-poster.jpg" tabindex="-1">
+        <source src="assets/hero/espetos-hero.webm" type="video/webm">
+        <source src="assets/hero/espetos-hero.mp4" type="video/mp4">
+      </video>
+    </div>
 
-          <!-- Botões -->
-          <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3.5 mb-8">
-            <a href="#reserva-section" 
-               class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#1c1917] hover:bg-stone-800 dark:bg-[#1c1917] dark:hover:bg-[#2e2a27] text-white font-bold text-xs sm:text-sm uppercase tracking-wider px-7 py-4 rounded-md shadow-lg border border-white/5 transition-all transform hover:-translate-y-0.5 active:scale-95 hover:border-[#c5a880]">
-              <i data-lucide="calendar" class="w-4 h-4 text-[#c5a880]"></i>
-              <span>Montar Prato / Reserva</span>
-            </a>
+    <!-- Scrims para legibilidade da copy (mais forte no mobile) -->
+    <div class="absolute inset-0 z-10 pointer-events-none bg-gradient-to-r from-[#0c0a09] via-[#0c0a09]/90 to-[#0c0a09]/40 lg:via-[#0c0a09]/45 lg:to-transparent" aria-hidden="true"></div>
+    <div class="absolute inset-0 z-10 pointer-events-none bg-gradient-to-t from-[#0c0a09] via-[#0c0a09]/20 to-transparent lg:hidden" aria-hidden="true"></div>
 
-            <a href="#cardapio" 
-               class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white dark:bg-white/[0.05] hover:bg-stone-100 dark:hover:bg-white/[0.1] text-stone-800 dark:text-stone-200 border border-stone-300 dark:border-white/[0.15] font-semibold text-xs sm:text-sm uppercase tracking-wider px-7 py-4 rounded-md transition shadow-sm">
-              <i data-lucide="utensils" class="w-4 h-4 text-[#c5a880]"></i>
-              <span>Ver Cardápio</span>
-            </a>
-          </div>
+    <!-- Conteúdo -->
+    <div class="relative z-20 mx-auto max-w-6xl px-5 sm:px-6 min-h-[86vh] flex flex-col justify-center py-20 sm:py-28 lg:py-32">
+      <div class="w-full max-w-md sm:max-w-xl lg:max-w-2xl reveal">
 
-          <!-- Mini Destaques -->
-          <div class="grid grid-cols-2 gap-2 sm:flex sm:flex-wrap items-center justify-center lg:justify-start sm:gap-6 text-xs text-stone-500 dark:text-stone-400 pt-5 border-t border-stone-300/80 dark:border-white/[0.08]">
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2 text-center sm:text-left">
-              <i data-lucide="snowflake" class="w-4 h-4 text-cyan-600 dark:text-cyan-400"></i>
-              <span class="text-stone-700 dark:text-stone-300">Climatizado</span>
-            </div>
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2 text-center sm:text-left">
-              <i data-lucide="smile" class="w-4 h-4 text-emerald-600 dark:text-emerald-400"></i>
-              <span class="text-stone-700 dark:text-stone-300">Espaço Kids</span>
-            </div>
-          </div>
-
+        <div class="inline-flex items-center gap-2 max-w-full px-3 py-1.5 rounded-md bg-white/5 border border-white/15 text-stone-200 text-[10px] sm:text-xs font-bold uppercase tracking-wider sm:tracking-widest mb-5 sm:mb-6 backdrop-blur-sm">
+          <i data-lucide="flame" class="w-4 h-4 shrink-0 text-[#b91c1c] animate-pulse"></i>
+          A Autêntica Espetaria de Castanhal
         </div>
 
-        <!-- Foto Gastronômica Destaque -->
-        <div class="lg:col-span-5 relative mt-4 lg:mt-0 reveal">
-          <div class="relative mx-auto max-w-sm sm:max-w-md rounded-lg overflow-hidden shadow-2xl border border-stone-200 dark:border-white/10">
-            <img src="images/espetos-prato.jpg" alt="Espetos completos na brasa do No Spetto" width="667" height="1000" fetchpriority="high" class="w-full h-72 sm:h-96 object-cover">
-            <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/95 via-black/60 to-transparent p-5 sm:p-6 text-white">
-              <span class="text-xs font-bold uppercase tracking-widest text-[#c5a880]">Espetos Completos</span>
-              <p class="text-xs sm:text-sm font-medium text-stone-200 mt-1 leading-snug">Com Baião de Dois, Farofa da Casa, Vinagrete e Fritas ou Macaxeira na Manteiga.</p>
-            </div>
+        <h1 class="font-serif-title font-bold tracking-tight leading-[1.06] text-[1.95rem] min-[380px]:text-[2.2rem] sm:text-5xl lg:text-6xl text-white mb-5 sm:mb-6">
+          O verdadeiro sabor
+          <span class="block">da <span class="italic font-normal text-[#c5a880]">brasa</span>, com a</span>
+          <span class="block">tradição que você ama.</span>
+        </h1>
+
+        <p class="text-stone-300 text-sm sm:text-base md:text-lg mb-8 leading-relaxed max-w-md font-normal">
+          Carnes nobres na brasa, o autêntico <strong class="font-semibold text-white">Açaí do Pará com charque</strong> e chopp trincando. Salão climatizado, varanda e <strong class="font-semibold text-white">espaço kids</strong> para a família toda.
+        </p>
+
+        <!-- Botões -->
+        <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 mb-10">
+          <a href="#reserva-section"
+             class="inline-flex items-center justify-center gap-2 bg-[#b91c1c] hover:bg-[#a81919] text-white font-bold text-xs sm:text-sm uppercase tracking-wider px-7 py-4 rounded-md shadow-lg shadow-black/40 transition-all transform hover:-translate-y-0.5 active:scale-95">
+            <i data-lucide="calendar" class="w-4 h-4"></i>
+            <span>Montar Prato / Reserva</span>
+          </a>
+
+          <a href="#cardapio"
+             class="inline-flex items-center justify-center gap-2 bg-white/5 hover:bg-white/10 text-white border border-white/25 font-semibold text-xs sm:text-sm uppercase tracking-wider px-7 py-4 rounded-md transition backdrop-blur-sm">
+            <i data-lucide="utensils" class="w-4 h-4 text-[#c5a880]"></i>
+            <span>Ver Cardápio</span>
+          </a>
+        </div>
+
+        <!-- Selos reais -->
+        <div class="flex flex-wrap items-center gap-x-6 gap-y-3 text-xs text-stone-400 pt-5 border-t border-white/[0.1]">
+          <div class="flex items-center gap-2">
+            <i data-lucide="snowflake" class="w-4 h-4 text-cyan-400"></i>
+            <span class="text-stone-300">Climatizado</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <i data-lucide="trees" class="w-4 h-4 text-emerald-400"></i>
+            <span class="text-stone-300">Varanda ao ar livre</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <i data-lucide="smile" class="w-4 h-4 text-amber-400"></i>
+            <span class="text-stone-300">Espaço Kids</span>
           </div>
         </div>
 
       </div>
-
     </div>
   </section>
+
+  <script>
+    (function () {
+      var v = document.getElementById('hero-video');
+      if (!v) return;
+      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var saveData = navigator.connection && navigator.connection.saveData;
+      if (reduce || saveData) {
+        v.removeAttribute('autoplay');
+        v.preload = 'none';
+        return; // mantém apenas o poster (leque final)
+      }
+      var p = v.play();
+      if (p && p.catch) p.catch(function () { /* autoplay bloqueado: poster permanece */ });
+    })();
+  </script>
 
   <!-- ================= QUADRO EXPLÍCITO DE HORÁRIOS DE ATENDIMENTO ================= -->
   <section id="horarios-section" class="bg-white dark:bg-[#14110f] border-b border-stone-200 dark:border-white/[0.08] py-8 sm:py-10 transition-colors duration-300">
