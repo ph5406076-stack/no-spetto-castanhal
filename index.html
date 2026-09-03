@@ -91,25 +91,29 @@
     }
 
     .site-intro__meter {
-      display: flex; flex-direction: column; align-items: center; gap: .7rem;
-      opacity: 0; animation: siMeterIn .5s ease .2s both;
+      display: flex; flex-direction: column; align-items: center; gap: .85rem;
+      opacity: 0; animation: siMeterIn .45s ease .1s both;
     }
     @keyframes siMeterIn { to { opacity: 1; } }
     .site-intro__count {
-      font: 600 .8rem/1 'Plus Jakarta Sans', system-ui, sans-serif;
-      letter-spacing: .12em; color: #c5a880; font-variant-numeric: tabular-nums;
+      font: 700 1.05rem/1 'Plus Jakarta Sans', system-ui, sans-serif;
+      letter-spacing: .14em; color: #c5a880; font-variant-numeric: tabular-nums;
     }
     .site-intro__track {
-      width: clamp(140px, 32vw, 210px); height: 2px;
-      background: rgba(255, 255, 255, .12); border-radius: 999px; overflow: hidden;
+      width: clamp(160px, 34vw, 240px); height: 3px;
+      background: rgba(255, 255, 255, .16); border-radius: 999px; overflow: hidden;
     }
-    .site-intro__bar { height: 100%; width: 0%; background: #b91c1c; border-radius: 999px; }
+    .site-intro__bar {
+      height: 100%; width: 0%; border-radius: 999px;
+      background: linear-gradient(90deg, #b91c1c, #e0533a);
+    }
 
-    @media (max-width: 767px) { .site-intro__meter { display: none; } }
+    /* Só a logo no mobile (sem contador) */
+    .site-intro[data-variant="logo-only"] .site-intro__meter { display: none; }
 
     @media (prefers-reduced-motion: reduce) {
       .site-intro__logo { animation: siLogoIn .3s ease both; }
-      .site-intro__meter { display: none; }
+      .site-intro__meter { animation: none; opacity: 1; }
       .site-intro { transition-duration: .2s; }
     }
   </style>
@@ -304,7 +308,7 @@
   <!-- ================= INTRO DA MARCA (antes de qualquer conteúdo) ================= -->
   <div id="site-intro" class="site-intro" role="status" aria-label="Carregando No Spetto Espetaria"
        data-logo="images/logo.png" data-bg="#0c0a09"
-       data-duration-desktop="2200" data-duration-mobile="1150">
+       data-duration-desktop="2600" data-duration-mobile="1150">
     <img class="site-intro__logo" src="images/logo.png" alt="No Spetto Espetaria" width="1024" height="512" fetchpriority="high" decoding="async">
     <div class="site-intro__meter" aria-hidden="true">
       <span class="site-intro__count" id="site-intro-count">0%</span>
@@ -324,11 +328,28 @@
       try { reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (e) {}
       var isMobile = false;
       try { isMobile = window.matchMedia('(max-width: 767px)').matches; } catch (e) { isMobile = window.innerWidth < 768; }
+      if (isMobile) root.setAttribute('data-variant', 'logo-only');
 
-      var durDesktop = parseInt(root.getAttribute('data-duration-desktop'), 10) || 2200;
+      var durDesktop = parseInt(root.getAttribute('data-duration-desktop'), 10) || 2600;
       var durMobile = parseInt(root.getAttribute('data-duration-mobile'), 10) || 1150;
 
       var rafId = null, done = false;
+
+      // Anima o contador de 0 a 100 no tempo dado e então encerra.
+      function runCounter(ms) {
+        var start = null;
+        function tick(now) {
+          if (start === null) start = now;
+          var t = (now - start) / ms;
+          if (t > 1) t = 1;
+          var pct = Math.round(t * 100);
+          if (countEl) countEl.textContent = pct + '%';
+          if (barEl) barEl.style.width = pct + '%';
+          if (t < 1) rafId = requestAnimationFrame(tick);
+          else setTimeout(finish, 240);
+        }
+        rafId = requestAnimationFrame(tick);
+      }
 
       function finish() {
         if (done) return;
@@ -351,52 +372,34 @@
       // Rede de segurança: nunca deixa o site preso, mesmo em carga muito lenta.
       setTimeout(finish, 9000);
 
-      if (reduce) {
-        // Logo visível brevemente, sem contagem, saída discreta.
-        setTimeout(finish, 620);
-        return;
-      }
-
-      // Espera a thread principal estabilizar (frames curtos e seguidos) antes
-      // de iniciar a contagem/hold — assim a progressão é sempre suave e contínua,
-      // nunca "travada", mesmo com o resto da página carregando por trás.
-      function whenSettled(cb) {
-        var fired = false, last = null, stable = 0;
-        var go = function () { if (!fired) { fired = true; cb(); } };
-        function probe(now) {
-          if (fired) return;
-          if (last !== null) {
-            if (now - last < 42) { stable++; } else { stable = 0; }
-            if (stable >= 2) { go(); return; }
-          }
-          last = now;
-          requestAnimationFrame(probe);
-        }
-        requestAnimationFrame(probe);
-        setTimeout(go, 2800); // teto: não espera pra sempre
-      }
-
       if (isMobile) {
-        // Mobile: só a logo, curto. Sem esperar a thread estabilizar —
-        // a entrada da logo é CSS e se recupera sozinha.
+        // Mobile: só a logo, curto. A entrada da logo é CSS e se recupera sozinha.
         requestAnimationFrame(function () { setTimeout(finish, durMobile); });
         return;
       }
 
-      whenSettled(function () {
-        var start = null;
-        function tick(now) {
-          if (start === null) start = now;
-          var t = (now - start) / durDesktop;
-          if (t > 1) t = 1;
-          var pct = Math.round(t * 100);
-          if (countEl) countEl.textContent = pct + '%';
-          if (barEl) barEl.style.width = pct + '%';
-          if (t < 1) rafId = requestAnimationFrame(tick);
-          else setTimeout(finish, 240);
+      if (reduce) {
+        // Movimento reduzido: ainda mostra 0→100, porém mais rápido e sem enfeite.
+        requestAnimationFrame(function () { runCounter(1400); });
+        return;
+      }
+
+      // Espera a thread principal estabilizar (frames curtos e seguidos) antes
+      // de iniciar a contagem — assim a progressão é sempre suave e contínua,
+      // nunca "travada", mesmo com o resto da página carregando por trás.
+      var fired = false, last = null, stable = 0;
+      var go = function () { if (fired) return; fired = true; runCounter(durDesktop); };
+      function probe(now) {
+        if (fired) return;
+        if (last !== null) {
+          if (now - last < 42) { stable++; } else { stable = 0; }
+          if (stable >= 2) { go(); return; }
         }
-        rafId = requestAnimationFrame(tick);
-      });
+        last = now;
+        requestAnimationFrame(probe);
+      }
+      requestAnimationFrame(probe);
+      setTimeout(go, 2200); // teto: não espera pra sempre
     })();
   </script>
 
