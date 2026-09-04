@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
   <title>No Spetto Espetaria | O Verdadeiro Sabor da Brasa em Castanhal</title>
-  <meta name="description" content="A autêntica espetaria de Castanhal - PA. Carnes nobres na brasa, açaí do Pará com charque, salão climatizado, varanda e espaço kids para toda a família.">
-  <meta name="keywords" content="espetaria Castanhal, churrasco Castanhal, espeto na brasa, açaí com charque, restaurante Castanhal PA, No Spetto, almoço de domingo Castanhal">
+  <meta name="description" content="A autêntica espetaria de Castanhal - PA. Carnes nobres na brasa, chopp trincando, salão climatizado, varanda e espaço kids para toda a família.">
+  <meta name="keywords" content="espetaria Castanhal, churrasco Castanhal, espeto na brasa, picanha na brasa, restaurante Castanhal PA, No Spetto, almoço de domingo Castanhal">
   <meta name="author" content="No Spetto Espetaria">
   <meta name="robots" content="index, follow">
   <meta name="theme-color" content="#b91c1c">
@@ -28,7 +28,7 @@
   <meta property="og:type" content="restaurant.restaurant">
   <meta property="og:site_name" content="No Spetto Espetaria">
   <meta property="og:title" content="No Spetto Espetaria | O Verdadeiro Sabor da Brasa em Castanhal">
-  <meta property="og:description" content="Carnes nobres na brasa, açaí do Pará com charque, salão climatizado, varanda e espaço kids. A autêntica espetaria de Castanhal - PA.">
+  <meta property="og:description" content="Carnes nobres na brasa, chopp trincando, salão climatizado, varanda e espaço kids. A autêntica espetaria de Castanhal - PA.">
   <meta property="og:url" content="https://ph5406076-stack.github.io/no-spetto-castanhal/">
   <meta property="og:image" content="https://ph5406076-stack.github.io/no-spetto-castanhal/assets/hero/espetos-hero-poster.jpg">
   <meta property="og:image:alt" content="Espetos completos na brasa do No Spetto">
@@ -37,7 +37,7 @@
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="No Spetto Espetaria | O Verdadeiro Sabor da Brasa em Castanhal">
-  <meta name="twitter:description" content="Carnes nobres na brasa, açaí do Pará com charque, salão climatizado e espaço kids em Castanhal - PA.">
+  <meta name="twitter:description" content="Carnes nobres na brasa, chopp trincando, salão climatizado e espaço kids em Castanhal - PA.">
   <meta name="twitter:image" content="https://ph5406076-stack.github.io/no-spetto-castanhal/assets/hero/espetos-hero-poster.jpg">
 
   <!-- Evita flash de tema (FOUC) antes do carregamento do JS -->
@@ -124,7 +124,7 @@
     "@context": "https://schema.org",
     "@type": "Restaurant",
     "name": "No Spetto Espetaria",
-    "description": "A autêntica espetaria de Castanhal - PA. Carnes nobres na brasa, açaí do Pará com charque, salão climatizado, varanda e espaço kids para toda a família.",
+    "description": "A autêntica espetaria de Castanhal - PA. Carnes nobres na brasa, chopp trincando, salão climatizado, varanda e espaço kids para toda a família.",
     "servesCuisine": ["Churrasco", "Brasileira", "Regional Paraense"],
     "priceRange": "$$",
     "url": "https://ph5406076-stack.github.io/no-spetto-castanhal/",
@@ -276,7 +276,6 @@
     }
     label > input:focus-visible + .chip { outline: 2px solid #c5a880; outline-offset: 2px; }
     .chip:focus-visible { outline: 2px solid #c5a880; outline-offset: 2px; }
-    #cut-chips .chip { padding: .4rem .6rem; font-size: .72rem; }
 
     .stepper-btn {
       width: 2rem; height: 2rem; flex: none;
@@ -300,6 +299,65 @@
     .inp:focus { outline: none; border-color: #b91c1c; }
     .inp::placeholder { color: #a8a29e; }
     .dark .inp { background: #181412; border-color: rgba(255,255,255,.1); color: #fff; }
+
+    /* ===== Cardápio — navegação por categorias + lista editorial ===== */
+    .menu-tabs {
+      display: flex; gap: .5rem; overflow-x: auto; scroll-snap-type: x proximity;
+      -webkit-overflow-scrolling: touch; scrollbar-width: none;
+      padding-bottom: .25rem;
+    }
+    .menu-tabs::-webkit-scrollbar { display: none; }
+    .menu-tab {
+      scroll-snap-align: start; flex: none;
+      display: inline-flex; align-items: center; gap: .4rem;
+      padding: .55rem .95rem; border-radius: 999px;
+      font-size: .8rem; font-weight: 700; line-height: 1; white-space: nowrap;
+      border: 1px solid #d6d3d1; background: #fff; color: #57534e;
+      cursor: pointer; transition: color .18s, background .18s, border-color .18s;
+    }
+    .menu-tab:hover { border-color: #b91c1c; color: #b91c1c; }
+    .dark .menu-tab { background: #181412; border-color: rgba(255,255,255,.1); color: #d6d3d1; }
+    .menu-tab[aria-selected="true"] {
+      background: #b91c1c; border-color: #b91c1c; color: #fff;
+      box-shadow: 0 6px 16px -6px rgba(185,28,28,.6);
+    }
+    .menu-tab:focus-visible { outline: 2px solid #c5a880; outline-offset: 2px; }
+
+    .menu-panel { animation: menuFade .32s cubic-bezier(.16,1,.3,1) both; }
+    @keyframes menuFade { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+
+    .menu-row {
+      display: flex; align-items: baseline; justify-content: space-between; gap: 1rem;
+      padding: .8rem 0; border-bottom: 1px solid #e7e5e4;
+    }
+    .dark .menu-row { border-color: rgba(255,255,255,.08); }
+    .menu-row:last-child { border-bottom: 0; }
+    .menu-row__name { font-weight: 600; color: #1c1917; font-size: .95rem; }
+    .dark .menu-row__name { color: #fafaf9; }
+    .menu-row__prices { display: flex; gap: 1.1rem; flex: none; font-variant-numeric: tabular-nums; }
+    .menu-row__price { font-size: .82rem; color: #78716c; white-space: nowrap; }
+    .dark .menu-row__price { color: #a8a29e; }
+    .menu-row__price b { color: #b91c1c; font-weight: 700; }
+    .dark .menu-row__price b { color: #f87171; }
+    .menu-row__single { font-weight: 700; color: #b91c1c; white-space: nowrap; font-variant-numeric: tabular-nums; }
+    .dark .menu-row__single { color: #f87171; }
+
+    @media (prefers-reduced-motion: reduce) { .menu-panel { animation: none; } }
+
+    /* ===== Pedido — carrinho / resumo ===== */
+    .cart-line { animation: menuFade .28s ease both; }
+    .qtybox { display: inline-flex; align-items: center; gap: .35rem; }
+    .qtybox .stepper-btn { width: 1.85rem; height: 1.85rem; }
+    .add-btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: .4rem;
+      padding: .5rem .9rem; border-radius: .55rem; font-size: .78rem; font-weight: 700;
+      background: #b91c1c; color: #fff; border: 1px solid #b91c1c;
+      transition: background .15s; cursor: pointer;
+    }
+    .add-btn:hover { background: #991b1b; }
+    .add-btn:focus-visible { outline: 2px solid #c5a880; outline-offset: 2px; }
+    .add-btn--ghost { background: #fff; color: #b91c1c; }
+    .dark .add-btn--ghost { background: #14100e; }
   </style>
 </head>
 
@@ -480,7 +538,7 @@
       <a href="#destaques-3d" onclick="closeMobileMenu()" class="block text-stone-700 dark:text-stone-200 text-xs uppercase tracking-wider font-semibold py-1.5 border-b border-stone-100 dark:border-white/[0.05]">🔥 Experiência na Brasa</a>
       <a href="#cardapio" onclick="closeMobileMenu()" class="block text-stone-700 dark:text-stone-200 text-xs uppercase tracking-wider font-semibold py-1.5 border-b border-stone-100 dark:border-white/[0.05]">📋 Cardápio Completo</a>
       <a href="#almoco-domingo" onclick="closeMobileMenu()" class="block text-[#b91c1c] dark:text-red-400 text-xs uppercase tracking-wider font-bold py-1.5 border-b border-stone-100 dark:border-white/[0.05]">🥩 Almoço de Domingo</a>
-      <a href="#reserva-section" onclick="closeMobileMenu()" class="block text-stone-700 dark:text-stone-200 text-xs uppercase tracking-wider font-semibold py-1.5 border-b border-stone-100 dark:border-white/[0.05]">🍽️ Monte seu Prato & Reserva</a>
+      <a href="#reserva-section" onclick="closeMobileMenu()" class="block text-stone-700 dark:text-stone-200 text-xs uppercase tracking-wider font-semibold py-1.5 border-b border-stone-100 dark:border-white/[0.05]">🍽️ Monte seu Pedido & Reserva</a>
       <a href="#espaco" onclick="closeMobileMenu()" class="block text-stone-700 dark:text-stone-200 text-xs uppercase tracking-wider font-semibold py-1.5 border-b border-stone-100 dark:border-white/[0.05]">❄️ Climatizado & Espaço Kids</a>
       <a href="#horarios-section" onclick="closeMobileMenu()" class="block text-stone-700 dark:text-stone-200 text-xs uppercase tracking-wider font-semibold py-1.5">🕒 Horários de Atendimento</a>
       
@@ -528,7 +586,7 @@
         </h1>
 
         <p class="text-stone-300 text-sm sm:text-base md:text-lg mb-8 leading-relaxed max-w-md font-normal">
-          Carnes nobres na brasa, o autêntico <strong class="font-semibold text-white">Açaí do Pará com charque</strong> e chopp trincando. Salão climatizado, varanda e <strong class="font-semibold text-white">espaço kids</strong> para a família toda.
+          Carnes nobres na brasa, espetos suculentos no ponto e <strong class="font-semibold text-white">chopp trincando</strong>. Salão climatizado, varanda e <strong class="font-semibold text-white">espaço kids</strong> para a família toda.
         </p>
 
         <!-- Botões -->
@@ -781,361 +839,68 @@
   </section>
 
   <!-- CARDÁPIO OFICIAL COM CARDS CLAROS E ACENTOS EM VERMELHO -->
+  <!-- CARDÁPIO OFICIAL — NAVEGAÇÃO POR CATEGORIAS + LISTA EDITORIAL -->
   <section id="cardapio" class="py-16 sm:py-24 bg-[#faf7f2] dark:bg-[#0c0a09] transition-colors duration-300">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6">
-      
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+
       <!-- Cabeçalho -->
-      <div class="text-center max-w-xl mx-auto mb-8 sm:mb-10 reveal">
+      <div class="text-center max-w-xl mx-auto mb-8 reveal">
         <span class="text-[11px] uppercase font-bold tracking-[0.2em] text-[#b91c1c] dark:text-red-400">
-          Nosso menu completo
+          Cardápio oficial
         </span>
         <h2 class="text-[1.7rem] sm:text-4xl font-serif-title font-bold text-stone-900 dark:text-white mt-2 mb-3 leading-tight">
-          Pratos preparados na brasa
+          Feito na brasa, do seu jeito
         </h2>
         <p class="text-stone-600 dark:text-stone-400 text-[13px] sm:text-sm leading-relaxed">
-          Escolha a versão <strong class="text-stone-800 dark:text-stone-200">Simples</strong> (só o espeto) ou <strong class="text-stone-800 dark:text-stone-200">Completa</strong> — com Baião da Casa, Farofa da Casa, Vinagrete e batata frita ou macaxeira.
+          Toque numa categoria para navegar. Preços atualizados diretamente com a casa.
         </p>
       </div>
 
-      <!-- Barra de Pesquisa -->
-      <div class="max-w-md mx-auto mb-8 relative reveal">
-        <i data-lucide="search" class="w-4 h-4 text-stone-400 absolute left-4 top-1/2 -translate-y-1/2"></i>
-        <input type="text" id="menu-search" oninput="applyMenuFilters()" placeholder="Buscar prato (ex: picanha, açaí, charque, chopp...)" aria-label="Buscar prato no cardápio"
-               class="w-full bg-white dark:bg-[#181412] border border-stone-300 dark:border-white/[0.1] text-stone-900 dark:text-white rounded-xl pl-11 pr-4 py-3 text-sm focus:outline-none focus:border-[#b91c1c] shadow-sm transition">
+      <!-- Bloco explicativo: Simples x Completo -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8 reveal">
+        <div class="rounded-xl border border-stone-200 dark:border-white/[0.08] bg-white dark:bg-[#181412] p-4 sm:p-5">
+          <p class="text-[11px] font-bold uppercase tracking-[0.15em] text-stone-500 dark:text-stone-400">Espeto Simples</p>
+          <p class="text-sm font-semibold text-stone-900 dark:text-white mt-1">Proteína + Farofa + Vinagrete</p>
+          <p class="text-[12px] text-stone-500 dark:text-stone-400 mt-1.5">Já vem acompanhado — não é só a carne.</p>
+        </div>
+        <div class="rounded-xl border-2 border-red-200 dark:border-red-800/50 bg-white dark:bg-[#1d1815] p-4 sm:p-5">
+          <p class="text-[11px] font-bold uppercase tracking-[0.15em] text-[#b91c1c] dark:text-red-400">Espeto Completo</p>
+          <p class="text-sm font-semibold text-stone-900 dark:text-white mt-1">Proteína + Farofa + Vinagrete + 1 guarnição + 1 arroz</p>
+          <div class="text-[12px] text-stone-600 dark:text-stone-300 mt-2 space-y-1">
+            <p><b class="font-semibold">Guarnições:</b> Macaxeira na Manteiga · Batata Frita</p>
+            <p><b class="font-semibold">Arroz:</b> Arroz Branco · Baião · Arroz de Brócolis</p>
+          </div>
+          <p class="text-[12px] text-stone-500 dark:text-stone-400 mt-2">Escolher guarnição e arroz <b>não altera o preço</b>.</p>
+        </div>
       </div>
 
-      <!-- Filtros de Categorias com Vermelho -->
-      <div class="flex flex-wrap justify-center gap-2 mb-10" id="category-buttons">
-        <button type="button" data-cat="todos" onclick="filterCategory('todos', this)" class="cat-btn active px-3 py-1.5 rounded-lg text-xs sm:text-sm font-semibold bg-[#b91c1c] text-white transition shadow-sm">Todos</button>
-        <button type="button" data-cat="carnes" onclick="filterCategory('carnes', this)" class="cat-btn px-3 py-1.5 rounded-lg text-xs sm:text-sm font-semibold bg-white dark:bg-[#181412] text-stone-700 dark:text-stone-300 border border-stone-300 dark:border-white/[0.1] hover:border-[#b91c1c] transition">🥩 Carnes na Brasa</button>
-        <button type="button" data-cat="frango" onclick="filterCategory('frango', this)" class="cat-btn px-3 py-1.5 rounded-lg text-xs sm:text-sm font-semibold bg-white dark:bg-[#181412] text-stone-700 dark:text-stone-300 border border-stone-300 dark:border-white/[0.1] hover:border-[#b91c1c] transition">🍗 Frango &amp; Coração</button>
-        <button type="button" data-cat="entradas" onclick="filterCategory('entradas', this)" class="cat-btn px-3 py-1.5 rounded-lg text-xs sm:text-sm font-semibold bg-white dark:bg-[#181412] text-stone-700 dark:text-stone-300 border border-stone-300 dark:border-white/[0.1] hover:border-[#b91c1c] transition">🍟 Petiscos &amp; Entradas</button>
-        <button type="button" data-cat="acai" onclick="filterCategory('acai', this)" class="cat-btn px-3 py-1.5 rounded-lg text-xs sm:text-sm font-semibold bg-white dark:bg-[#181412] text-stone-700 dark:text-stone-300 border border-stone-300 dark:border-white/[0.1] hover:border-[#b91c1c] transition">🥣 Açaí do Pará</button>
-        <button type="button" data-cat="bebidas" onclick="filterCategory('bebidas', this)" class="cat-btn px-3 py-1.5 rounded-lg text-xs sm:text-sm font-semibold bg-white dark:bg-[#181412] text-stone-700 dark:text-stone-300 border border-stone-300 dark:border-white/[0.1] hover:border-[#b91c1c] transition">🍺 Chopp &amp; Bebidas</button>
-        <button type="button" data-cat="sobremesas" onclick="filterCategory('sobremesas', this)" class="cat-btn px-3 py-1.5 rounded-lg text-xs sm:text-sm font-semibold bg-white dark:bg-[#181412] text-stone-700 dark:text-stone-300 border border-stone-300 dark:border-white/[0.1] hover:border-[#b91c1c] transition">🍮 Sobremesas</button>
+      <!-- Navegação por categorias -->
+      <div class="sticky top-20 sm:top-24 z-20 -mx-4 px-4 sm:mx-0 sm:px-0 py-2 bg-[#faf7f2]/95 dark:bg-[#0c0a09]/95 backdrop-blur-sm reveal">
+        <div class="menu-tabs" id="menu-tabs" role="tablist" aria-label="Categorias do cardápio"></div>
       </div>
 
-      <!-- Grid do Cardápio -->
-      <div class="grid grid-cols-1 min-[560px]:grid-cols-2 lg:grid-cols-3 gap-4" id="menu-items-container">
-
-        <!-- PICANHA -->
-        <div class="menu-card carnes bg-white dark:bg-[#181412] border border-stone-200 dark:border-white/[0.08] hover:border-[#b91c1c] dark:hover:border-red-500 rounded-xl p-4 sm:p-5 flex flex-col justify-between shadow-sm hover:shadow-md transition">
-          <div>
-            <div class="flex justify-between items-start mb-2">
-              <span class="text-[11px] font-bold text-[#b91c1c] bg-red-50 dark:bg-red-950/40 px-2 py-0.5 rounded border border-red-200 dark:border-red-800/40">Corte Nobre</span>
-              <span class="text-xs text-stone-500">Na Brasa</span>
-            </div>
-            <h3 class="text-base sm:text-lg font-bold text-stone-900 dark:text-white mb-1 leading-snug">Picanha na Brasa</h3>
-            <p class="text-stone-600 dark:text-stone-400 text-[13px] sm:text-sm mb-3 leading-relaxed">Picanha suculenta, macia e preparada no ponto da brasa.</p>
-            <div class="py-1.5 text-[13px] space-y-0.5 mb-4">
-              <div class="flex justify-between font-medium text-stone-700 dark:text-stone-300"><span>Simples:</span> <strong>R$ 39,00</strong></div>
-              <div class="flex justify-between font-bold text-[#b91c1c] dark:text-red-400"><span>Completo:</span> <strong>R$ 45,00</strong></div>
-            </div>
-          </div>
-          <a href="https://wa.me/5591992910573?text=Ol%C3%A1!%20Gostaria%20de%20pedir%20o%20Espeto%20de%20Picanha." target="_blank" rel="noopener noreferrer"
-             class="w-full flex items-center justify-center gap-2 bg-[#b91c1c] hover:bg-[#991b1b] text-white font-semibold py-3 rounded-lg transition text-xs sm:text-sm active:scale-95 shadow-sm">
-            <i data-lucide="shopping-bag" class="w-4 h-4"></i> Pedir Picanha
-          </a>
-        </div>
-
-        <!-- CONTRA FILÉ -->
-        <div class="menu-card carnes bg-white dark:bg-[#181412] border border-stone-200 dark:border-white/[0.08] hover:border-[#b91c1c] dark:hover:border-red-500 rounded-xl p-4 sm:p-5 flex flex-col justify-between shadow-sm hover:shadow-md transition">
-          <div>
-            <div class="flex justify-between items-start mb-2">
-              <span class="text-[11px] font-bold text-amber-800 bg-amber-50 dark:bg-amber-950/40 px-2 py-0.5 rounded border border-amber-200 dark:border-amber-800/40">Mais Pedido</span>
-            </div>
-            <h3 class="text-base sm:text-lg font-bold text-stone-900 dark:text-white mb-1 leading-snug">Contra Filé na Brasa</h3>
-            <p class="text-stone-600 dark:text-stone-400 text-[13px] sm:text-sm mb-3 leading-relaxed">Contra filé macio preparado na brasa com sabor autêntico.</p>
-            <div class="py-1.5 text-[13px] space-y-0.5 mb-4">
-              <div class="flex justify-between font-medium text-stone-700 dark:text-stone-300"><span>Simples:</span> <strong>R$ 32,00</strong></div>
-              <div class="flex justify-between font-bold text-[#b91c1c] dark:text-red-400"><span>Completo:</span> <strong>R$ 37,00</strong></div>
-            </div>
-          </div>
-          <a href="https://wa.me/5591992910573?text=Ol%C3%A1!%20Gostaria%20de%20pedir%20o%20Contra%20Fil%C3%A9." target="_blank" rel="noopener noreferrer"
-             class="w-full flex items-center justify-center gap-2 bg-[#b91c1c] hover:bg-[#991b1b] text-white font-semibold py-3 rounded-lg transition text-xs sm:text-sm active:scale-95 shadow-sm">
-            <i data-lucide="shopping-bag" class="w-4 h-4"></i> Pedir Contra Filé
-          </a>
-        </div>
-
-        <!-- PICANHA STEAK (CORTE ESPECIAL) -->
-        <div class="menu-card carnes bg-[#fffdfa] dark:bg-[#1d1815] border-2 border-red-300 dark:border-red-800/60 rounded-xl p-4 sm:p-5 flex flex-col justify-between shadow-sm hover:shadow-md transition relative">
-          <div class="absolute -top-3 right-4 bg-[#b91c1c] text-white text-[10px] font-bold uppercase px-2.5 py-0.5 rounded-full shadow">
-            Especial da Casa
-          </div>
-          <div>
-            <span class="text-[11px] font-bold text-red-700 dark:text-red-400">Corte Especial</span>
-            <h3 class="text-base sm:text-lg font-bold text-stone-900 dark:text-white mb-1 mt-1 leading-snug">Picanha Steak</h3>
-            <p class="text-stone-600 dark:text-stone-400 text-[13px] sm:text-sm mb-3 leading-relaxed">Corte nobre e espesso de picanha com suculência inigualável.</p>
-            <div class="rounded-lg py-2 text-center mb-3">
-              <span class="text-xs text-stone-500">Preço Especial:</span>
-              <p class="text-xl font-bold text-[#b91c1c] dark:text-red-400">R$ 70,00</p>
-            </div>
-          </div>
-          <a href="https://wa.me/5591992910573?text=Ol%C3%A1!%20Gostaria%20de%20pedir%20a%20Picanha%20Steak." target="_blank" rel="noopener noreferrer"
-             class="w-full flex items-center justify-center gap-2 bg-[#b91c1c] hover:bg-[#991b1b] text-white font-semibold py-3 rounded-lg transition text-xs sm:text-sm active:scale-95 shadow-sm">
-            <i data-lucide="shopping-bag" class="w-4 h-4"></i> Pedir Picanha Steak
-          </a>
-        </div>
-
-        <!-- CARNE TRADICIONAL -->
-        <div class="menu-card carnes bg-white dark:bg-[#181412] border border-stone-200 dark:border-white/[0.08] hover:border-[#b91c1c] rounded-xl p-4 sm:p-5 flex flex-col justify-between shadow-sm hover:shadow-md transition">
-          <div>
-            <h3 class="text-base sm:text-lg font-bold text-stone-900 dark:text-white mb-1 leading-snug">Carne Tradicional</h3>
-            <p class="text-stone-600 dark:text-stone-400 text-[13px] sm:text-sm mb-3 leading-relaxed">Espeto clássico de carne com tempero suave da casa.</p>
-            <div class="py-1.5 text-[13px] space-y-0.5 mb-4">
-              <div class="flex justify-between font-medium text-stone-700 dark:text-stone-300"><span>Simples:</span> <strong>R$ 18,00</strong></div>
-              <div class="flex justify-between font-bold text-[#b91c1c] dark:text-red-400"><span>Completo:</span> <strong>R$ 30,00</strong></div>
-            </div>
-          </div>
-          <a href="https://wa.me/5591992910573?text=Ol%C3%A1!%20Gostaria%20de%20pedir%20a%20Carne%20Tradicional." target="_blank" rel="noopener noreferrer"
-             class="w-full flex items-center justify-center gap-2 bg-stone-800 hover:bg-[#b91c1c] text-white font-semibold py-3 rounded-lg transition text-xs sm:text-sm active:scale-95">
-            <i data-lucide="shopping-bag" class="w-4 h-4"></i> Pedir Tradicional
-          </a>
-        </div>
-
-        <!-- CARNE DE SOL -->
-        <div class="menu-card carnes bg-white dark:bg-[#181412] border border-stone-200 dark:border-white/[0.08] hover:border-[#b91c1c] rounded-xl p-4 sm:p-5 flex flex-col justify-between shadow-sm hover:shadow-md transition">
-          <div>
-            <span class="text-[11px] font-bold text-stone-600 dark:text-stone-400">Tradição Regional</span>
-            <h3 class="text-base sm:text-lg font-bold text-stone-900 dark:text-white mb-1 leading-snug">Carne de Sol na Brasa</h3>
-            <p class="text-stone-600 dark:text-stone-400 text-[13px] sm:text-sm mb-3 leading-relaxed">Carne de sol grelhada com sabor marcante e autêntico.</p>
-            <div class="py-1.5 text-[13px] space-y-0.5 mb-4">
-              <div class="flex justify-between font-medium text-stone-700 dark:text-stone-300"><span>Simples:</span> <strong>R$ 34,00</strong></div>
-              <div class="flex justify-between font-bold text-[#b91c1c] dark:text-red-400"><span>Completo:</span> <strong>R$ 39,00</strong></div>
-            </div>
-          </div>
-          <a href="https://wa.me/5591992910573?text=Ol%C3%A1!%20Gostaria%20de%20pedir%20a%20Carne%20de%20Sol." target="_blank" rel="noopener noreferrer"
-             class="w-full flex items-center justify-center gap-2 bg-[#b91c1c] hover:bg-[#991b1b] text-white font-semibold py-3 rounded-lg transition text-xs sm:text-sm active:scale-95 shadow-sm">
-            <i data-lucide="shopping-bag" class="w-4 h-4"></i> Pedir Carne de Sol
-          </a>
-        </div>
-
-        <!-- FILÉ COM BACON -->
-        <div class="menu-card carnes bg-white dark:bg-[#181412] border border-stone-200 dark:border-white/[0.08] hover:border-[#b91c1c] rounded-xl p-4 sm:p-5 flex flex-col justify-between shadow-sm hover:shadow-md transition">
-          <div>
-            <h3 class="text-base sm:text-lg font-bold text-stone-900 dark:text-white mb-1 leading-snug">Filé com Bacon</h3>
-            <p class="text-stone-600 dark:text-stone-400 text-[13px] sm:text-sm mb-3 leading-relaxed">Filé macio envolvido no bacon crocante e assado no ponto.</p>
-            <div class="py-1.5 text-[13px] space-y-0.5 mb-4">
-              <div class="flex justify-between font-medium text-stone-700 dark:text-stone-300"><span>Simples:</span> <strong>R$ 37,00</strong></div>
-              <div class="flex justify-between font-bold text-[#b91c1c] dark:text-red-400"><span>Completo:</span> <strong>R$ 42,00</strong></div>
-            </div>
-          </div>
-          <a href="https://wa.me/5591992910573?text=Ol%C3%A1!%20Gostaria%20de%20pedir%20o%20Fil%C3%A9%20com%20Bacon." target="_blank" rel="noopener noreferrer"
-             class="w-full flex items-center justify-center gap-2 bg-[#b91c1c] hover:bg-[#991b1b] text-white font-semibold py-3 rounded-lg transition text-xs sm:text-sm active:scale-95 shadow-sm">
-            <i data-lucide="shopping-bag" class="w-4 h-4"></i> Pedir Filé c/ Bacon
-          </a>
-        </div>
-
-        <!-- CORAÇÃO DE FRANGO -->
-        <div class="menu-card frango bg-white dark:bg-[#181412] border border-stone-200 dark:border-white/[0.08] hover:border-[#b91c1c] rounded-xl p-4 sm:p-5 flex flex-col justify-between shadow-sm hover:shadow-md transition">
-          <div>
-            <h3 class="text-base sm:text-lg font-bold text-stone-900 dark:text-white mb-1 leading-snug">Coração de Frango</h3>
-            <p class="text-stone-600 dark:text-stone-400 text-[13px] sm:text-sm mb-3 leading-relaxed">Coração temperado e preparado no ponto perfeito da brasa.</p>
-            <div class="py-1.5 text-[13px] space-y-0.5 mb-4">
-              <div class="flex justify-between font-medium text-stone-700 dark:text-stone-300"><span>Simples:</span> <strong>R$ 15,00</strong></div>
-              <div class="flex justify-between font-bold text-[#b91c1c] dark:text-red-400"><span>Completo:</span> <strong>R$ 20,00</strong></div>
-            </div>
-          </div>
-          <a href="https://wa.me/5591992910573?text=Ol%C3%A1!%20Gostaria%20de%20pedir%20o%20Cora%C3%A7%C3%A3o%20de%20Frango." target="_blank" rel="noopener noreferrer"
-             class="w-full flex items-center justify-center gap-2 bg-stone-800 hover:bg-[#b91c1c] text-white font-semibold py-3 rounded-lg transition text-xs sm:text-sm active:scale-95">
-            <i data-lucide="shopping-bag" class="w-4 h-4"></i> Pedir Coração
-          </a>
-        </div>
-
-        <!-- FILÉ C/ FRITAS DA CASA -->
-        <div class="menu-card entradas bg-white dark:bg-[#181412] border border-stone-200 dark:border-white/[0.08] hover:border-[#b91c1c] rounded-xl p-4 sm:p-5 flex flex-col justify-between shadow-sm hover:shadow-md transition">
-          <div>
-            <span class="text-[11px] font-bold text-amber-800 bg-amber-50 dark:bg-amber-950/40 px-2 py-0.5 rounded border border-amber-200 dark:border-amber-800/40">Petisco Campeão</span>
-            <h3 class="text-base sm:text-lg font-bold text-stone-900 dark:text-white mb-1 mt-1 leading-snug">Filé c/ Fritas da Casa</h3>
-            <p class="text-stone-600 dark:text-stone-400 text-[13px] sm:text-sm mb-3 leading-relaxed">Filé suculento servido com batatas fritas crocantes.</p>
-            <div class="rounded-lg py-1.5 flex justify-between items-center mb-3">
-              <span class="text-xs text-stone-500">Porção generosa:</span>
-              <strong class="text-[#b91c1c] dark:text-red-400 text-base">R$ 35,00</strong>
-            </div>
-          </div>
-          <a href="https://wa.me/5591992910573?text=Ol%C3%A1!%20Gostaria%20de%20pedir%20o%20Fil%C3%A9%20c/%20Fritas." target="_blank" rel="noopener noreferrer"
-             class="w-full flex items-center justify-center gap-2 bg-[#b91c1c] hover:bg-[#991b1b] text-white font-semibold py-3 rounded-lg transition text-xs sm:text-sm active:scale-95 shadow-sm">
-            <i data-lucide="shopping-bag" class="w-4 h-4"></i> Pedir Filé c/ Fritas
-          </a>
-        </div>
-
-        <!-- PIPOCA DE QUEIJO COALHO -->
-        <div class="menu-card entradas bg-white dark:bg-[#181412] border border-stone-200 dark:border-white/[0.08] hover:border-[#b91c1c] rounded-xl p-4 sm:p-5 flex flex-col justify-between shadow-sm hover:shadow-md transition">
-          <div>
-            <span class="text-[11px] font-bold text-[#b91c1c] bg-red-50 dark:bg-red-950/40 px-2 py-0.5 rounded border border-red-200 dark:border-red-800/40">Favorito 🧀</span>
-            <h3 class="text-base sm:text-lg font-bold text-stone-900 dark:text-white mb-1 mt-1 leading-snug">Pipoca de Queijo Coalho</h3>
-            <p class="text-stone-600 dark:text-stone-400 text-[13px] sm:text-sm mb-3 leading-relaxed">Pedaços crocantes de queijo coalho dourados na hora.</p>
-            <div class="rounded-lg py-1.5 flex justify-between items-center mb-3">
-              <span class="text-xs text-stone-500">Porção:</span>
-              <strong class="text-[#b91c1c] dark:text-red-400 text-base">R$ 27,00</strong>
-            </div>
-          </div>
-          <a href="https://wa.me/5591992910573?text=Ol%C3%A1!%20Gostaria%20de%20pedir%20a%20Pipoca%20de%20Queijo%20Coalho." target="_blank" rel="noopener noreferrer"
-             class="w-full flex items-center justify-center gap-2 bg-[#b91c1c] hover:bg-[#991b1b] text-white font-semibold py-3 rounded-lg transition text-xs sm:text-sm active:scale-95 shadow-sm">
-            <i data-lucide="shopping-bag" class="w-4 h-4"></i> Pedir Pipoca de Coalho
-          </a>
-        </div>
-
-        <!-- AÇAÍ C/ CHARQUE -->
-        <div class="menu-card acai bg-white dark:bg-[#181412] border border-purple-200 dark:border-purple-900/40 rounded-xl p-4 sm:p-5 flex flex-col justify-between shadow-sm hover:shadow-md transition">
-          <div>
-            <span class="text-[11px] font-bold text-amber-800 bg-amber-50 dark:bg-amber-950/40 px-2 py-0.5 rounded border border-amber-200 dark:border-amber-800/40">Tradição Paraense</span>
-            <h3 class="text-base sm:text-lg font-bold text-stone-900 dark:text-white mb-1 mt-1 leading-snug">Açaí c/ Tiras de Charque</h3>
-            <p class="text-stone-600 dark:text-stone-400 text-[13px] sm:text-sm mb-3 leading-relaxed">Açaí cremoso servido com porção de charque frito crocante.</p>
-            <div class="rounded-lg py-1.5 flex justify-between items-center mb-3">
-              <span class="text-xs text-purple-900 dark:text-purple-300">Porção Completa:</span>
-              <strong class="text-purple-950 dark:text-purple-400 text-base">R$ 40,00</strong>
-            </div>
-          </div>
-          <a href="https://wa.me/5591992910573?text=Ol%C3%A1!%20Gostaria%20de%20pedir%20o%20A%C3%A7a%C3%AD%20com%20Charque." target="_blank" rel="noopener noreferrer"
-             class="w-full flex items-center justify-center gap-2 bg-purple-900 hover:bg-purple-950 text-white font-semibold py-3 rounded-lg transition text-xs sm:text-sm active:scale-95 shadow-sm">
-            <i data-lucide="shopping-bag" class="w-4 h-4"></i> Pedir Açaí c/ Charque
-          </a>
-        </div>
-
-        <!-- CHOPP CABÔCA -->
-        <div class="menu-card bebidas bg-white dark:bg-[#181412] border border-amber-300 dark:border-amber-900/40 rounded-xl p-4 sm:p-5 flex flex-col justify-between shadow-sm hover:shadow-md transition">
-          <div>
-            <span class="text-[11px] font-bold text-amber-800 bg-amber-50 dark:bg-amber-950/40 px-2 py-0.5 rounded border border-amber-200 dark:border-amber-800/40">Chopp Regional 🍺</span>
-            <h3 class="text-base sm:text-lg font-bold text-stone-900 dark:text-white mb-1 mt-1 leading-snug">Chopp Cabôca (300ml)</h3>
-            <p class="text-stone-600 dark:text-stone-400 text-[13px] sm:text-sm mb-3 leading-relaxed">Chopp artesanal do Pará, gelado e cremoso na medida certa.</p>
-            <div class="rounded-lg py-1.5 flex justify-between items-center mb-3">
-              <span class="text-xs text-amber-900 dark:text-amber-300">300ml trincando:</span>
-              <strong class="text-amber-800 dark:text-amber-400 text-base">R$ 10,00</strong>
-            </div>
-          </div>
-          <a href="https://wa.me/5591992910573?text=Ol%C3%A1!%20Gostaria%20de%20pedir%20Chopp%20Cab%C3%B4ca." target="_blank" rel="noopener noreferrer"
-             class="w-full flex items-center justify-center gap-2 bg-amber-600 hover:bg-amber-700 text-white font-semibold py-3 rounded-lg transition text-xs sm:text-sm active:scale-95 shadow-sm">
-            <i data-lucide="beer" class="w-4 h-4"></i> Pedir Chopp Cabôca
-          </a>
-        </div>
-
-        <!-- PUDIM -->
-        <div class="menu-card sobremesas bg-white dark:bg-[#181412] border border-stone-200 dark:border-white/[0.08] hover:border-[#b91c1c] rounded-xl p-4 sm:p-5 flex flex-col justify-between shadow-sm hover:shadow-md transition">
-          <div>
-            <span class="text-[11px] font-bold text-amber-800 bg-amber-50 dark:bg-amber-950/40 px-2 py-0.5 rounded border border-amber-200 dark:border-amber-800/40">Sobremesa da Casa</span>
-            <h3 class="text-base sm:text-lg font-bold text-stone-900 dark:text-white mb-1 mt-1 leading-snug">Pudim de Leite Condensado</h3>
-            <p class="text-stone-600 dark:text-stone-400 text-[13px] sm:text-sm mb-3 leading-relaxed">Pudim cremoso com calda de caramelo caseira.</p>
-            <div class="rounded-lg py-1.5 flex justify-between items-center mb-3">
-              <span class="text-xs text-stone-500">Fatia generosa:</span>
-              <strong class="text-[#b91c1c] dark:text-red-400 text-base">R$ 10,00</strong>
-            </div>
-          </div>
-          <a href="https://wa.me/5591992910573?text=Ol%C3%A1!%20Gostaria%20de%20pedir%20o%20Pudim." target="_blank" rel="noopener noreferrer"
-             class="w-full flex items-center justify-center gap-2 bg-stone-800 hover:bg-[#b91c1c] text-white font-semibold py-3 rounded-lg transition text-xs sm:text-sm active:scale-95">
-            <i data-lucide="shopping-bag" class="w-4 h-4"></i> Pedir Pudim
-          </a>
-        </div>
-
-        <!-- FILÉ MIGNON AO ALHO -->
-        <div class="menu-card carnes bg-white dark:bg-[#181412] border border-stone-200 dark:border-white/[0.08] hover:border-[#b91c1c] rounded-xl p-4 sm:p-5 flex flex-col justify-between shadow-sm hover:shadow-md transition">
-          <div>
-            <span class="text-[11px] font-bold text-stone-600 dark:text-stone-400">Corte Macio</span>
-            <h3 class="text-base sm:text-lg font-bold text-stone-900 dark:text-white mb-1 mt-1 leading-snug">Filé Mignon ao Alho</h3>
-            <p class="text-stone-600 dark:text-stone-400 text-[13px] sm:text-sm mb-3 leading-relaxed">Filé mignon grelhado na brasa com lâminas de alho douradas.</p>
-            <div class="py-1.5 text-[13px] space-y-0.5 mb-4">
-              <div class="flex justify-between font-medium text-stone-700 dark:text-stone-300"><span>Simples:</span> <strong>R$ 34,00</strong></div>
-              <div class="flex justify-between font-bold text-[#b91c1c] dark:text-red-400"><span>Completo:</span> <strong>R$ 39,00</strong></div>
-            </div>
-          </div>
-          <a href="https://wa.me/5591992910573?text=Ol%C3%A1!%20Gostaria%20de%20pedir%20o%20Fil%C3%A9%20Mignon%20ao%20Alho." target="_blank" rel="noopener noreferrer"
-             class="w-full flex items-center justify-center gap-2 bg-[#b91c1c] hover:bg-[#991b1b] text-white font-semibold py-3 rounded-lg transition text-xs sm:text-sm active:scale-95 shadow-sm">
-            <i data-lucide="shopping-bag" class="w-4 h-4"></i> Pedir Filé Mignon
-          </a>
-        </div>
-
-        <!-- PANCETA SUÍNA -->
-        <div class="menu-card carnes bg-white dark:bg-[#181412] border border-stone-200 dark:border-white/[0.08] hover:border-[#b91c1c] rounded-xl p-4 sm:p-5 flex flex-col justify-between shadow-sm hover:shadow-md transition">
-          <div>
-            <span class="text-[11px] font-bold text-stone-600 dark:text-stone-400">Suíno na Brasa</span>
-            <h3 class="text-base sm:text-lg font-bold text-stone-900 dark:text-white mb-1 mt-1 leading-snug">Panceta Suína Crocante</h3>
-            <p class="text-stone-600 dark:text-stone-400 text-[13px] sm:text-sm mb-3 leading-relaxed">Barriga de porco assada na brasa, macia por dentro e crocante por fora.</p>
-            <div class="py-1.5 text-[13px] space-y-0.5 mb-4">
-              <div class="flex justify-between font-medium text-stone-700 dark:text-stone-300"><span>Simples:</span> <strong>R$ 18,00</strong></div>
-              <div class="flex justify-between font-bold text-[#b91c1c] dark:text-red-400"><span>Completo:</span> <strong>R$ 30,00</strong></div>
-            </div>
-          </div>
-          <a href="https://wa.me/5591992910573?text=Ol%C3%A1!%20Gostaria%20de%20pedir%20a%20Panceta%20Su%C3%ADna." target="_blank" rel="noopener noreferrer"
-             class="w-full flex items-center justify-center gap-2 bg-[#b91c1c] hover:bg-[#991b1b] text-white font-semibold py-3 rounded-lg transition text-xs sm:text-sm active:scale-95 shadow-sm">
-            <i data-lucide="shopping-bag" class="w-4 h-4"></i> Pedir Panceta
-          </a>
-        </div>
-
-        <!-- FILÉ DE FRANGO NA BRASA -->
-        <div class="menu-card frango bg-white dark:bg-[#181412] border border-stone-200 dark:border-white/[0.08] hover:border-[#b91c1c] rounded-xl p-4 sm:p-5 flex flex-col justify-between shadow-sm hover:shadow-md transition">
-          <div>
-            <h3 class="text-base sm:text-lg font-bold text-stone-900 dark:text-white mb-1 leading-snug">Filé de Frango na Brasa</h3>
-            <p class="text-stone-600 dark:text-stone-400 text-[13px] sm:text-sm mb-3 leading-relaxed">Peito de frango suculento, temperado e grelhado no ponto.</p>
-            <div class="py-1.5 text-[13px] space-y-0.5 mb-4">
-              <div class="flex justify-between font-medium text-stone-700 dark:text-stone-300"><span>Simples:</span> <strong>R$ 18,00</strong></div>
-              <div class="flex justify-between font-bold text-[#b91c1c] dark:text-red-400"><span>Completo:</span> <strong>R$ 30,00</strong></div>
-            </div>
-          </div>
-          <a href="https://wa.me/5591992910573?text=Ol%C3%A1!%20Gostaria%20de%20pedir%20o%20Fil%C3%A9%20de%20Frango%20na%20Brasa." target="_blank" rel="noopener noreferrer"
-             class="w-full flex items-center justify-center gap-2 bg-stone-800 hover:bg-[#b91c1c] text-white font-semibold py-3 rounded-lg transition text-xs sm:text-sm active:scale-95">
-            <i data-lucide="shopping-bag" class="w-4 h-4"></i> Pedir Filé de Frango
-          </a>
-        </div>
-
-        <!-- TULIPA CROCANTE -->
-        <div class="menu-card frango bg-white dark:bg-[#181412] border border-stone-200 dark:border-white/[0.08] hover:border-[#b91c1c] rounded-xl p-4 sm:p-5 flex flex-col justify-between shadow-sm hover:shadow-md transition">
-          <div>
-            <h3 class="text-base sm:text-lg font-bold text-stone-900 dark:text-white mb-1 leading-snug">Tulipa Crocante</h3>
-            <p class="text-stone-600 dark:text-stone-400 text-[13px] sm:text-sm mb-3 leading-relaxed">Tulipa de frango dourada e crocante, no capricho da brasa.</p>
-            <div class="py-1.5 text-[13px] space-y-0.5 mb-4">
-              <div class="flex justify-between font-medium text-stone-700 dark:text-stone-300"><span>Simples:</span> <strong>R$ 28,00</strong></div>
-              <div class="flex justify-between font-bold text-[#b91c1c] dark:text-red-400"><span>Completo:</span> <strong>R$ 33,00</strong></div>
-            </div>
-          </div>
-          <a href="https://wa.me/5591992910573?text=Ol%C3%A1!%20Gostaria%20de%20pedir%20a%20Tulipa%20Crocante." target="_blank" rel="noopener noreferrer"
-             class="w-full flex items-center justify-center gap-2 bg-stone-800 hover:bg-[#b91c1c] text-white font-semibold py-3 rounded-lg transition text-xs sm:text-sm active:scale-95">
-            <i data-lucide="shopping-bag" class="w-4 h-4"></i> Pedir Tulipa
-          </a>
-        </div>
-
-        <!-- FRANGO COM BACON -->
-        <div class="menu-card frango bg-white dark:bg-[#181412] border border-stone-200 dark:border-white/[0.08] hover:border-[#b91c1c] rounded-xl p-4 sm:p-5 flex flex-col justify-between shadow-sm hover:shadow-md transition">
-          <div>
-            <span class="text-[11px] font-bold text-amber-800 bg-amber-50 dark:bg-amber-950/40 px-2 py-0.5 rounded border border-amber-200 dark:border-amber-800/40">Combinação Certeira</span>
-            <h3 class="text-base sm:text-lg font-bold text-stone-900 dark:text-white mb-1 mt-1 leading-snug">Frango com Bacon</h3>
-            <p class="text-stone-600 dark:text-stone-400 text-[13px] sm:text-sm mb-3 leading-relaxed">Iscas de frango enroladas no bacon crocante, assadas na brasa.</p>
-            <div class="py-1.5 text-[13px] space-y-0.5 mb-4">
-              <div class="flex justify-between font-medium text-stone-700 dark:text-stone-300"><span>Simples:</span> <strong>R$ 32,00</strong></div>
-              <div class="flex justify-between font-bold text-[#b91c1c] dark:text-red-400"><span>Completo:</span> <strong>R$ 37,00</strong></div>
-            </div>
-          </div>
-          <a href="https://wa.me/5591992910573?text=Ol%C3%A1!%20Gostaria%20de%20pedir%20o%20Frango%20com%20Bacon." target="_blank" rel="noopener noreferrer"
-             class="w-full flex items-center justify-center gap-2 bg-[#b91c1c] hover:bg-[#991b1b] text-white font-semibold py-3 rounded-lg transition text-xs sm:text-sm active:scale-95 shadow-sm">
-            <i data-lucide="shopping-bag" class="w-4 h-4"></i> Pedir Frango c/ Bacon
-          </a>
-        </div>
-
-      </div>
-
-      <!-- Estado vazio da busca / filtro -->
-      <p id="menu-empty" class="hidden text-center text-stone-500 dark:text-stone-400 text-sm mt-10">
-        Nenhum prato encontrado com esse filtro. <button type="button" onclick="resetMenuFilters()" class="text-[#b91c1c] dark:text-red-400 font-semibold underline">Limpar busca</button>
-      </p>
+      <!-- Conteúdo da categoria -->
+      <div id="menu-render" class="mt-4"></div>
 
     </div>
   </section>
 
-  <!-- ================= CENTRAL COMPLETA: MONTE SEU PRATO & RESERVA DE MESA ================= -->
+  <!-- ================= CENTRAL COMPLETA: MONTE SEU PEDIDO & RESERVA DE MESA ================= -->
   <section id="reserva-section" class="py-16 sm:py-24 bg-[#f4ede2] dark:bg-[#110e0c] border-t border-stone-200 dark:border-white/[0.08] transition-colors duration-300">
     <div class="max-w-4xl mx-auto px-4 sm:px-6">
-      
+
       <div class="bg-white dark:bg-[#181412] border border-stone-300/90 dark:border-white/[0.1] rounded-3xl p-6 sm:p-12 shadow-md relative reveal">
-        
+
         <!-- Cabeçalho do Formulário -->
         <div class="text-center mb-10">
           <div class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#b91c1c] dark:text-red-400 bg-red-50 dark:bg-red-950/40 px-3.5 py-1 rounded-full border border-red-200 dark:border-red-800/40 mb-2">
             <i data-lucide="calendar" class="w-3.5 h-3.5"></i> ATENDIMENTO VIP & PEDIDOS
           </div>
           <h2 class="text-2xl sm:text-4xl font-serif-title font-bold text-stone-900 dark:text-white">
-            Monte seu Prato ou Reserve sua Mesa
+            Monte seu Pedido ou Reserve sua Mesa
           </h2>
           <p class="text-stone-600 dark:text-stone-400 text-xs sm:text-sm mt-2 max-w-md mx-auto leading-relaxed">
-            Preencha o essencial e, se quiser, já adiante seus espetos. Geramos a mensagem pronta pro WhatsApp do No Spetto.
+            Preencha o essencial e, se quiser, já adiante seu pedido. Geramos a mensagem pronta pro WhatsApp do No Spetto.
           </p>
         </div>
 
@@ -1147,7 +912,7 @@
             <div class="flex flex-wrap gap-2">
               <label><input type="radio" name="tipo_atendimento" value="Reservar mesa" checked class="sr-only"><span class="chip"><i data-lucide="calendar-check" class="w-3.5 h-3.5"></i>Reservar mesa</span></label>
               <label><input type="radio" name="tipo_atendimento" value="Pedido / Delivery" class="sr-only"><span class="chip"><i data-lucide="bike" class="w-3.5 h-3.5"></i>Pedido / Delivery</span></label>
-              <label><input type="radio" name="tipo_atendimento" value="Mesa + pratos já na brasa" class="sr-only"><span class="chip"><i data-lucide="flame" class="w-3.5 h-3.5"></i>Mesa + pratos prontos</span></label>
+              <label><input type="radio" name="tipo_atendimento" value="Mesa + pedido antecipado" class="sr-only"><span class="chip"><i data-lucide="flame" class="w-3.5 h-3.5"></i>Mesa + pedido antecipado</span></label>
             </div>
           </fieldset>
 
@@ -1194,82 +959,42 @@
 
           <hr class="border-stone-200 dark:border-white/10">
 
-          <!-- 3. Espetos (opcional, recolhido por padrão) -->
+          <!-- 3. Pedido (opcional, recolhido por padrão) -->
           <div>
             <p class="text-xs font-bold uppercase tracking-wider text-[#b91c1c] dark:text-red-400 mb-2">
-              3. Espetos <span class="text-stone-400 font-medium normal-case tracking-normal">— opcional</span>
+              3. Seu pedido <span class="text-stone-400 font-medium normal-case tracking-normal">— opcional</span>
             </p>
             <div class="flex flex-wrap gap-2">
-              <label><input type="radio" name="modo_espeto" value="restaurante" checked class="sr-only" onchange="espetoMode()"><span class="chip">Vou escolher no restaurante</span></label>
-              <label><input type="radio" name="modo_espeto" value="adiantar" class="sr-only" onchange="espetoMode()"><span class="chip">Já quero adiantar meus espetos</span></label>
+              <label><input type="radio" name="modo_pedido" value="restaurante" checked class="sr-only" onchange="orderMode()"><span class="chip">Vou escolher no restaurante</span></label>
+              <label><input type="radio" name="modo_pedido" value="adiantar" class="sr-only" onchange="orderMode()"><span class="chip">Já quero adiantar meu pedido</span></label>
             </div>
 
-            <div id="espeto-builder" data-disclosure hidden class="mt-4 space-y-4">
+            <div id="order-builder" data-disclosure hidden class="mt-4 space-y-4">
 
-              <div>
-                <p class="text-[11px] font-bold uppercase tracking-wider text-stone-600 dark:text-stone-300 mb-1.5">Toque nos cortes que quer adiantar</p>
-                <div id="cut-chips" class="flex flex-wrap gap-1.5"></div>
-              </div>
+              <!-- Sub-navegação por categoria dentro do pedido -->
+              <div class="menu-tabs" id="order-tabs" role="tablist" aria-label="Categorias do pedido"></div>
 
-              <div id="espeto-list" class="space-y-2"></div>
+              <div id="order-render" class="min-h-[60px]"></div>
 
-              <div id="espeto-servir" data-disclosure hidden>
-                <p class="text-[11px] font-bold uppercase tracking-wider text-stone-600 dark:text-stone-300 mb-1.5">Como deseja servir?</p>
-                <div class="flex flex-wrap gap-2">
-                  <label><input type="radio" name="tipo_prato" value="Simples" class="sr-only" onchange="refreshEspetoUI()"><span class="chip">Simples</span></label>
-                  <label><input type="radio" name="tipo_prato" value="Completo" checked class="sr-only" onchange="refreshEspetoUI()"><span class="chip">Completo</span></label>
+              <!-- Resumo / Carrinho -->
+              <div id="cart-panel" data-disclosure hidden class="bg-[#1c1917] text-white rounded-xl px-4 py-4 border border-white/5">
+                <p class="text-[11px] uppercase tracking-wider text-stone-400 font-semibold mb-2.5">Seu pedido</p>
+                <div id="cart-lines" class="space-y-2.5"></div>
+                <div class="flex items-baseline justify-between gap-3 mt-3 pt-3 border-t border-white/10">
+                  <p class="text-xs uppercase tracking-wider text-stone-300 font-bold">Total dos itens</p>
+                  <span id="cart-total" class="text-xl font-bold text-[#c5a880] whitespace-nowrap">R$ 0,00</span>
                 </div>
-                <p class="text-[11px] text-stone-500 mt-1.5">Simples = só a carne. Completo = arroz, farofa, vinagrete e batata ou macaxeira.</p>
-              </div>
-
-              <div id="espeto-completo" data-disclosure hidden class="space-y-3">
-                <div>
-                  <p class="text-[11px] font-bold uppercase tracking-wider text-stone-600 dark:text-stone-300 mb-1.5">Arroz</p>
-                  <div class="flex flex-wrap gap-1.5">
-                    <label><input type="radio" name="arroz" value="Baião da Casa" checked class="sr-only"><span class="chip">Baião da Casa</span></label>
-                    <label><input type="radio" name="arroz" value="Arroz c/ Brócolis" class="sr-only"><span class="chip">c/ Brócolis</span></label>
-                    <label><input type="radio" name="arroz" value="Arroz Biro Biro" class="sr-only"><span class="chip">Biro Biro</span></label>
-                    <label><input type="radio" name="arroz" value="Arroz Branco" class="sr-only"><span class="chip">Branco</span></label>
-                  </div>
-                </div>
-                <div>
-                  <p class="text-[11px] font-bold uppercase tracking-wider text-stone-600 dark:text-stone-300 mb-1.5">Guarnição</p>
-                  <div class="flex flex-wrap gap-1.5">
-                    <label><input type="radio" name="guarnicao" value="Batata Frita Crocante" checked class="sr-only"><span class="chip">🍟 Batata Frita</span></label>
-                    <label><input type="radio" name="guarnicao" value="Macaxeira na Manteiga" class="sr-only"><span class="chip">🧈 Macaxeira</span></label>
-                  </div>
-                </div>
-                <p class="text-[11px] text-stone-500">Farofa da Casa e Vinagrete já inclusos no Completo.</p>
-              </div>
-
-              <div id="espeto-estimate" data-disclosure hidden class="bg-[#1c1917] text-white rounded-xl px-4 py-3 border border-white/5">
-                <div class="flex items-baseline justify-between gap-3">
-                  <p class="text-[11px] uppercase tracking-wider text-stone-400 font-semibold">Estimativa dos espetos</p>
-                  <span id="estimate-value" class="text-xl font-bold text-[#c5a880] whitespace-nowrap">R$ 0,00</span>
-                </div>
-                <p class="text-[11px] text-stone-400 mt-1">Estimativa referente apenas aos espetos selecionados. Confirmação final no atendimento.</p>
+                <p class="text-[11px] text-stone-400 mt-1.5">Itens inclusos no Completo/Picanha Steak não são cobrados de novo. Confirmação final no atendimento.</p>
               </div>
             </div>
           </div>
 
           <hr class="border-stone-200 dark:border-white/10">
 
-          <!-- 4. Extras (não entram na estimativa) -->
+          <!-- 4. Observações -->
           <div>
             <p class="text-xs font-bold uppercase tracking-wider text-[#b91c1c] dark:text-red-400 mb-2">
-              4. Petiscos, bebidas ou açaí <span class="text-stone-400 font-medium normal-case tracking-normal">— opcional</span>
-            </p>
-            <label for="res-extras" class="sr-only">Petiscos, bebidas ou açaí</label>
-            <input type="text" id="res-extras" name="res-extras" placeholder="Ex: 2x Chopp Cabôca, 1x Açaí c/ Charque" class="inp">
-            <p class="text-[11px] text-stone-500 mt-1.5">Esses itens não entram na estimativa dos espetos.</p>
-          </div>
-
-          <hr class="border-stone-200 dark:border-white/10">
-
-          <!-- 5. Observações -->
-          <div>
-            <p class="text-xs font-bold uppercase tracking-wider text-[#b91c1c] dark:text-red-400 mb-2">
-              5. Ocasião ou ponto da carne <span class="text-stone-400 font-medium normal-case tracking-normal">— opcional</span>
+              4. Ocasião ou ponto da carne <span class="text-stone-400 font-medium normal-case tracking-normal">— opcional</span>
             </p>
             <label for="res-obs" class="sr-only">Ocasião ou ponto da carne</label>
             <input type="text" id="res-obs" name="res-obs" placeholder="Ex: aniversário, carne ao ponto" class="inp">
@@ -1581,6 +1306,14 @@
         <p class="text-[#c5a880] font-semibold uppercase tracking-wider">O Verdadeiro Sabor da Brasa</p>
       </div>
 
+      <!-- E-MAIL INSTITUCIONAL -->
+      <div class="pt-5 flex justify-center sm:justify-start text-[11px] text-stone-500">
+        <a href="mailto:imperio05dascarnes@gmail.com" class="inline-flex items-center gap-1.5 hover:text-stone-300 transition">
+          <i data-lucide="mail" class="w-3.5 h-3.5 text-[#c5a880]"></i>
+          <span>E-mail: <span class="text-stone-400">imperio05dascarnes@gmail.com</span></span>
+        </a>
+      </div>
+
       <!-- ASSINATURA CLOVER SITES -->
       <div class="mt-6 pt-6 border-t border-stone-800 flex justify-center">
         <a href="https://cloversite.com.br" target="_blank" rel="noopener noreferrer"
@@ -1884,147 +1617,370 @@
     window.addEventListener('resize', renderCoverflow);
     renderCoverflow();
 
-    // ================= FILTROS + BUSCA DO CARDÁPIO (unificados) =================
-    let currentCategory = 'todos';
-
-    function filterCategory(cat, btn) {
-      currentCategory = cat;
-      document.querySelectorAll('.cat-btn').forEach(b => {
-        b.classList.remove('bg-[#b91c1c]', 'text-white', 'shadow-sm', 'active');
-        b.classList.add('bg-white', 'dark:bg-[#181412]', 'text-stone-700', 'dark:text-stone-300', 'border', 'border-stone-300', 'dark:border-white/[0.1]');
-      });
-      const active = btn || document.querySelector('.cat-btn[data-cat="' + cat + '"]');
-      if (active) {
-        active.classList.remove('bg-white', 'dark:bg-[#181412]', 'text-stone-700', 'dark:text-stone-300', 'border', 'border-stone-300', 'dark:border-white/[0.1]');
-        active.classList.add('bg-[#b91c1c]', 'text-white', 'shadow-sm', 'active');
-      }
-      applyMenuFilters();
-    }
-
-    function applyMenuFilters() {
-      const query = (document.getElementById('menu-search').value || '').toLowerCase().trim();
-      let visible = 0;
-      document.querySelectorAll('.menu-card').forEach(card => {
-        const matchCat = currentCategory === 'todos' || card.classList.contains(currentCategory);
-        const matchText = !query || card.innerText.toLowerCase().includes(query);
-        const show = matchCat && matchText;
-        card.style.display = show ? 'flex' : 'none';
-        if (show) visible++;
-      });
-      const empty = document.getElementById('menu-empty');
-      if (empty) empty.classList.toggle('hidden', visible > 0);
-    }
-
-    function resetMenuFilters() {
-      document.getElementById('menu-search').value = '';
-      filterCategory('todos', document.querySelector('.cat-btn[data-cat="todos"]'));
-    }
-
-    // ================= MONTE SEU PRATO — ESPETOS, STEPPERS E ESTIMATIVA =================
-    // Preços oficiais dos espetos (fonte única de verdade). Estimativa considera SOMENTE estes itens.
-    const precosCarne = {
-      'Picanha na Brasa': { Simples: 39, Completo: 45 },
-      'Contra Filé na Brasa': { Simples: 32, Completo: 37 },
-      'Picanha Steak Especial': { Simples: 70, Completo: 70 },
-      'Carne de Sol Artesanal': { Simples: 34, Completo: 39 },
-      'Filé com Bacon': { Simples: 37, Completo: 42 },
-      'Filé Mignon ao Alho': { Simples: 34, Completo: 39 },
-      'Carne Tradicional': { Simples: 18, Completo: 30 },
-      'Panceta Suína Crocante': { Simples: 18, Completo: 30 },
-      'Coração de Frango': { Simples: 15, Completo: 20 },
-      'Filé de Frango na Brasa': { Simples: 18, Completo: 30 },
-      'Tulipa Crocante': { Simples: 28, Completo: 33 },
-      'Frango com Bacon': { Simples: 32, Completo: 37 }
+    // ================= CARDÁPIO — FONTE ÚNICA DE DADOS =================
+    // Preços e regras oficiais (No-Spetto-Cardapio-Precos-Regras-Atualizacao.txt).
+    // Não somar acompanhamentos inclusos: Simples = Proteína+Farofa+Vinagrete;
+    // Completo/Picanha Steak = + 1 arroz + 1 guarnição, sem custo adicional.
+    const INCLUDED = {
+      arroz: ['Arroz Branco', 'Baião', 'Arroz de Brócolis'],
+      guarnicao: ['Batata Frita', 'Macaxeira na Manteiga']
     };
-    const CUTS = Object.keys(precosCarne);
-    const espetoQty = {};
+
+    const MENU_CATEGORIES = [
+      { key: 'entradas', label: 'Entradas', icon: '🍟' },
+      { key: 'carnes', label: 'Carnes', icon: '🥩' },
+      { key: 'frango', label: 'Frango', icon: '🍗' },
+      { key: 'especial', label: 'Corte Especial', icon: '⭐' },
+      { key: 'acompanhamentos', label: 'Acompanhamentos', icon: '🍚' },
+      { key: 'bebidas', label: 'Bebidas', icon: '🥤' },
+      { key: 'cervejas', label: 'Cervejas & Chopp', icon: '🍺' },
+      { key: 'sobremesa', label: 'Sobremesa', icon: '🍮' }
+    ];
+
+    const MENU_ITEMS = {
+      entradas: [
+        { id: 'fritas-casa', nome: 'Fritas da Casa', tipo: 'unico', preco: 18 },
+        { id: 'fritas-file', nome: 'Fritas com Filé', tipo: 'unico', preco: 35 },
+        { id: 'asinha-agridoce', nome: 'Asinha Agridoce', tipo: 'unico', preco: 27 },
+        { id: 'linguica-casa', nome: 'Linguiça da Casa', tipo: 'unico', preco: 32 },
+        { id: 'pipoca-coalho', nome: 'Pipoca de Queijo Coalho', tipo: 'unico', preco: 27, badge: 'Favorito' },
+        { id: 'pao-alho-entrada', nome: 'Pão de Alho', tipo: 'unico', preco: 7, nota: 'Entradas' }
+      ],
+      carnes: [
+        { id: 'carne-tradicional', nome: 'Carne Tradicional', tipo: 'espeto', simples: 18, completo: 30 },
+        { id: 'contra-file', nome: 'Contra Filé', tipo: 'espeto', simples: 32, completo: 37, badge: 'Mais Pedido' },
+        { id: 'picanha', nome: 'Picanha', tipo: 'espeto', simples: 39, completo: 45, badge: 'Corte Nobre' },
+        { id: 'file-bacon', nome: 'Filé com Bacon', tipo: 'espeto', simples: 37, completo: 42 },
+        { id: 'carne-sol', nome: 'Carne de Sol', tipo: 'espeto', simples: 34, completo: 39 },
+        { id: 'file-alho', nome: 'Filé ao Alho', tipo: 'espeto', simples: 34, completo: 39 }
+      ],
+      frango: [
+        { id: 'file-brasa', nome: 'Filé na Brasa', tipo: 'espeto', simples: 18, completo: 30 },
+        { id: 'tulipa-crocante', nome: 'Tulipa Crocante', tipo: 'espeto', simples: 28, completo: 33 },
+        { id: 'frango-bacon', nome: 'Frango com Bacon', tipo: 'espeto', simples: 32, completo: 37, badge: 'Combinação Certeira' },
+        { id: 'coracao', nome: 'Coração', tipo: 'espeto', simples: 15, completo: 20 }
+      ],
+      especial: [
+        { id: 'picanha-steak', nome: 'Picanha Steak', tipo: 'steak', preco: 70 }
+      ],
+      acompanhamentos: [
+        { id: 'arroz-cremoso', nome: 'Arroz Cremoso de Queijos', tipo: 'unico', preco: 15 },
+        { id: 'arroz-branco', nome: 'Arroz Branco', tipo: 'unico', preco: 8 },
+        { id: 'arroz-biro-biro', nome: 'Arroz Biro Biro', tipo: 'unico', preco: 8 },
+        { id: 'arroz-brocolis', nome: 'Arroz de Brócolis', tipo: 'unico', preco: 10 },
+        { id: 'baiao-casa', nome: 'Baião da Casa', tipo: 'unico', preco: 10 },
+        { id: 'vinagrete', nome: 'Vinagrete', tipo: 'unico', preco: 10 },
+        { id: 'farofa-crocante', nome: 'Farofa Crocante', tipo: 'unico', preco: 8 },
+        { id: 'farofa-ovo', nome: 'Farofa de Ovo', tipo: 'unico', preco: 13 },
+        { id: 'macaxeira-manteiga', nome: 'Macaxeira na Manteiga', tipo: 'unico', preco: 9 },
+        { id: 'pao-alho-acomp', nome: 'Pão de Alho', tipo: 'unico', preco: 8, nota: 'Acompanhamentos' },
+        { id: 'salada-casa', nome: 'Salada da Casa', tipo: 'unico', preco: 15 },
+        { id: 'batata-frita', nome: 'Batata Frita', tipo: 'unico', preco: 18 }
+      ],
+      bebidas: [
+        { id: 'agua-h2o', nome: 'Água H2O 500ml', tipo: 'unico', preco: 6 },
+        { id: 'agua-limao', nome: 'Água com Limão 500ml', tipo: 'unico', preco: 6 },
+        { id: 'agua-limoneto', nome: 'Água Limoneto 500ml', tipo: 'unico', preco: 6 },
+        { id: 'agua-mineral', nome: 'Água Mineral 500ml', tipo: 'unico', preco: 5 },
+        { id: 'coca-cola', nome: 'Coca-Cola 350ml', tipo: 'unico', preco: 7 },
+        { id: 'coca-cola-zero', nome: 'Coca-Cola Zero 350ml', tipo: 'unico', preco: 7 },
+        { id: 'guarana-zero', nome: 'Guaraná Zero 350ml', tipo: 'unico', preco: 7 },
+        { id: 'coca-retornavel', nome: 'Coca-Cola Retornável 290ml', tipo: 'unico', preco: 8 },
+        { id: 'suco-natural', nome: 'Suco Natural', tipo: 'unico', preco: 8 }
+      ],
+      cervejas: [
+        { id: 'heineken', nome: 'Heineken 330ml', tipo: 'unico', preco: 12 },
+        { id: 'michelob-ultra', nome: 'Michelob Ultra 330ml', tipo: 'unico', preco: 12 },
+        { id: 'stella-gold', nome: 'Stella Gold 330ml', tipo: 'unico', preco: 12 },
+        { id: 'corona', nome: 'Corona 330ml', tipo: 'unico', preco: 12 },
+        { id: 'chopp', nome: 'Chopp', tipo: 'unico', preco: 10 }
+      ],
+      sobremesa: [
+        { id: 'pudim', nome: 'Pudim', tipo: 'unico', preco: 10 }
+      ]
+    };
+
+    const ITEM_BY_ID = {};
+    MENU_CATEGORIES.forEach(c => (MENU_ITEMS[c.key] || []).forEach(it => { ITEM_BY_ID[it.id] = it; }));
 
     function brl(v) { return 'R$ ' + v.toFixed(2).replace('.', ','); }
-    function esc(s) { return String(s).replace(/\\/g, '\\\\').replace(/'/g, "\\'"); }
-    function tipoPratoVal() {
-      const c = document.querySelector('input[name="tipo_prato"]:checked');
-      return c ? c.value : 'Completo';
-    }
+    function escAttr(s) { return String(s).replace(/\\/g, '\\\\').replace(/'/g, "\\'"); }
 
-    function espetoMode() {
-      const c = document.querySelector('input[name="modo_espeto"]:checked');
-      const on = c && c.value === 'adiantar';
-      document.getElementById('espeto-builder').hidden = !on;
-      if (!on) {
-        CUTS.forEach(k => delete espetoQty[k]);
-        renderCutChips();
-        renderEspetoRows();
-        refreshEspetoUI();
-      }
-    }
+    // ================= NAVEGAÇÃO DO CARDÁPIO (consulta) =================
+    let menuActiveCat = 'carnes';
 
-    function renderCutChips() {
-      const wrap = document.getElementById('cut-chips');
+    function renderMenuTabs() {
+      const wrap = document.getElementById('menu-tabs');
       if (!wrap) return;
-      wrap.innerHTML = CUTS.map(c =>
-        `<button type="button" class="chip${espetoQty[c] ? ' is-on' : ''}" aria-pressed="${!!espetoQty[c]}" onclick="toggleCut('${esc(c)}')">${c}</button>`
+      wrap.innerHTML = MENU_CATEGORIES.map(c =>
+        `<button type="button" class="menu-tab" role="tab" aria-selected="${c.key === menuActiveCat}" onclick="setMenuCategory('${c.key}')">${c.icon} ${c.label}</button>`
       ).join('');
     }
 
-    function toggleCut(c) {
-      if (espetoQty[c]) delete espetoQty[c]; else espetoQty[c] = 1;
-      renderCutChips();
-      renderEspetoRows();
-      refreshEspetoUI();
+    function menuItemRow(it) {
+      if (it.tipo === 'espeto') {
+        return `<div class="menu-row">
+          <span class="menu-row__name">${it.nome}${it.badge ? ` <span class="text-[10px] font-bold uppercase tracking-wide text-[#b91c1c] dark:text-red-400">· ${it.badge}</span>` : ''}</span>
+          <span class="menu-row__prices">
+            <span class="menu-row__price">Simples <b>${brl(it.simples)}</b></span>
+            <span class="menu-row__price">Completo <b>${brl(it.completo)}</b></span>
+          </span>
+        </div>`;
+      }
+      return `<div class="menu-row">
+        <span class="menu-row__name">${it.nome}${it.nota ? ` <span class="text-[10px] font-medium text-stone-400">(${it.nota})</span>` : ''}</span>
+        <span class="menu-row__single">${brl(it.preco)}</span>
+      </div>`;
     }
 
-    function bumpCut(c, d) {
-      if (!espetoQty[c]) return;
-      espetoQty[c] = Math.max(1, Math.min(99, espetoQty[c] + d));
-      renderEspetoRows();
-      refreshEspetoUI();
+    function renderMenuPanel() {
+      const box = document.getElementById('menu-render');
+      if (!box) return;
+      const items = MENU_ITEMS[menuActiveCat] || [];
+
+      if (menuActiveCat === 'especial') {
+        box.innerHTML = `<div class="menu-panel">
+          <div class="rounded-2xl border-2 border-red-300 dark:border-red-800/60 bg-[#fffdfa] dark:bg-[#1d1815] p-5 sm:p-7 relative shadow-sm">
+            <span class="absolute -top-3 left-5 bg-[#b91c1c] text-white text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full shadow">Especial da Casa</span>
+            <h3 class="text-xl sm:text-2xl font-serif-title font-bold text-stone-900 dark:text-white mt-2">Picanha Steak</h3>
+            <p class="text-stone-600 dark:text-stone-400 text-sm mt-1">Corte nobre e espesso, já servido completo — não tem versão Simples.</p>
+            <div class="flex flex-wrap items-center gap-x-6 gap-y-1 mt-3 text-[12px] text-stone-500 dark:text-stone-400">
+              <span>Inclui farofa, vinagrete, 1 arroz e 1 guarnição — sem custo adicional</span>
+            </div>
+            <p class="text-2xl font-bold text-[#b91c1c] dark:text-red-400 mt-4">R$ 70,00</p>
+          </div>
+        </div>`;
+        return;
+      }
+
+      box.innerHTML = `<div class="menu-panel rounded-xl border border-stone-200 dark:border-white/[0.08] bg-white dark:bg-[#181412] px-4 sm:px-5 divide-y divide-stone-100 dark:divide-white/[0.06]">
+        ${items.map(menuItemRow).join('')}
+      </div>`;
     }
 
-    function removeCut(c) {
-      delete espetoQty[c];
-      renderCutChips();
-      renderEspetoRows();
-      refreshEspetoUI();
+    function setMenuCategory(key) {
+      if (key === menuActiveCat) return;
+      menuActiveCat = key;
+      renderMenuTabs();
+      renderMenuPanel();
     }
 
-    function renderEspetoRows() {
-      const list = document.getElementById('espeto-list');
-      if (!list) return;
-      const keys = CUTS.filter(c => espetoQty[c]);
-      list.innerHTML = keys.map(c => `
-        <div class="flex items-center justify-between gap-3 bg-white dark:bg-[#181412] border border-stone-200 dark:border-white/[0.06] rounded-lg px-3 py-2">
-          <span class="text-xs font-semibold text-stone-800 dark:text-stone-100">${c}</span>
-          <div class="flex items-center gap-1.5">
-            <button type="button" class="stepper-btn" aria-label="Diminuir ${c}" onclick="bumpCut('${esc(c)}',-1)">&minus;</button>
-            <span class="w-6 text-center text-sm font-bold tabular-nums">${espetoQty[c]}</span>
-            <button type="button" class="stepper-btn" aria-label="Aumentar ${c}" onclick="bumpCut('${esc(c)}',1)">+</button>
-            <button type="button" class="ml-1 text-stone-400 hover:text-[#b91c1c] p-1 text-base leading-none" aria-label="Remover ${c}" onclick="removeCut('${esc(c)}')">&times;</button>
+    renderMenuTabs();
+    renderMenuPanel();
+
+    // ================= CARRINHO (PEDIDO ANTECIPADO) =================
+    let cart = []; // { key, nome, sub:[strings], preco, qtd }
+
+    function cartFind(key) { return cart.find(l => l.key === key); }
+
+    function cartAdd(line) {
+      const existing = cartFind(line.key);
+      if (existing) existing.qtd += 1;
+      else cart.push(Object.assign({ qtd: 1 }, line));
+      renderCart();
+    }
+
+    function cartBump(key, delta) {
+      const line = cartFind(key);
+      if (!line) return;
+      line.qtd += delta;
+      if (line.qtd <= 0) cart = cart.filter(l => l.key !== key);
+      renderCart();
+    }
+
+    function cartTotal() { return cart.reduce((t, l) => t + l.preco * l.qtd, 0); }
+
+    function renderCart() {
+      const panel = document.getElementById('cart-panel');
+      const linesBox = document.getElementById('cart-lines');
+      const totalEl = document.getElementById('cart-total');
+      if (!panel || !linesBox || !totalEl) return;
+      panel.hidden = cart.length === 0;
+      linesBox.innerHTML = cart.map(l => `
+        <div class="cart-line flex items-start justify-between gap-3 text-xs sm:text-sm">
+          <div>
+            <p class="font-semibold text-white">${l.qtd}× ${l.nome} <span class="text-stone-400 font-normal">— ${brl(l.preco)}</span></p>
+            ${l.sub && l.sub.length ? `<p class="text-stone-400 mt-0.5">${l.sub.map(s => '• ' + s).join(' &nbsp; ')}</p>` : ''}
+          </div>
+          <div class="flex items-center gap-1.5 shrink-0">
+            <button type="button" class="stepper-btn" style="background:#26211e;border-color:rgba(255,255,255,.15);color:#fff" aria-label="Diminuir ${l.nome}" onclick="cartBump('${escAttr(l.key)}',-1)">&minus;</button>
+            <span class="w-5 text-center font-bold tabular-nums">${l.qtd}</span>
+            <button type="button" class="stepper-btn" style="background:#26211e;border-color:rgba(255,255,255,.15);color:#fff" aria-label="Aumentar ${l.nome}" onclick="cartBump('${escAttr(l.key)}',1)">+</button>
           </div>
         </div>`).join('');
+      totalEl.textContent = brl(cartTotal());
     }
 
-    function calcEspetoEstimate() {
-      const tp = tipoPratoVal();
-      let t = 0;
-      CUTS.forEach(c => { if (espetoQty[c]) t += (precosCarne[c][tp] || 0) * espetoQty[c]; });
-      return t;
+    // ================= NAVEGAÇÃO DO PEDIDO (adiantar itens) =================
+    let orderActiveCat = 'carnes';
+    const espetoOpen = {}; // id -> bool (painel Completo aberto)
+    const espetoChoice = {}; // id -> { arroz, guarnicao }
+    let steakChoice = { arroz: INCLUDED.arroz[0], guarnicao: INCLUDED.guarnicao[0] };
+
+    function renderOrderTabs() {
+      const wrap = document.getElementById('order-tabs');
+      if (!wrap) return;
+      wrap.innerHTML = MENU_CATEGORIES.map(c =>
+        `<button type="button" class="menu-tab" role="tab" aria-selected="${c.key === orderActiveCat}" onclick="setOrderCategory('${c.key}')">${c.icon} ${c.label}</button>`
+      ).join('');
     }
 
-    function refreshEspetoUI() {
-      const has = CUTS.some(c => espetoQty[c]);
-      const completo = tipoPratoVal() === 'Completo';
-      const srv = document.getElementById('espeto-servir');
-      const cmp = document.getElementById('espeto-completo');
-      const est = document.getElementById('espeto-estimate');
-      if (srv) srv.hidden = !has;
-      if (cmp) cmp.hidden = !(has && completo);
-      if (est) est.hidden = !has;
-      const out = document.getElementById('estimate-value');
-      if (out) out.textContent = brl(calcEspetoEstimate());
+    function choiceFor(id) {
+      if (!espetoChoice[id]) espetoChoice[id] = { arroz: INCLUDED.arroz[0], guarnicao: INCLUDED.guarnicao[0] };
+      return espetoChoice[id];
     }
 
-    renderCutChips();
-    espetoMode();
+    function espetoAvulsoRow(it) {
+      const key = it.id + '|Simples';
+      const line = cartFind(key);
+      const qtd = line ? line.qtd : 0;
+      const open = !!espetoOpen[it.id];
+      const ch = choiceFor(it.id);
+      return `<div class="border border-stone-200 dark:border-white/[0.08] rounded-lg px-3 sm:px-4 py-3 bg-white dark:bg-[#181412]">
+        <div class="flex flex-wrap items-center justify-between gap-2">
+          <span class="text-sm font-semibold text-stone-800 dark:text-stone-100">${it.nome}</span>
+          <div class="flex items-center gap-2 flex-wrap">
+            <span class="qtybox">
+              <button type="button" class="stepper-btn" aria-label="Diminuir ${it.nome} Simples" onclick="cartBump('${escAttr(key)}',-1)">&minus;</button>
+              <span class="w-9 text-center text-[11px] font-semibold text-stone-500 dark:text-stone-400">Simples<br><b class="text-stone-800 dark:text-stone-100">${qtd}</b></span>
+              <button type="button" class="stepper-btn" aria-label="Adicionar ${it.nome} Simples" onclick="addEspetoSimples('${escAttr(it.id)}')">+</button>
+            </span>
+            <button type="button" class="add-btn add-btn--ghost" aria-expanded="${open}" onclick="toggleEspetoOpen('${escAttr(it.id)}')">Completo ${brl(it.completo)} ${open ? '▲' : '▼'}</button>
+          </div>
+        </div>
+        <div data-disclosure ${open ? '' : 'hidden'} class="mt-3 pt-3 border-t border-stone-100 dark:border-white/[0.06] space-y-2.5">
+          <div>
+            <p class="text-[11px] font-bold uppercase tracking-wider text-stone-500 dark:text-stone-400 mb-1">Arroz</p>
+            <div class="flex flex-wrap gap-1.5">
+              ${INCLUDED.arroz.map(a => `<button type="button" class="chip${ch.arroz === a ? ' is-on' : ''}" onclick="setEspetoChoice('${escAttr(it.id)}','arroz','${escAttr(a)}')">${a}</button>`).join('')}
+            </div>
+          </div>
+          <div>
+            <p class="text-[11px] font-bold uppercase tracking-wider text-stone-500 dark:text-stone-400 mb-1">Guarnição</p>
+            <div class="flex flex-wrap gap-1.5">
+              ${INCLUDED.guarnicao.map(g => `<button type="button" class="chip${ch.guarnicao === g ? ' is-on' : ''}" onclick="setEspetoChoice('${escAttr(it.id)}','guarnicao','${escAttr(g)}')">${g}</button>`).join('')}
+            </div>
+          </div>
+          <p class="text-[11px] text-stone-500 dark:text-stone-400">Farofa e vinagrete já inclusos. Arroz e guarnição não alteram o preço.</p>
+          <button type="button" class="add-btn" onclick="addEspetoCompleto('${escAttr(it.id)}')"><span>+ Adicionar Completo — ${brl(it.completo)}</span></button>
+        </div>
+      </div>`;
+    }
+
+    function avulsoRow(it) {
+      const line = cartFind(it.id);
+      const qtd = line ? line.qtd : 0;
+      return `<div class="flex items-center justify-between gap-3 border border-stone-200 dark:border-white/[0.08] rounded-lg px-3 sm:px-4 py-2.5 bg-white dark:bg-[#181412]">
+        <span class="text-sm font-medium text-stone-800 dark:text-stone-100">${it.nome}${it.nota ? ` <span class="text-[10px] font-medium text-stone-400">(${it.nota})</span>` : ''} <span class="text-stone-400 font-normal">— ${brl(it.preco)}</span></span>
+        <span class="qtybox">
+          <button type="button" class="stepper-btn" aria-label="Diminuir ${it.nome}" onclick="cartBumpAvulso('${escAttr(it.id)}',-1)">&minus;</button>
+          <span class="w-6 text-center text-sm font-bold tabular-nums">${qtd}</span>
+          <button type="button" class="stepper-btn" aria-label="Aumentar ${it.nome}" onclick="cartBumpAvulso('${escAttr(it.id)}',1)">+</button>
+        </span>
+      </div>`;
+    }
+
+    function steakPanel() {
+      return `<div class="border-2 border-red-200 dark:border-red-800/50 rounded-lg px-3 sm:px-4 py-3.5 bg-[#fffdfa] dark:bg-[#1d1815] space-y-2.5">
+        <div class="flex items-baseline justify-between gap-2">
+          <span class="text-sm font-bold text-stone-900 dark:text-white">Picanha Steak</span>
+          <span class="text-base font-bold text-[#b91c1c] dark:text-red-400">R$ 70,00</span>
+        </div>
+        <div>
+          <p class="text-[11px] font-bold uppercase tracking-wider text-stone-500 dark:text-stone-400 mb-1">Arroz</p>
+          <div class="flex flex-wrap gap-1.5">
+            ${INCLUDED.arroz.map(a => `<button type="button" class="chip${steakChoice.arroz === a ? ' is-on' : ''}" onclick="setSteakChoice('arroz','${escAttr(a)}')">${a}</button>`).join('')}
+          </div>
+        </div>
+        <div>
+          <p class="text-[11px] font-bold uppercase tracking-wider text-stone-500 dark:text-stone-400 mb-1">Guarnição</p>
+          <div class="flex flex-wrap gap-1.5">
+            ${INCLUDED.guarnicao.map(g => `<button type="button" class="chip${steakChoice.guarnicao === g ? ' is-on' : ''}" onclick="setSteakChoice('guarnicao','${escAttr(g)}')">${g}</button>`).join('')}
+          </div>
+        </div>
+        <p class="text-[11px] text-stone-500 dark:text-stone-400">Farofa e vinagrete já inclusos. Arroz e guarnição não alteram o preço.</p>
+        <button type="button" class="add-btn" onclick="addSteak()"><span>+ Adicionar Picanha Steak — R$ 70,00</span></button>
+      </div>`;
+    }
+
+    function renderOrderPanel() {
+      const box = document.getElementById('order-render');
+      if (!box) return;
+      const items = MENU_ITEMS[orderActiveCat] || [];
+      let html;
+      if (orderActiveCat === 'especial') {
+        html = steakPanel();
+      } else if (orderActiveCat === 'carnes' || orderActiveCat === 'frango') {
+        html = items.map(espetoAvulsoRow).join('');
+      } else {
+        html = items.map(avulsoRow).join('');
+      }
+      box.innerHTML = `<div class="menu-panel space-y-2">${html}</div>`;
+    }
+
+    function setOrderCategory(key) {
+      if (key === orderActiveCat) return;
+      orderActiveCat = key;
+      renderOrderTabs();
+      renderOrderPanel();
+    }
+
+    function toggleEspetoOpen(id) {
+      espetoOpen[id] = !espetoOpen[id];
+      renderOrderPanel();
+    }
+
+    function setEspetoChoice(id, field, value) {
+      choiceFor(id)[field] = value;
+      renderOrderPanel();
+    }
+
+    function setSteakChoice(field, value) {
+      steakChoice[field] = value;
+      renderOrderPanel();
+    }
+
+    function addEspetoSimples(id) {
+      const it = ITEM_BY_ID[id];
+      if (!it) return;
+      cartAdd({ key: id + '|Simples', nome: it.nome + ' (Simples)', sub: ['Farofa + Vinagrete inclusos'], preco: it.simples });
+    }
+
+    function addEspetoCompleto(id) {
+      const it = ITEM_BY_ID[id];
+      if (!it) return;
+      const ch = choiceFor(id);
+      const key = [id, 'Completo', ch.arroz, ch.guarnicao].join('|');
+      cartAdd({ key, nome: it.nome + ' (Completo)', sub: [ch.arroz, ch.guarnicao, 'Farofa + Vinagrete inclusos'], preco: it.completo });
+    }
+
+    function addSteak() {
+      const key = ['steak', steakChoice.arroz, steakChoice.guarnicao].join('|');
+      cartAdd({ key, nome: 'Picanha Steak', sub: [steakChoice.arroz, steakChoice.guarnicao, 'Farofa + Vinagrete inclusos'], preco: 70 });
+    }
+
+    function cartBumpAvulso(id, delta) {
+      const it = ITEM_BY_ID[id];
+      if (!it) return;
+      const line = cartFind(id);
+      if (!line && delta > 0) { cartAdd({ key: id, nome: it.nome, sub: [], preco: it.preco }); return; }
+      cartBump(id, delta);
+    }
+
+    function orderMode() {
+      const c = document.querySelector('input[name="modo_pedido"]:checked');
+      const on = c && c.value === 'adiantar';
+      const builder = document.getElementById('order-builder');
+      if (builder) builder.hidden = !on;
+      if (!on) {
+        cart = [];
+        renderCart();
+      }
+    }
+
+    renderOrderTabs();
+    renderOrderPanel();
+    renderCart();
 
     // ================= CONCIERGE WHATSAPP: MENSAGEM PRONTA =================
     function sendConciergeReservation(e) {
@@ -2038,11 +1994,9 @@
       const pessoas = g('res-pessoas');
       const horario = g('res-horario');
       const ambiente = g('res-ambiente');
-      const modo = rv('modo_espeto');
-      const extras = g('res-extras');
       const obs = g('res-obs');
-      const cuts = CUTS.filter(c => espetoQty[c]);
-      const temEspetos = modo === 'adiantar' && cuts.length > 0;
+      const modo = rv('modo_pedido');
+      const temPedido = modo === 'adiantar' && cart.length > 0;
 
       const L = [];
       L.push('*RESERVA / PEDIDO — NO SPETTO*');
@@ -2054,25 +2008,20 @@
       L.push('Data e horário: ' + horario);
       L.push('Ambiente: ' + ambiente);
 
-      if (temEspetos) {
-        const tp = tipoPratoVal();
+      if (temPedido) {
         L.push('');
-        L.push('Espetos:');
-        cuts.forEach(c => L.push('- ' + c + ': ' + espetoQty[c]));
-        L.push('Servir: ' + tp);
-        if (tp === 'Completo') {
-          L.push('Arroz: ' + rv('arroz'));
-          L.push('Guarnição: ' + rv('guarnicao'));
-          L.push('(Farofa da Casa e Vinagrete inclusos)');
-        }
+        L.push('*PEDIDO*');
+        cart.forEach(l => {
+          L.push(l.qtd + '× ' + l.nome + ' — ' + brl(l.preco * l.qtd));
+          (l.sub || []).forEach(s => L.push('   • ' + s));
+        });
       }
 
-      if (extras) { L.push(''); L.push('Outros itens: ' + extras); }
       if (obs) { L.push(''); L.push('Observações: ' + obs); }
 
-      if (temEspetos) {
+      if (temPedido) {
         L.push('');
-        L.push('Estimativa dos espetos: ' + brl(calcEspetoEstimate()) + ' (apenas espetos, a confirmar no atendimento)');
+        L.push('TOTAL DOS ITENS: ' + brl(cartTotal()) + ' (a confirmar no atendimento)');
       }
 
       L.push('');
