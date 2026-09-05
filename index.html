@@ -15,6 +15,8 @@
   <link rel="icon" type="image/png" href="images/logo-black.png">
   <link rel="apple-touch-icon" href="images/logo-black.png">
 
+  <!-- Pôster do vídeo da hero (desktop) — evita frame preto antes do vídeo começar -->
+  <link rel="preload" as="image" href="assets/video-hero-desktop/video-hero-desktop01-poster.jpg" fetchpriority="high" media="(min-width: 1024px)">
 
   <!-- Geo -->
   <meta name="geo.region" content="BR-PA">
@@ -409,6 +411,8 @@
       function finish() {
         if (done) return;
         done = true;
+        // Dispara o vídeo da hero (desktop) no exato momento em que a intro termina.
+        if (typeof window.startHeroVideo === 'function') window.startHeroVideo();
         if (rafId) { cancelAnimationFrame(rafId); rafId = null; }
         if (countEl) countEl.textContent = '100%';
         if (barEl) barEl.style.width = '100%';
@@ -553,12 +557,14 @@
     <div class="hero-ember absolute inset-0 z-0 pointer-events-none" aria-hidden="true"></div>
 
     <!-- Vídeo institucional da casa — só no desktop, sangrando a tela (object-cover, sem moldura/linha).
+         Começa a tocar quando a intro da marca termina (ver script da intro). Sem "autoplay":
+         fica pronto/bufferizado e é disparado por window.startHeroVideo().
          No mobile o palco fica limpo: brasa + tipografia. -->
     <div class="hidden lg:block absolute inset-0 z-0 pointer-events-none" aria-hidden="true">
       <video id="hero-video"
              class="hero-media h-full w-full object-cover object-center"
-             autoplay muted playsinline preload="auto" disablepictureinpicture
-             tabindex="-1">
+             muted playsinline loop preload="auto" disablepictureinpicture
+             poster="assets/video-hero-desktop/video-hero-desktop01-poster.jpg" tabindex="-1">
         <source src="assets/video-hero-desktop/video-hero-desktop01.mp4" type="video/mp4">
       </video>
     </div>
@@ -624,15 +630,22 @@
     (function () {
       var v = document.getElementById('hero-video');
       if (!v) return;
-      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var reduce = false;
+      try { reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (e) {}
       var saveData = navigator.connection && navigator.connection.saveData;
       if (reduce || saveData) {
-        v.removeAttribute('autoplay');
         v.preload = 'none';
-        return; // mantém apenas o poster (leque final)
+        return; // mantém apenas o pôster; não baixa nem toca o vídeo
       }
-      var p = v.play();
-      if (p && p.catch) p.catch(function () { /* autoplay bloqueado: poster permanece */ });
+      // Fica bufferizado (preload="auto") e só começa a tocar quando a intro
+      // da marca terminar — ver chamada em window.startHeroVideo() no script da intro.
+      var started = false;
+      window.startHeroVideo = function () {
+        if (started) return;
+        started = true;
+        var p = v.play();
+        if (p && p.catch) p.catch(function () { /* autoplay bloqueado: pôster permanece */ });
+      };
     })();
   </script>
 
