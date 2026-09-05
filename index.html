@@ -630,10 +630,11 @@
     (function () {
       var v = document.getElementById('hero-video');
       if (!v) return;
-      var reduce = false;
-      try { reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (e) {}
+      // Só o modo "economizar dados" cancela o vídeo (é conteúdo pedido pela casa,
+      // não uma animação decorativa — continua tocando mesmo com "reduzir
+      // movimento" ativado no sistema, respeitado nos outros efeitos da página).
       var saveData = navigator.connection && navigator.connection.saveData;
-      if (reduce || saveData) {
+      if (saveData) {
         v.preload = 'none';
         return; // mantém apenas o pôster; não baixa nem toca o vídeo
       }
