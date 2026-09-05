@@ -15,8 +15,6 @@
   <link rel="icon" type="image/png" href="images/logo-black.png">
   <link rel="apple-touch-icon" href="images/logo-black.png">
 
-  <!-- Prioriza o quadro da hero (LCP) -->
-  <link rel="preload" as="image" href="assets/hero/espetos-hero-poster.jpg" fetchpriority="high">
 
   <!-- Geo -->
   <meta name="geo.region" content="BR-PA">
@@ -239,7 +237,6 @@
 
     /* ===== HERO — palco da brasa ===== */
     .hero-media {
-      mix-blend-mode: screen;            /* preto puro do vídeo some por completo */
       opacity: 0;
       animation: heroMediaIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.15s forwards;
     }
@@ -549,21 +546,20 @@
     </div>
   </header>
 
-  <!-- HERO SECTION — PALCO DA BRASA (vídeo dos três espetos sobre preto puro) -->
+  <!-- HERO SECTION — PALCO DA BRASA (vídeo institucional no desktop) -->
   <section class="relative isolate overflow-hidden bg-[#0c0a09] text-white border-b border-white/[0.06]">
 
     <!-- Brilho de brasa ao fundo -->
     <div class="hero-ember absolute inset-0 z-0 pointer-events-none" aria-hidden="true"></div>
 
-    <!-- Vídeo dos três espetos — só no desktop, sangrando a tela (object-cover, sem moldura/linha).
+    <!-- Vídeo institucional da casa — só no desktop, sangrando a tela (object-cover, sem moldura/linha).
          No mobile o palco fica limpo: brasa + tipografia. -->
     <div class="hidden lg:block absolute inset-0 z-0 pointer-events-none" aria-hidden="true">
       <video id="hero-video"
-             class="hero-media h-full w-full object-cover object-[72%_center]"
+             class="hero-media h-full w-full object-cover object-center"
              autoplay muted playsinline preload="auto" disablepictureinpicture
-             poster="assets/hero/espetos-hero-poster.jpg" tabindex="-1">
-        <source src="assets/hero/espetos-hero.webm" type="video/webm">
-        <source src="assets/hero/espetos-hero.mp4" type="video/mp4">
+             tabindex="-1">
+        <source src="assets/video-hero-desktop/video-hero-desktop01.mp4" type="video/mp4">
       </video>
     </div>
 
