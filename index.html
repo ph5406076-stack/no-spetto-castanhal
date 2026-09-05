@@ -334,6 +334,10 @@
     .menu-row__name { font-weight: 600; color: #1c1917; font-size: .95rem; }
     .dark .menu-row__name { color: #fafaf9; }
     .menu-row__prices { display: flex; gap: 1.1rem; flex: none; font-variant-numeric: tabular-nums; }
+    /* Mobile: Simples/Completo empilhados (lado a lado estoura a largura do card em telas pequenas) */
+    @media (max-width: 639px) {
+      .menu-row__prices--split { flex-direction: column; align-items: flex-end; gap: .2rem; }
+    }
     .menu-row__price { font-size: .82rem; color: #78716c; white-space: nowrap; }
     .dark .menu-row__price { color: #a8a29e; }
     .menu-row__price b { color: #b91c1c; font-weight: 700; }
@@ -406,8 +410,11 @@
     /* Carrossel mobile — scroll nativo com snap */
     .brasa-scroll {
       display: flex; gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory;
-      -webkit-overflow-scrolling: touch; scrollbar-width: none; padding: 0 20px 6px;
-      margin: 0 -20px;
+      -webkit-overflow-scrolling: touch; scrollbar-width: none;
+      scroll-padding-inline-start: 1.25rem; /* alinha o card ativo com o texto acima, não só o 1º */
+    }
+    @media (min-width: 640px) {
+      .brasa-scroll { scroll-padding-inline-start: 1.5rem; }
     }
     .brasa-scroll::-webkit-scrollbar { display: none; }
     .brasa-scroll > * { scroll-snap-align: start; flex: none; width: 80vw; max-width: 340px; }
@@ -951,7 +958,7 @@
                  alt="Espetos de coração assando sobre a brasa"
                  width="1122" height="1402" loading="lazy" decoding="async">
             <span class="brasa-caption">
-              <span class="brasa-caption__num">04 / ESPETO</span>
+              <span class="brasa-caption__num">02 / ESPETO</span>
               <span class="brasa-caption__name">Coração</span>
             </span>
           </div>
@@ -964,7 +971,7 @@
                  alt="Fritas da Casa servidas em recipiente preto"
                  width="1122" height="1402" loading="lazy" decoding="async">
             <span class="brasa-caption">
-              <span class="brasa-caption__num">02 / ENTRADA</span>
+              <span class="brasa-caption__num">03 / ENTRADA</span>
               <span class="brasa-caption__name">Fritas da Casa</span>
             </span>
           </div>
@@ -975,7 +982,7 @@
                  alt="Pipoca de Queijo Coalho com molho"
                  width="1122" height="1402" loading="lazy" decoding="async">
             <span class="brasa-caption">
-              <span class="brasa-caption__num">03 / ENTRADA</span>
+              <span class="brasa-caption__num">04 / ENTRADA</span>
               <span class="brasa-caption__name">Pipoca de Queijo Coalho</span>
             </span>
           </div>
@@ -1019,7 +1026,7 @@
         </p>
 
         <!-- Galeria: 1.1 imagem por viewport, ordenada por potencial de desejo -->
-        <div class="brasa-scroll mt-6" role="list" aria-label="Fotos dos pratos No Spetto">
+        <div class="brasa-scroll mt-6 -mx-5 sm:-mx-6 px-5 sm:px-6 pb-1.5" role="list" aria-label="Fotos dos pratos No Spetto">
 
           <div class="brasa-frame reveal-img rounded-xl aspect-[4/5]" role="listitem">
             <img src="assets/fotos-novas-card%C3%A1pio/churrasco-de-carne-e-frango-com-bacon.webp"
@@ -1036,7 +1043,7 @@
                  alt="Espetos de coração assando sobre a brasa"
                  width="1122" height="1402" loading="lazy" decoding="async">
             <span class="brasa-caption">
-              <span class="brasa-caption__num">04 / ESPETO</span>
+              <span class="brasa-caption__num">02 / ESPETO</span>
               <span class="brasa-caption__name">Coração</span>
             </span>
           </div>
@@ -1046,7 +1053,7 @@
                  alt="Fritas da Casa servidas em recipiente preto"
                  width="1122" height="1402" loading="lazy" decoding="async">
             <span class="brasa-caption">
-              <span class="brasa-caption__num">02 / ENTRADA</span>
+              <span class="brasa-caption__num">03 / ENTRADA</span>
               <span class="brasa-caption__name">Fritas da Casa</span>
             </span>
           </div>
@@ -1056,7 +1063,7 @@
                  alt="Pipoca de Queijo Coalho com molho"
                  width="1122" height="1402" loading="lazy" decoding="async">
             <span class="brasa-caption">
-              <span class="brasa-caption__num">03 / ENTRADA</span>
+              <span class="brasa-caption__num">04 / ENTRADA</span>
               <span class="brasa-caption__name">Pipoca de Queijo Coalho</span>
             </span>
           </div>
@@ -1130,6 +1137,7 @@
 
       <!-- Navegação por categorias -->
       <div class="sticky top-20 sm:top-24 z-20 -mx-4 px-4 sm:mx-0 sm:px-0 py-2 bg-[#faf7f2]/95 dark:bg-[#0c0a09]/95 backdrop-blur-sm reveal">
+        <p class="sm:hidden text-center text-[11px] text-stone-400 dark:text-stone-500 mb-1.5">Arraste para o lado →</p>
         <div class="menu-tabs" id="menu-tabs" role="tablist" aria-label="Categorias do cardápio"></div>
       </div>
 
@@ -2006,7 +2014,7 @@
       if (it.tipo === 'espeto') {
         return `<div class="menu-row">
           <span class="menu-row__name">${it.nome}${it.badge ? ` <span class="text-[10px] font-bold uppercase tracking-wide text-[#b91c1c] dark:text-red-400">· ${it.badge}</span>` : ''}</span>
-          <span class="menu-row__prices">
+          <span class="menu-row__prices menu-row__prices--split">
             <span class="menu-row__price">Simples <b>${brl(it.simples)}</b></span>
             <span class="menu-row__price">Completo <b>${brl(it.completo)}</b></span>
           </span>
